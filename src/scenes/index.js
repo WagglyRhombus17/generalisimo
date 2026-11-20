@@ -8,7 +8,7 @@ import { strait } from './strait.js';
 
 const BUILD = { road, island, airfield, sky, night, strait };
 const cache = new Map();
-let raf = 0;
+let raf = 0, lastKey = '';
 
 const reduceMotion = () => !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
 
@@ -16,6 +16,10 @@ export function setScene(cv, desc) {
   cancelAnimationFrame(raf); raf = 0;
   if (!desc || !BUILD[desc.t]) return;
   const key = JSON.stringify(desc);
+  if (key !== lastKey) { // fade in from black when the scene changes
+    lastKey = key;
+    cv.classList.remove('fade'); void cv.offsetWidth; cv.classList.add('fade');
+  }
   let sc = cache.get(key);
   if (!sc) { sc = BUILD[desc.t](desc); cache.set(key, sc); }
   if (!sc.frame || reduceMotion()) {

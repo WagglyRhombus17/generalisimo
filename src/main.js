@@ -6,7 +6,7 @@ import { showTitle, hideTitle } from './screens/cards.js';
 import { openMap, closeMap } from './screens/map.js';
 import { openGenerals, closeGenerals } from './screens/generals.js';
 import { renderHUD } from './screens/hud.js';
-import { hideDlg } from './screens/dialog.js';
+import { hideDlg, finishTyping } from './screens/dialog.js';
 
 const $ = s => document.querySelector(s);
 const D = {};
@@ -64,6 +64,7 @@ document.addEventListener('keydown', e => {
   const layer = LAYERS.map(s => $(s)).find(el => el && !el.hidden);
   if (!layer) return;
   const key = k === ' ' ? 'enter' : k;
+  if (key === 'enter' && layer.id === 'dlg' && finishTyping()) { e.preventDefault(); return; }
   const btn = layer.querySelector(`[data-key="${CSS.escape(key)}"]:not([disabled])`);
   if (btn) { e.preventDefault(); btn.click(); }
 });

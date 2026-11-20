@@ -1,4 +1,4 @@
-// The route bar along the top and the beveled control panel along the bottom.
+// The route bar along the top and the beveled panel along the bottom (stats on the left, events on the right).
 import { fmtDate } from '../game/state.js';
 
 const $ = s => document.querySelector(s);
@@ -20,26 +20,26 @@ export function renderHUD(S, D) {
   $('#r-date').textContent = fmtDate(S.day);
   $('#r-stops').innerHTML = S.route.map((s, i) => `<li class="${i < S.pos ? 'done' : i === S.pos ? 'here' : ''}">${s}</li>`).join('');
 
-  $('#h-army').innerHTML = '<h4>ARMY</h4>' +
+  const rivals = Object.keys(S.inf).filter(g => g !== 'franco' && (g !== 'sanjurjo' || S.alive.sanjurjo)).sort((a, b) => S.inf[b] - S.inf[a]);
+  const top = rivals[0];
+
+  $('#h-col1').innerHTML = '<h4>ARMY</h4>' +
     row('IN SPAIN', S.tS / 150, men(S.tS)) +
     row('IN AFRICA', S.tA / 240, men(S.tA)) +
     row('AMMO', S.ammo, word(S.ammo), S.ammo < 20 ? { c: RED, warn: 1 } : {}) +
     row('FUNDS', S.funds, word(S.funds), S.funds < 15 ? { c: RED, warn: 1 } : {}) +
-    row('MORALE', S.morale, word(S.morale), S.morale < 30 ? { c: RED, warn: 1 } : {});
+    row('MORALE', S.morale, word(S.morale), S.morale < 30 ? { c: RED, warn: 1 } : {}) +
+    '<h4 class="gap">RACE FOR COMMAND</h4>' +
+    row('YOU', S.inf.franco, Math.round(S.inf.franco)) +
+    row(D.generals[top].name.toUpperCase(), S.inf[top], Math.round(S.inf[top]), { c: RED });
 
-  $('#h-allies').innerHTML = '<h4>ALLIES</h4>' +
+  $('#h-col2').innerHTML = '<h4>ALLIES</h4>' +
     row('GERMANY', S.ger, `${Math.floor(S.ger / 25)}/4`) +
     row('ITALY', S.ita, `${Math.floor(S.ita / 25)}/4`) +
     '<h4 class="gap">STANDING</h4>' +
     row('LEGITIMACY', S.legit, Math.round(S.legit)) +
-    row('TERROR', S.terror, Math.round(S.terror), { c: RED });
+    row('TERROR', S.terror, Math.round(S.terror), { c: RED }) +
+    `<div class="foot">CH ${ch.n} · ${ch.title.toUpperCase()}<br>SEED ${S.seed}</div>`;
 
-  const rivals = Object.keys(S.inf).filter(g => g !== 'franco' && (g !== 'sanjurjo' || S.alive.sanjurjo)).sort((a, b) => S.inf[b] - S.inf[a]);
-  const top = rivals[0];
-  $('#h-ch').textContent = `CHAPTER ${ch.n} · ${ch.title.toUpperCase()}`;
-  $('#h-date').textContent = fmtDate(S.day);
-  $('#h-race').innerHTML = '<h4>RACE FOR COMMAND</h4>' +
-    row('YOU', S.inf.franco, Math.round(S.inf.franco)) +
-    row(D.generals[top].name.toUpperCase(), S.inf[top], Math.round(S.inf[top]), { c: RED });
-  $('#h-seed').textContent = `SEED ${S.seed}`;
+  $('#h-idle').textContent = `CHAPTER ${ch.n} · ${ch.title.toUpperCase()}`;
 }

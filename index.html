@@ -8,24 +8,23 @@
 <main class="stage" id="stage" aria-label="Generalísimo">
   <canvas id="scene" aria-hidden="true"></canvas>
 
-  <div class="route bev" id="route" hidden><span class="date" id="r-date"></span><ol id="r-stops"></ol></div>
-
-  <div class="hud" id="hud" hidden>
-    <div class="bev" id="h-army"></div>
-    <div class="bev" id="h-allies"></div>
-    <div class="bev h-ctl">
-      <div class="h-top"><span id="h-ch"></span><span id="h-seed"></span></div>
-      <div class="h-date" id="h-date"></div>
-      <div id="h-race"></div>
-      <div class="h-btns">
-        <button type="button" id="b-map">MAP [M]</button>
-        <button type="button" id="b-gen">GENERALS [G]</button>
-        <button type="button" id="b-menu">MENU</button>
-      </div>
+  <div class="route bev" id="route" hidden>
+    <span class="date" id="r-date"></span>
+    <ol id="r-stops"></ol>
+    <div class="r-btns">
+      <button type="button" id="b-map">MAP [M]</button>
+      <button type="button" id="b-gen">GENERALS [G]</button>
+      <button type="button" id="b-menu">MENU</button>
     </div>
   </div>
 
-  <section class="dlg bev" id="dlg" hidden aria-live="polite"></section>
+  <div class="hud" id="hud" hidden>
+    <div class="bev stats"><div id="h-col1"></div><div id="h-col2"></div></div>
+    <div class="bev evslot">
+      <div class="idle" id="h-idle"></div>
+      <section class="dlg" id="dlg" hidden aria-live="polite"></section>
+    </div>
+  </div>
 
   <section class="ovl C" id="ov-air" hidden></section>
   <section class="ovl C" id="ov-council" hidden></section>

@@ -4,7 +4,7 @@ import { palFor } from '../engine/palettes.js';
 import { truck, soldier, tree, house, palm } from '../engine/sprites.js';
 
 const W = 320, H = 180;
-const SUN = { sunset: [62, 70, 11], day: [64, 22, 10], dawn: [44, 80, 13] };
+const SUN = { sunset: [62, 70, 11], day: [64, 36, 10], dawn: [44, 80, 13] };
 const plainTop = x => Math.round(100 - 2 * Math.sin(x * 0.05) - 1.5 * Math.sin(x * 0.13 + 1));
 
 function hill(fb, P, cx, hw, top, x0, x1 = W) {
