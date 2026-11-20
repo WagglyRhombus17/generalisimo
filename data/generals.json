@@ -1,0 +1,30 @@
+{
+  "franco": {
+    "name": "Franco", "full": "General Francisco Franco", "role": "Commander of the Canary Islands, soon of the Army of Africa",
+    "inf": 50, "loy": 100, "wants": "Supreme command.", "look": { "cap": 1, "must": 1, "medals": 1 }
+  },
+  "mola": {
+    "name": "Mola", "full": "General Emilio Mola", "role": "Director of the rising, commanding the Army of the North",
+    "inf": 64, "loy": -20, "wants": "A military junta that he runs.", "look": { "cap": 1, "glasses": 1 }
+  },
+  "sanjurjo": {
+    "name": "Sanjurjo", "full": "General José Sanjurjo", "role": "Exiled in Portugal, chosen by the conspirators to lead the rising",
+    "inf": 88, "loy": 0, "wants": "To rule Spain himself.", "look": { "cap": 1, "must": 1, "wide": 1, "medals": 1 }
+  },
+  "queipo": {
+    "name": "Queipo", "full": "General Gonzalo Queipo de Llano", "role": "Holds Sevilla and broadcasts every night on Radio Sevilla",
+    "inf": 46, "loy": -10, "wants": "His own domain in Andalusia.", "look": { "cap": 1, "must": 1, "wide": 1 }
+  },
+  "cabanellas": {
+    "name": "Cabanellas", "full": "General Miguel Cabanellas", "role": "The most senior general, president of the junta in Burgos",
+    "inf": 50, "loy": -30, "wants": "No single man in charge.", "look": { "cap": 1, "beard": 1 }
+  },
+  "kindelan": {
+    "name": "Kindelán", "full": "General Alfredo Kindelán", "role": "Chief of the rebel air force and a committed monarchist",
+    "inf": 24, "loy": 40, "wants": "The king back on the throne.", "look": { "must": 1, "hair": "#8a8478" }
+  },
+  "orgaz": {
+    "name": "Orgaz", "full": "General Luis Orgaz", "role": "Your fellow conspirator from the Canary Islands",
+    "inf": 22, "loy": 30, "wants": "A senior command when the war is won.", "look": { "cap": 1, "must": 1, "wide": 1 }
+  }
+}
