@@ -4,7 +4,13 @@ A pixel-art strategy game about the first months of the Spanish Civil War, playe
 
 Draft 1 covers four chapters: The Flight, The Strait, The March North and Salamanca.
 
-## Run it
+## Play it
+
+Live site: https://wagglyrhombus17.github.io/generalisimo/
+
+GitHub Pages serves this repository's `main` branch directly, so every push to `main` updates the site.
+
+## Run it locally
 
 The game is plain HTML, CSS and JavaScript modules with no build step. Modules and data files load over HTTP, so serve the folder instead of opening `index.html` from disk:
 
@@ -13,6 +19,8 @@ python3 -m http.server 8000
 ```
 
 Then open http://localhost:8000.
+
+To package the game for itch.io or another host, run `python3 tools/build.py`. It writes `dist/` and `generalisimo-web.zip`.
 
 ## Layout
 
