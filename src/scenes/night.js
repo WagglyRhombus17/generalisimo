@@ -34,7 +34,7 @@ export function night() {
       f.blit(sil, Math.round(((196 + t * 5) % (W + 60)) - 30), 54);
       // the queue shuffles toward the aircraft door
       const step = (t * 5) % 8;
-      for (let i = 0; i < 9; i++) soldier(f, Math.round(218 + i * 8 - step), 126, sp, i + Math.floor(t * 4));
+      for (let i = 0; i < 8; i++) soldier(f, Math.round(214 + i * 10 - step * 1.25), 127, sp, i + Math.floor(t * 4));
       const lamp = Math.sin(t * 9) > -0.4 ? P.light : P.moonD;
       f.rect(186, 116, 2, 3, lamp); f.set(187, 115, lamp);
     }

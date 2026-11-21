@@ -9,7 +9,8 @@
     "look": {
       "cap": 1,
       "must": 1,
-      "medals": 1
+      "medals": 1,
+      "skin": "#dca880"
     }
   },
   "mola": {
@@ -21,7 +22,8 @@
     "wants": "A military junta that he runs.",
     "look": {
       "cap": 1,
-      "glasses": 1
+      "glasses": 1,
+      "skin": "#e2b08c"
     }
   },
   "sanjurjo": {
@@ -33,9 +35,11 @@
     "wants": "To rule Spain himself.",
     "look": {
       "cap": 1,
-      "must": 1,
+      "must": 2,
       "wide": 1,
-      "medals": 1
+      "medals": 1,
+      "old": 1,
+      "skin": "#cc9470"
     }
   },
   "queipo": {
@@ -47,8 +51,10 @@
     "wants": "His own domain in Andalusia.",
     "look": {
       "cap": 1,
-      "must": 1,
-      "wide": 1
+      "must": 2,
+      "wide": 1,
+      "old": 1,
+      "skin": "#d49c74"
     }
   },
   "cabanellas": {
@@ -60,7 +66,9 @@
     "wants": "No single man in charge.",
     "look": {
       "cap": 1,
-      "beard": 1
+      "beard": 1,
+      "old": 1,
+      "skin": "#e0b08a"
     }
   },
   "kindelan": {
@@ -71,8 +79,11 @@
     "loy": 40,
     "wants": "The king back on the throne.",
     "look": {
+      "air": 1,
       "must": 1,
-      "hair": "#8a8478"
+      "hair": "#9a948a",
+      "old": 1,
+      "skin": "#dcac86"
     }
   },
   "orgaz": {
@@ -85,7 +96,8 @@
     "look": {
       "cap": 1,
       "must": 1,
-      "wide": 1
+      "wide": 1,
+      "skin": "#c8906a"
     }
   }
 }

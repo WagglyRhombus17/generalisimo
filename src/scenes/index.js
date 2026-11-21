@@ -1,5 +1,5 @@
 // Scene registry: builds a scene once, caches it, and animates it if it has moving parts.
-import { road } from './road.js';
+import { road, battle } from './road.js';
 import { island } from './island.js';
 import { airfield } from './airfield.js';
 import { sky } from './sky.js';
@@ -7,7 +7,7 @@ import { night } from './night.js';
 import { strait } from './strait.js';
 import { motionOn } from '../settings.js';
 
-const BUILD = { road, island, airfield, sky, night, strait };
+const BUILD = { road, battle, island, airfield, sky, night, strait };
 const cache = new Map();
 let raf = 0, lastKey = '';
 

@@ -16,6 +16,9 @@ const word = v => (v >= 70 ? 'high' : v >= 40 ? 'fair' : v >= 20 ? 'low' : 'crit
 
 export async function battle(S, B, ctx) {
   let tries = 0;
+  const march = S.scene;
+  if (march && march.t === 'road') ctx.showScene({ ...march, t: 'battle' });
+  try {
   for (;;) {
     if (S.tS < 1500) {
       if (S.tS + S.tA < 1500) { S.end = 'army'; return; }
@@ -52,6 +55,7 @@ export async function battle(S, B, ctx) {
       applyFx(S, { inf: { franco: 4 }, morale: 5, legit: 2, terror: T.terror || 0 });
       S.ledger.push({ k: `Battle of ${B.name}`, you: `Won by ${T.t.toLowerCase()}${tries ? ` after ${tries + 1} attempts` : ''}.`, hist: B.hist });
       renderHUD(S, ctx.D);
+      if (march) ctx.showScene(march);
       await tell({
         title: `${B.name} has fallen`,
         text: forced ? 'Exhausted and short of everything, your men finally carry the position. The cost is high.' : B.win,
@@ -66,5 +70,8 @@ export async function battle(S, B, ctx) {
     renderHUD(S, ctx.D);
     await tell({ title: 'The attack fails', text: 'The defenders hold. Your officers regroup the column for another attempt.', chips: chips(before, snapshot(S), S, ctx.D) });
     if (!ctx.alive()) return;
+  }
+  } finally {
+    if (march && S.scene && S.scene.t === 'battle') ctx.showScene(march);
   }
 }

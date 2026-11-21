@@ -78,7 +78,7 @@ export function showEnding(S, ctx) {
   const rival = S.rival ? D.generals[S.rival].full : 'another general';
   const ov = $('#ov-end');
   ov.hidden = false;
-  overrideMusic('title');
+  overrideMusic(['generalisimo', 'madrid', 'stalemate'].includes(S.end) ? 'finale' : 'tribunal');
   if (S.end === 'dead' || S.end === 'army') sfx('bad');
   ov.replaceChildren();
   const p = el('div', 'end-panel bev');
@@ -99,7 +99,7 @@ export function showEnding(S, ctx) {
   });
   if (!S.ledger.length) tbl.append(el('p', null, 'Your run ended before history had much to compare.'));
   p.append(tbl);
-  p.append(el('p', 'draft', 'Draft 1 covers July to September 1936. Later drafts continue the war.'));
+  p.append(el('p', 'draft', 'This draft ends in November 1936. Later drafts continue the war into 1937.'));
   const btns = el('div', 'menu');
   btns.append(button('NEW RUN ▶', 'enter', ctx.onNew, 'go'), button('REPLAY THIS SEED', 'r', () => ctx.onSeed(S.seed)), button('TITLE SCREEN', 't', ctx.onMenu));
   p.append(btns);

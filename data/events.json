@@ -440,6 +440,295 @@
           "r": "Your officers spend a day combing the river banks. Some of them think you are too soft."
         }
       ]
+    },
+    "headOfState": {
+      "title": "Burgos · 1 October 1936",
+      "text": "In Burgos you are proclaimed head of state and Generalísimo of the armies. Crowds fill the square beneath the cathedral. Your brother Nicolás suggests a new title, one that belongs to no king: Caudillo, the leader.",
+      "ledger": {
+        "k": "Head of state",
+        "hist": "Franco was proclaimed head of state in Burgos on 1 October 1936. He took the title Caudillo and never gave up power."
+      },
+      "choices": [
+        {
+          "t": "Take the title Caudillo",
+          "h": "Influence · the monarchists and Cabanellas object",
+          "you": "You took the title Caudillo.",
+          "fx": {
+            "inf": {
+              "franco": 8
+            },
+            "legit": 4,
+            "loy": {
+              "cabanellas": -10,
+              "kindelan": -8
+            },
+            "flag": {
+              "caudillo": 1
+            }
+          },
+          "r": "Posters with your face and the word CAUDILLO go up across the Nationalist zone."
+        },
+        {
+          "t": "Promise the generals your power is only for the war",
+          "h": "The generals trust you more",
+          "you": "You promised your power was temporary.",
+          "fx": {
+            "inf": {
+              "franco": 2
+            },
+            "loy": {
+              "kindelan": 10,
+              "mola": 6,
+              "cabanellas": 6
+            }
+          },
+          "r": "The generals are reassured. Kindelán, at least, believes you."
+        }
+      ]
+    },
+    "joseAntonio": {
+      "title": "Burgos · 3 October 1936",
+      "text": "José Antonio Primo de Rivera, founder of the Falange, is a prisoner of the Republic in Alicante. Falangists beg you to save him. Some of your advisers quietly point out that he would be a rival.",
+      "ledger": {
+        "k": "José Antonio",
+        "hist": "Rescue and exchange attempts failed. José Antonio was shot in Alicante on 20 November 1936. Franco made him a martyr and took over his movement."
+      },
+      "choices": [
+        {
+          "t": "Fund a rescue attempt",
+          "h": "Costs funds · a long shot",
+          "you": "You funded a rescue attempt.",
+          "fx": {
+            "funds": -15,
+            "roll": {
+              "p": 0.15,
+              "win": {
+                "flag": {
+                  "jaSaved": 1
+                },
+                "legit": 4,
+                "r": "Against all odds, the rescue party gets him out of Alicante prison and onto a German ship."
+              },
+              "lose": {
+                "flag": {
+                  "jaTried": 1
+                },
+                "r": "The rescue party is caught on the coast. The Falange knows you tried."
+              }
+            }
+          }
+        },
+        {
+          "t": "Propose an exchange through the Red Cross",
+          "h": "Legitimacy · unlikely to work",
+          "you": "You proposed a prisoner exchange.",
+          "fx": {
+            "legit": 3,
+            "roll": {
+              "p": 0.08,
+              "win": {
+                "flag": {
+                  "jaSaved": 1
+                },
+                "r": "To everyone's surprise, the Republic agrees to an exchange."
+              },
+              "lose": {
+                "flag": {
+                  "jaTried": 1
+                },
+                "r": "The Republic refuses. Negotiations drag on."
+              }
+            }
+          }
+        },
+        {
+          "t": "Make only token efforts",
+          "h": "A rival may disappear",
+          "you": "You made only token efforts.",
+          "fx": {
+            "inf": {
+              "franco": 2
+            },
+            "flag": {
+              "jaIgnored": 1
+            }
+          },
+          "r": "Letters are written. Nothing much is done."
+        }
+      ]
+    },
+    "govFlees": {
+      "title": "Outside Madrid · 6 November 1936",
+      "text": "The Republican government has left Madrid for Valencia. General Miaja and a defence junta now command the city. Militias are digging trenches in the suburbs, and the radio repeats one phrase: ¡No pasarán! They shall not pass.",
+      "ledger": {
+        "k": "Before Madrid",
+        "hist": "The Republican government left for Valencia on 6 November. Nationalist radio had already announced the fall of Madrid more than once."
+      },
+      "choices": [
+        {
+          "t": "Announce that Madrid will fall within days",
+          "h": "Morale · embarrassing if it does not",
+          "you": "You announced Madrid would fall within days.",
+          "fx": {
+            "morale": 8,
+            "flag": {
+              "boast": 1
+            }
+          },
+          "r": "Your announcement is broadcast to the world. Foreign journalists start packing for Madrid."
+        },
+        {
+          "t": "Say nothing until the city has fallen",
+          "h": "Legitimacy",
+          "you": "You made no promises.",
+          "fx": {
+            "legit": 2
+          },
+          "r": "Your silence unnerves Madrid's defenders more than any boast."
+        }
+      ]
+    },
+    "plans": {
+      "title": "Casa de Campo · 7 November 1936",
+      "text": "One of your tanks is knocked out in the Casa de Campo. On the body of an officer inside, the Republicans find your complete plan of attack.",
+      "ledger": {
+        "k": "The captured plan",
+        "hist": "On 7 November the Republicans found the Nationalist attack plan in a disabled tank and moved their reserves to meet it."
+      },
+      "choices": [
+        {
+          "t": "Change the plan at once",
+          "h": "Lose two days",
+          "you": "You changed the plan.",
+          "fx": {
+            "delay": 2,
+            "flag": {
+              "planChanged": 1
+            }
+          },
+          "r": "Your staff work through the night. The attack goes in two days late."
+        },
+        {
+          "t": "Keep to the plan: there is no time",
+          "h": "The enemy will know where you strike first",
+          "you": "You kept the original plan.",
+          "fx": {
+            "flag": {
+              "planKnown": 1
+            }
+          },
+          "r": "The columns go forward as ordered."
+        }
+      ]
+    },
+    "brigades": {
+      "title": "Madrid · 8 November 1936",
+      "text": "The XI International Brigade marches down the Gran Vía to cheering crowds: volunteers from France, Germany, Britain, Poland and beyond. Soviet fighters appear over the city for the first time.",
+      "choices": [
+        {
+          "t": "Call them foreign communists in your broadcasts",
+          "h": "Morale",
+          "fx": {
+            "morale": 3,
+            "legit": -1
+          },
+          "r": "Your broadcasts speak of a Red invasion of Spain."
+        },
+        {
+          "t": "Ask Berlin and Rome for more aircraft, now",
+          "h": "Germany and Italy · costs funds",
+          "fx": {
+            "ger": 4,
+            "ita": 4,
+            "funds": -5
+          },
+          "r": "More aircraft are promised for the coming days."
+        }
+      ]
+    },
+    "recognition": {
+      "title": "Salamanca · 18 November 1936",
+      "text": "Germany and Italy formally recognise your government. Berlin is forming a full air unit for Spain, with its own commanders: the Condor Legion.",
+      "ledger": {
+        "k": "The Condor Legion",
+        "hist": "Germany and Italy recognised Franco's government on 18 November 1936. The Condor Legion arrived that month. In April 1937 it destroyed Guernica."
+      },
+      "choices": [
+        {
+          "t": "Accept the Condor Legion under German command",
+          "h": "Germany · terror · legitimacy falls",
+          "you": "You accepted the Condor Legion under German command.",
+          "fx": {
+            "ger": 10,
+            "terror": 4,
+            "legit": -3,
+            "flag": {
+              "condor": 1
+            }
+          },
+          "r": "The Legion's commander answers to Berlin, not to you."
+        },
+        {
+          "t": "Insist it serves under your officers",
+          "h": "Legitimacy · Germany cools",
+          "you": "You insisted on Spanish command.",
+          "fx": {
+            "ger": -6,
+            "legit": 2
+          },
+          "r": "Berlin agrees on paper. In practice the Germans do as they please."
+        }
+      ]
+    },
+    "joseAntonioDeath": {
+      "title": "Alicante · 20 November 1936",
+      "text": "News comes from Alicante: José Antonio Primo de Rivera has been tried and shot by the Republic. The Falange has lost its founder.",
+      "choices": [
+        {
+          "t": "Make him the martyr of the movement",
+          "h": "Influence · legitimacy",
+          "fx": {
+            "inf": {
+              "franco": 6
+            },
+            "legit": 5
+          },
+          "r": "His name is painted on church walls across the Nationalist zone, next to yours."
+        },
+        {
+          "t": "Say little",
+          "h": "No change",
+          "r": "The Falangists notice how little you say."
+        }
+      ]
+    },
+    "jaAlive": {
+      "title": "Salamanca · 20 November 1936",
+      "text": "José Antonio is alive and free in your zone, and the Falange's young men look to him, not to you. He wants the movement to stay independent of the army.",
+      "choices": [
+        {
+          "t": "Give him a ministry and keep him close",
+          "h": "Legitimacy · your influence falls",
+          "fx": {
+            "inf": {
+              "franco": -6
+            },
+            "legit": 4
+          },
+          "r": "José Antonio joins your government and argues with you at every meeting."
+        },
+        {
+          "t": "Keep him at arm's length",
+          "h": "Your influence falls",
+          "fx": {
+            "inf": {
+              "franco": -3
+            },
+            "morale": -3
+          },
+          "r": "The Falange splits between his followers and yours."
+        }
+      ]
     }
   },
   "deck": [
@@ -1678,6 +1967,182 @@
           "t": "Keep politics in the army's hands",
           "h": "No change",
           "r": "The army keeps the files, and loses some of them."
+        }
+      ]
+    },
+    {
+      "id": "bombMadrid",
+      "pool": "madrid",
+      "title": "Bombing Madrid",
+      "text": "German and Italian aircrews propose bombing Madrid itself, to break the city's will before your columns arrive.",
+      "choices": [
+        {
+          "t": "Approve the raids",
+          "h": "Germany · terror · legitimacy falls",
+          "fx": {
+            "ger": 3,
+            "terror": 8,
+            "legit": -6
+          },
+          "r": "Bombs fall on the Puerta del Sol and the working-class districts. Photographs of dead children appear in newspapers abroad."
+        },
+        {
+          "t": "Military targets only",
+          "h": "Germany cools a little",
+          "fx": {
+            "ger": -2,
+            "legit": 2
+          },
+          "r": "The aircrews grumble about wasted fuel."
+        }
+      ]
+    },
+    {
+      "id": "fifthColumn",
+      "pool": "madrid",
+      "title": "The fifth column",
+      "text": "General Mola tells journalists that four columns are marching on Madrid, and a fifth column of supporters inside the city will rise to meet them. In Madrid, thousands of suspects are arrested.",
+      "choices": [
+        {
+          "t": "Repeat the claim on the radio",
+          "h": "Morale · terror",
+          "fx": {
+            "morale": 3,
+            "terror": 3,
+            "loy": {
+              "mola": 4
+            }
+          },
+          "r": "The phrase \"fifth column\" spreads around the world."
+        },
+        {
+          "t": "Order silence about agents in the city",
+          "h": "Legitimacy",
+          "fx": {
+            "legit": 2,
+            "loy": {
+              "mola": -3
+            }
+          },
+          "r": "Mola is annoyed to be told to keep quiet."
+        }
+      ]
+    },
+    {
+      "id": "goldMoscow",
+      "pool": "madrid",
+      "title": "Spain's gold",
+      "text": "Your agents report that the Republic has shipped most of the Bank of Spain's gold reserves to Moscow, to pay for Soviet weapons.",
+      "choices": [
+        {
+          "t": "Denounce it to the world",
+          "h": "Legitimacy",
+          "fx": {
+            "legit": 4
+          },
+          "r": "Your press office calls it the theft of the century."
+        },
+        {
+          "t": "Use it to press the banks for credit",
+          "h": "Funds",
+          "fx": {
+            "funds": 12
+          },
+          "r": "Bankers in London decide your side is the safer bet."
+        }
+      ]
+    },
+    {
+      "id": "winter",
+      "pool": "madrid",
+      "title": "Winter on the plateau",
+      "text": "Nights around Madrid are already freezing. Many of your Moroccan troops still wear summer uniforms.",
+      "choices": [
+        {
+          "t": "Buy greatcoats and blankets",
+          "h": "Costs funds · morale",
+          "req": {
+            "min": {
+              "funds": 8
+            }
+          },
+          "fx": {
+            "funds": -8,
+            "morale": 5
+          },
+          "r": "The coats arrive before the first snow."
+        },
+        {
+          "t": "They will be in Madrid's barracks soon",
+          "h": "Morale falls · sickness",
+          "fx": {
+            "morale": -6,
+            "tS": -200
+          },
+          "r": "Men fall sick in the trenches."
+        }
+      ]
+    },
+    {
+      "id": "ctv",
+      "pool": "madrid",
+      "title": "Italian volunteers",
+      "text": "Rome offers to send 'volunteers': in truth, whole divisions of the Italian army with their own commanders.",
+      "choices": [
+        {
+          "t": "Accept them",
+          "h": "Italy · legitimacy falls",
+          "fx": {
+            "ita": 8,
+            "legit": -3,
+            "flag": {
+              "ctv": 1
+            }
+          },
+          "r": "The first Italian ships sail for Cádiz."
+        },
+        {
+          "t": "Accept only aircraft and tanks",
+          "h": "Italy pleased",
+          "fx": {
+            "ita": 3
+          },
+          "r": "Rome sends machines, and a little wounded pride."
+        },
+        {
+          "t": "Decline",
+          "h": "Legitimacy · Italy offended",
+          "fx": {
+            "ita": -6,
+            "legit": 2
+          },
+          "r": "Mussolini takes it personally."
+        }
+      ]
+    },
+    {
+      "id": "discipline",
+      "pool": "madrid",
+      "title": "Reports from the villages",
+      "text": "Republican radio describes looting and rape by your troops in the villages around Madrid. Foreign reporters are asking questions.",
+      "choices": [
+        {
+          "t": "Issue strict orders on discipline and enforce them",
+          "h": "Legitimacy · morale falls",
+          "fx": {
+            "legit": 4,
+            "morale": -3,
+            "terror": -4
+          },
+          "r": "A few men are court-martialled. The reports become rarer."
+        },
+        {
+          "t": "Dismiss it as Red propaganda",
+          "h": "Terror rises",
+          "fx": {
+            "terror": 5
+          },
+          "r": "Fear runs ahead of your columns."
         }
       ]
     }

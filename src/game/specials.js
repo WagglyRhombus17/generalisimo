@@ -5,6 +5,33 @@ import { applyFx, bump } from './effects.js';
 const pct = p => Math.round(p * 100) + '%';
 
 export const SPECIALS = {
+  sovietAid(S) {
+    const g = S.ger >= 30;
+    return {
+      title: 'Toledo · 13 October 1936',
+      text: 'Soviet ships are unloading tanks, fighters and advisers at Cartagena for the Republic. Within weeks, the balance in the air and on the roads to Madrid will change.',
+      ledger: { k: 'Soviet aid', hist: 'The first Soviet tanks and aircraft reached the Republic in October 1936. Germany answered by sending the Condor Legion.' },
+      choices: [
+        { t: 'Ask Berlin for modern aircraft', h: g ? 'Germany · stronger air support at Madrid' : 'Berlin is lukewarm', you: 'You asked Germany for more aircraft.', fx: g ? { ger: 6, flag: { moreAir: 1 } } : { ger: 3 }, r: g ? 'Berlin promises a full air unit with its own pilots.' : 'Berlin promises to consider it.' },
+        { t: 'Ask Rome for tanks', h: 'Italy · your attacks hit harder', you: 'You asked Italy for tanks.', fx: { ita: 6, flag: { italTanks: 1 }, legit: -2 }, r: 'Italian light tanks arrive at Sevilla within a fortnight.' },
+        { t: 'Rely on speed: reach Madrid before they deploy', h: 'Morale · thinner defences on the first day', you: 'You raced for Madrid.', fx: { morale: 4, flag: { rush: 1 } }, r: 'Your columns are ordered forward without pause.' }
+      ]
+    };
+  },
+
+  sesena(S) {
+    return {
+      title: 'Seseña · 29 October 1936',
+      text: 'Soviet T-26 tanks crash into your lines at Seseña. Their armour shrugs off your machine guns, and your light tanks are no match for them.',
+      ledger: { k: 'Seseña', hist: 'On 29 October Soviet tanks attacked at Seseña. Nationalist troops stopped some with bottles of petrol, and German anti-tank guns soon followed.' },
+      choices: [
+        { t: 'Bring up the German anti-tank guns', h: 'Few losses', req: { min: { ger: 40 } }, you: 'You used German anti-tank guns.', fx: { tS: -200, ger: 2 }, r: 'The 37 mm guns knock out the leading tanks. The rest turn back.' },
+        { t: 'Fight them with bottles of petrol', h: 'Heavy losses · morale', you: 'Your men fought the tanks with petrol bombs.', fx: { tS: -600, morale: 5 }, r: 'Legionnaires climb onto the tanks and throw burning bottles into the hatches. Several tanks burn, and so do many of your men.' },
+        { t: 'Fall back and regroup', h: 'Lose three days · morale falls', you: 'You fell back.', fx: { tS: -200, delay: 3, morale: -6 }, r: 'The tanks run short of fuel and withdraw. You have lost three days.' }
+      ]
+    };
+  },
+
   sanjurjo(S) {
     const alive = rand(S) < 0.2;
     S.alive.sanjurjo = alive;

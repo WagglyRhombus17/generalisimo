@@ -14,7 +14,8 @@ const NAT_NORTH = [[20, 20], [110, 20], [112, 60], [200, 62], [250, 60], [258, 4
 const NAT_SOUTH = [[96, 244], [118, 234], [140, 226], [160, 232], [168, 250], [150, 262], [150, 280], [120, 280], [100, 262]];
 const NAT_CORRIDOR = [[84, 128], [130, 130], [124, 170], [150, 205], [160, 232], [118, 236], [96, 236], [86, 200], [84, 160]];
 const NAT_SEPT = [[20, 20], [110, 20], [112, 60], [200, 62], [250, 60], [258, 46], [278, 48], [288, 80], [284, 100], [262, 115], [230, 118], [212, 118], [200, 122], [188, 136], [178, 150], [168, 165], [150, 188], [150, 205], [186, 214], [184, 236], [170, 256], [150, 262], [150, 280], [120, 280], [100, 262], [20, 262]];
-const PHASES = [[NAT_NORTH, NAT_SOUTH], [NAT_NORTH, NAT_SOUTH, NAT_CORRIDOR], [NAT_SEPT]];
+const NAT_NOV = [[20, 20], [110, 20], [112, 60], [200, 62], [250, 60], [258, 46], [278, 48], [288, 80], [284, 100], [262, 115], [230, 118], [212, 118], [196, 124], [194, 132], [200, 140], [206, 150], [198, 172], [170, 178], [150, 205], [186, 214], [184, 236], [170, 256], [150, 262], [150, 280], [120, 280], [100, 262], [20, 262]];
+const PHASES = [[NAT_NORTH, NAT_SOUTH], [NAT_NORTH, NAT_SOUTH, NAT_CORRIDOR], [NAT_SEPT], [NAT_NOV]];
 const MOUNTAINS = [[300, 54, 40, 8], [150, 50, 52, 6], [168, 114, 40, 6], [226, 246, 26, 5], [168, 206, 34, 5], [252, 110, 10, 28]];
 
 export const CITIES = [
@@ -140,7 +141,7 @@ export function placeLabels(el, fwd, W, H, items) {
   });
 }
 
-export const mapPhase = day => (day < 25 ? 0 : day < 45 ? 1 : 2);
+export const mapPhase = day => (day < 25 ? 0 : day < 45 ? 1 : day < 77 ? 2 : 3);
 
 export function openMap(S, D) {
   const ov = document.getElementById('ov-map');
@@ -162,7 +163,7 @@ export function openMap(S, D) {
   else if (next && LOC[next] && last) arrows.push({ pts: [last, LOC[next]], dash: 1 });
   if (S.day >= 4) units.push({ p: [210, 100], n: 'MOLA', c: 'u r' });
   if (S.day >= 4 && !(last && last[0] === 152)) units.push({ p: [160, 244], n: 'QUEIPO', c: 'u r' });
-  if (phase === 2) units.push({ p: [216, 140], r: 1, n: 'MILICIAS', c: 'ur r' });
+  if (phase >= 2) units.push({ p: [216, 140], r: 1, n: phase === 3 ? 'BRIGADES' : 'MILICIAS', c: 'ur r' });
   units.push({ p: [242, 54], r: 1, n: 'EUZKADI', c: 'ur r' });
   if (last) units.push({ p: last, you: 1, n: 'YOU', c: 'u you b' });
   const W = 320, H = 180;
@@ -173,7 +174,7 @@ export function openMap(S, D) {
   placeLabels(wrap, fwd, W, H, units);
   if (S.ch === 1) placeLabels(wrap, fwd, W, H, [{ n: 'FROM THE CANARIES', p: [40, 312], c: 'u r' }]);
   ov.querySelector('.stops').innerHTML = S.route.map((s, i) => `<li class="${i < S.pos ? 'done' : i === S.pos ? 'here' : 'ahead'}">${i < S.pos ? '✓' : i === S.pos ? '▶' : '·'} ${s}</li>`).join('');
-  ov.querySelector('.mnote').textContent = ['Front lines as of late July 1936.', 'Front lines as of mid-August 1936.', 'Front lines as of September 1936.'][phase];
+  ov.querySelector('.mnote').textContent = ['Front lines as of late July 1936.', 'Front lines as of mid-August 1936.', 'Front lines as of September 1936.', 'Front lines as of November 1936.'][phase];
   ov.querySelector('[data-close]').addEventListener('click', closeMap);
 }
 

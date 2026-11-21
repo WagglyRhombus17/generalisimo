@@ -1,7 +1,7 @@
 // The march: a side-on road scene with a town on the horizon and the column moving along it.
 import { FB, vgrad, sun, hash, rng, dith, streaks } from '../engine/pixel.js';
 import { palFor } from '../engine/palettes.js';
-import { truck, soldier, tree, house, palm } from '../engine/sprites.js';
+import { truck, soldier, prone, tree, house, palm } from '../engine/sprites.js';
 
 const W = 320, H = 180;
 const SUN = { sunset: [62, 70, 11], day: [64, 36, 10], dawn: [44, 80, 13] };
@@ -41,6 +41,44 @@ function cathedral(fb, x, gy, P) {
 
 // Each town draws either before the plain (on a hill) or after it (on flat ground).
 const TOWNS = {
+  burgos: {
+    pre(fb, P, R) {
+      const t = hill(fb, P, 236, 70, 84, 160);
+      for (let i = 0; i < 30; i++) {
+        const hx = 176 + Math.floor(R() * 130), ht = t(hx);
+        if (ht > 94) continue;
+        house(fb, hx, ht + 2 + Math.floor(R() * 6), 4 + Math.floor(R() * 5), 3 + Math.floor(R() * 4), P, R);
+      }
+      const gy = t(232) + 4;
+      fb.rect(214, gy - 18, 40, 18, P.stone[1]); fb.rect(214, gy - 18, 40, 1, P.stone[0]);
+      for (let i = 0; i < 6; i++) fb.rect(216 + i * 6, gy - 13, 2, 6, P.outline);
+      [218, 242].forEach(x => {
+        fb.rect(x - 1, gy - 38, 9, 38, P.outline); fb.rect(x, gy - 37, 7, 37, P.stone[0]); fb.rect(x + 6, gy - 37, 1, 37, P.stone[1]);
+        fb.set(x + 3, gy - 30, P.outline); fb.set(x + 3, gy - 24, P.outline);
+        for (let k = 0; k < 16; k++) { const w = Math.max(1, 7 - Math.floor(k / 2.5)); fb.rect(x + Math.floor((7 - w) / 2), gy - 38 - k, w, 1, k % 3 === 0 ? P.stone[1] : P.stone[0]); }
+        fb.set(x + 3, gy - 55, P.outline);
+      });
+      fb.rect(232, gy - 26, 4, 8, P.stone[0]); fb.set(233, gy - 28, P.stone[0]);
+    }
+  },
+  madrid: {
+    post(fb, P, R) {
+      const g = 99, sk = '#3a2e38', skL = '#5a4652';
+      for (let x = 150; x < 320; x++) {
+        const h = 8 + Math.floor(Math.abs(Math.sin(x * 0.21) * 7 + Math.sin(x * 0.05) * 5));
+        fb.rect(x, g - h, 1, h, (x >> 2) % 2 ? sk : skL);
+        if (hash(x, 3, 5) < 0.12) fb.set(x, g - h + 3, '#ffd36a');
+      }
+      fb.rect(214, g - 44, 9, 44, sk); fb.rect(216, g - 50, 5, 6, sk); fb.rect(218, g - 54, 1, 4, sk);
+      for (let y = g - 40; y < g - 6; y += 4) fb.set(218, y, '#ffd36a');
+      fb.rect(166, g - 20, 26, 20, skL); fb.rect(166, g - 22, 26, 2, sk);
+      fb.disc(268, g - 22, 9, sk); fb.rect(259, g - 22, 19, 22, sk); fb.rect(267, g - 34, 3, 4, sk);
+      [[196, 30], [240, 26], [290, 34]].forEach(([x, h]) => {
+        for (let k = 0; k < 12; k++) fb.disc(x + Math.round(Math.sin(k * 0.7) * 2 + k * 0.8), g - h - k * 4, 2 + (k >> 2), k % 2 ? P.smoke[0] : P.smoke[1]);
+        fb.disc(x, g - 10, 3, '#ff7a3a'); fb.set(x, g - 14, '#ffd36a');
+      });
+    }
+  },
   toledo: {
     pre(fb, P, R) {
       const t = hill(fb, P, 254, 50, 78, 186);
@@ -166,7 +204,7 @@ export function road(o = {}) {
     const x = Math.floor(R() * W), y = 122 + Math.floor(R() * 50);
     fb.rect(x, y, 3, 1, P.treeD); fb.set(x + 1, y - 1, P.tree);
   }
-  return { base: fb, frame: (f, t) => convoy(f, P, t) };
+  return { base: fb, P, frame: (f, t) => convoy(f, P, t) };
 }
 
 // The moving column, drawn each frame on top of the static background.
@@ -183,5 +221,40 @@ function convoy(fb, P, t) {
     truck(fb, x, 116, P);
   });
   const step = Math.floor(t * 4);
-  for (let i = 0; i < 10; i++) soldier(fb, wrap(122 + i * 6), 117, P, i + step);
+  for (let i = 0; i < 9; i++) soldier(fb, wrap(122 + i * 8), 118, P, i + step);
+}
+
+// A battle at the town: shells bursting, your guns firing, a skirmish line moving up.
+export function battle(o = {}) {
+  const r = road(o), P = r.P;
+  const R = rng(17);
+  const bursts = Array.from({ length: 7 }, (_, i) => ({ x: 188 + Math.floor(R() * 120), y: 70 + Math.floor(R() * 30), off: R() * 2, per: 1.4 + R() * 1.2 }));
+  const line = Array.from({ length: 9 }, (_, i) => ({ x: 96 + i * 13 + Math.floor(R() * 6), y: 104 + (i % 3) * 2, prone: i % 3 === 1 }));
+  const gun = (f, x, y, flash) => {
+    f.rect(x, y - 4, 12, 2, P.outline); f.line(x + 10, y - 4, x + 18, y - 8, P.outline); f.line(x + 10, y - 3, x + 18, y - 7, '#5a646e');
+    f.disc(x + 6, y - 1, 3, P.outline); f.disc(x + 6, y - 1, 1, '#8a8a8a'); f.line(x, y - 3, x - 6, y, P.outline);
+    if (flash) { f.disc(x + 20, y - 9, 2, '#fff1b8'); f.set(x + 23, y - 10, '#ffd36a'); f.set(x + 22, y - 12, '#ffd36a'); }
+  };
+  return {
+    base: r.base,
+    frame(f, t) {
+      bursts.forEach(b => {
+        const p = ((t + b.off) % b.per) / b.per;
+        if (p < 0.18) { const rr = Math.round(2 + p / 0.18 * 6); f.disc(b.x, b.y, rr, '#ffb04a'); f.disc(b.x, b.y, Math.max(1, rr - 3), '#fff1b8'); }
+        else if (p < 0.8) {
+          const q = (p - 0.18) / 0.62, rr = 4 + Math.round(q * 5), yy = b.y - Math.round(q * 14);
+          for (let dy = -rr; dy <= rr; dy++) for (let dx = -rr; dx <= rr; dx++) if (dx * dx + dy * dy <= rr * rr && dith(b.x + dx, yy + dy, 0.85 - q * 0.7)) f.set(b.x + dx, yy + dy, dy < 0 ? P.smoke[1] : P.smoke[0]);
+        }
+      });
+      const step = Math.floor(t * 3);
+      line.forEach((s, i) => {
+        const x = s.x + ((t * 3) % 30);
+        if (s.prone) { prone(f, Math.round(x), s.y, P); if ((step + i) % 4 === 0) f.set(Math.round(x) + 13, s.y - 3, '#fff1b8'); }
+        else soldier(f, Math.round(x), s.y, P, i + step);
+        if ((step + i) % 5 === 0) for (let k = 0; k < 6; k++) f.set(Math.round(x) + 14 + k * 3 + (t * 60 % 3), s.y - 6 - k, '#ffd36a');
+      });
+      gun(f, 18, 118, Math.floor(t * 2) % 3 === 0);
+      gun(f, 52, 120, Math.floor(t * 2 + 1) % 3 === 0);
+    }
+  };
 }

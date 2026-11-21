@@ -23,6 +23,12 @@
       "title": "Salamanca",
       "dates": "21 – 28 SEPTEMBER 1936",
       "intro": "The generals have agreed that the war needs one commander. They will meet near Salamanca to choose him. You have three days to win their votes."
+    },
+    "5": {
+      "n": "V",
+      "title": "Madrid",
+      "dates": "1 OCTOBER – 23 NOVEMBER 1936",
+      "intro": "You are Generalísimo and head of state. Madrid is the prize that could end the war in weeks. But the Soviet Union has begun to arm the Republic, and volunteers from across the world are on their way to defend the city."
     }
   },
   "scenes": {
@@ -76,6 +82,26 @@
       "t": "road",
       "town": "village",
       "sky": "sunset"
+    },
+    "Burgos": {
+      "t": "road",
+      "town": "burgos",
+      "sky": "day"
+    },
+    "Toledo": {
+      "t": "road",
+      "town": "toledo",
+      "sky": "day"
+    },
+    "Navalcarnero": {
+      "t": "road",
+      "town": "village",
+      "sky": "sunset"
+    },
+    "Madrid": {
+      "t": "road",
+      "town": "madrid",
+      "sky": "sunset"
     }
   },
   "locations": {
@@ -110,6 +136,22 @@
     "Salamanca": [
       136,
       116
+    ],
+    "Burgos": [
+      222,
+      70
+    ],
+    "Toledo": [
+      190,
+      152
+    ],
+    "Navalcarnero": [
+      182,
+      138
+    ],
+    "Madrid": [
+      196,
+      130
     ]
   },
   "battles": {
@@ -133,6 +175,13 @@
       "text": "This is the last large town on the road to Madrid. The Republic has rushed militias here by train.",
       "win": "The militias break and fall back toward Madrid along the Tagus valley.",
       "hist": "Talavera fell on 3 September."
+    },
+    "navalcarnero": {
+      "name": "Navalcarnero",
+      "res": 6,
+      "text": "The last town before Madrid's outer defences. The Republic has dug trenches across the road and brought up artillery.",
+      "win": "Navalcarnero falls. From its church tower your officers can see the roofs of Madrid.",
+      "hist": "Navalcarnero fell on 21 October 1936. Days later Soviet tanks counterattacked at Seseña."
     }
   },
   "steps": [
@@ -390,6 +439,110 @@
     },
     {
       "k": "vote"
+    },
+    {
+      "k": "card",
+      "ch": 5
+    },
+    {
+      "k": "route",
+      "stops": [
+        "Burgos",
+        "Toledo",
+        "Navalcarnero",
+        "Madrid"
+      ]
+    },
+    {
+      "k": "ev",
+      "id": "headOfState",
+      "day": 77
+    },
+    {
+      "k": "ev",
+      "id": "joseAntonio"
+    },
+    {
+      "k": "rand",
+      "pool": "madrid"
+    },
+    {
+      "k": "move",
+      "to": 1,
+      "day": 85,
+      "text": "You return to the front. Toledo becomes your headquarters for the push on Madrid."
+    },
+    {
+      "k": "ev",
+      "id": "sovietAid",
+      "special": true,
+      "day": 89
+    },
+    {
+      "k": "rand",
+      "pool": "madrid"
+    },
+    {
+      "k": "move",
+      "to": 2,
+      "day": 97,
+      "text": "The columns close on Madrid from the south-west."
+    },
+    {
+      "k": "battle",
+      "id": "navalcarnero"
+    },
+    {
+      "k": "ev",
+      "id": "sesena",
+      "special": true,
+      "day": 105
+    },
+    {
+      "k": "rand",
+      "pool": "madrid"
+    },
+    {
+      "k": "ev",
+      "id": "govFlees",
+      "day": 113
+    },
+    {
+      "k": "move",
+      "to": 3,
+      "day": 114,
+      "text": "Your columns reach the Manzanares, the river at the western edge of Madrid."
+    },
+    {
+      "k": "ev",
+      "id": "plans"
+    },
+    {
+      "k": "ev",
+      "id": "brigades"
+    },
+    {
+      "k": "siege"
+    },
+    {
+      "k": "ev",
+      "id": "recognition",
+      "day": 125
+    },
+    {
+      "k": "ev",
+      "id": "joseAntonioDeath",
+      "day": 127,
+      "unless": "jaSaved"
+    },
+    {
+      "k": "ev",
+      "id": "jaAlive",
+      "if": "jaSaved"
+    },
+    {
+      "k": "end",
+      "id": "stalemate"
     }
   ],
   "endings": {
@@ -399,7 +552,7 @@
     },
     "madrid": {
       "title": "MADRID HAS FALLEN",
-      "text": "With Madrid in your hands, the vote is a formality. You are Generalísimo and head of state, and the Republic's government flees to Valencia. In this history the war may end years earlier. Whether that means less suffering, or simply a faster dictatorship, is the question your victory leaves behind."
+      "text": "Madrid falls to your columns. The Republic's government flees to Valencia and the world's newspapers announce the end of the war. In this history it may end years earlier. Whether that means less suffering, or simply a faster dictatorship, is the question your victory leaves behind."
     },
     "junta": {
       "title": "THE JUNTA DECIDES",
@@ -412,6 +565,10 @@
     "army": {
       "title": "THE COLUMN BREAKS",
       "text": "Your army has bled away on the road north. Without troops you have no voice, and the generals take the war out of your hands."
+    },
+    "stalemate": {
+      "title": "THE LONG WAR",
+      "text": "Madrid holds. On 23 November you call off the frontal assault. A war that might have ended in weeks will last two and a half more years: Jarama, Guadalajara, Guernica, the Ebro. You will win it in April 1939, and rule Spain until your death in 1975."
     }
   }
 }

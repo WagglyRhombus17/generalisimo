@@ -2,7 +2,7 @@
 
 A pixel-art strategy game about the first months of the Spanish Civil War, played as Francisco Franco, from the Canary Islands in July 1936 to the generals' vote at Salamanca in September. Oregon Trail-style: travel legs, random events, resources, mini-games, and choices with consequences. Each run ends by comparing your choices with what really happened.
 
-Draft 2 covers four chapters: The Flight, The Strait, The March North and Salamanca. It has chiptune music and sound effects (synthesised in the browser, no audio files), three mini-games (loading the Ju 52, the military tribunal, the Salamanca council) and 41 random events.
+Draft 3 covers five chapters, from July to November 1936: The Flight, The Strait, The March North, Salamanca and Madrid. It has four mini-games (loading the Ju 52 against the clock, the military tribunal, the Salamanca council, and the three-day assault on Madrid), 47 random events, and a chiptune soundtrack with its own theme for each chapter and mini-game.
 
 ## Play it
 
@@ -32,6 +32,7 @@ data/
   generals.json         generals: starting influence, loyalty, portrait traits
   chapters.json         chapter cards, the story script (steps), scenes, map locations, battles, endings
   tribunal.json         case files for the military tribunal mini-game
+  music.json            the soundtrack: one theme per chapter and mini-game
 src/
   main.js               boot, keyboard, title screen and game switching
   settings.js           music, sound effects and motion settings (saved in the browser)
@@ -39,7 +40,7 @@ src/
   engine/               pixel framebuffer, palettes, sprites (incl. portraits)
   scenes/               one file per scene: road (the march), island, airfield, sky, night, strait
   screens/              HUD, event dialog, campaign map, generals board, title/chapter/ending cards
-  minigames/            ju52.js (load the transport), tribunal.js (case files), council.js (Salamanca meetings and vote)
+  minigames/            ju52.js (load the transport), tribunal.js (case files), council.js (Salamanca meetings and vote), siege.js (Madrid)
   game/                 state + seeded RNG, effect interpreter, story runner, battles, special events
 ```
 
@@ -59,7 +60,11 @@ Pools are `flight`, `strait` and `march`. Effect keys are documented at the top 
 
 The story order is the `steps` list in `data/chapters.json`. Step kinds: `card`, `route`, `ev`, `rand`, `move`, `battle`, `air`, `tribunal`, `council`, `vote`. A step with `"if": "flag"` or `"unless": "flag"` runs only when that story flag is set or unset.
 
-Music themes are text patterns at the top of `src/audio/audio.js`: one token per eighth note, a note name to play, `-` to hold, `.` for a rest.
+## Music
+
+The soundtrack lives in `data/music.json`: one theme per chapter and mini-game, each with lead, harmony, bass and drum tracks written as bars of eight eighth-note tokens (a note name plays, `-` holds, `.` rests; drums are `k` kick, `s` snare, `h` hi-hat, `t` tom, `c` crash). The game synthesises it live with the Web Audio API.
+
+To open the music in MuseScore or another notation program, run `python3 tools/export_musicxml.py`. It writes one `.musicxml` file per theme to `music/`, plus a zip of them all.
 
 ## Determinism
 

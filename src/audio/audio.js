@@ -74,52 +74,34 @@ export function sfx(name) {
 }
 
 // ---------- music ----------
-// Each theme: tempo in beats per minute and tracks of eighth-note tokens.
-// A note name plays, "-" holds the previous note, "." is a rest. Drums: k kick, s snare, h hi-hat.
-// The melodies use the Phrygian dominant scale on E (E F G# A B C D), the sound of Andalusian music.
-const THEMES = {
-  title: {
-    bpm: 84, lead: 'triangle',
-    lead_: 'E4 - - - F4 - G#4 - A4 - - - G#4 - F4 - E4 - F4 - G#4 - B4 - A4 - G#4 - F4 - E4 -',
-    bass: 'E2 - - - - - - - D2 - - - - - - - C2 - - - - - - - B1 - - - - - - -',
-    drum: 'k . . . . . . . k . . . . . . . k . . . . . . . k . . . k . . .'
-  },
-  march: {
-    bpm: 118, lead: 'square',
-    lead_: 'E4 - G#4 A4 B4 - A4 G#4 A4 - F4 G#4 E4 - - . B4 - B4 C5 B4 A4 G#4 A4 G#4 - F4 - E4 - - . ' +
-           'E5 - D5 C5 B4 - C5 B4 A4 - G#4 A4 B4 - - . C5 B4 A4 G#4 A4 G#4 F4 G#4 E4 - - - . . . .',
-    bass: 'E2 - B1 - E2 - B1 - F2 - C2 - E2 - B1 - E2 - B1 - A1 - E2 - F2 - C2 - E2 - B1 - ' +
-          'A1 - E2 - A1 - E2 - F2 - C2 - E2 - B1 - A1 - E2 - F2 - C2 - E2 - B1 - E2 - - -',
-    drum: 'k . s . k . s . k . s . k . s . k . s . k . s . k . s . k . s . ' +
-          'k . s . k . s . k . s . k . s . k . s . k . s . k . s s s s s s'
-  },
-  night: {
-    bpm: 70, lead: 'triangle',
-    lead_: 'E3 G#3 B3 E4 B3 G#3 E3 . F3 A3 C4 F4 C4 A3 F3 . E3 G#3 B3 E4 B3 G#3 E3 . D3 F3 A3 D4 A3 F3 D3 .',
-    bass: 'E2 - - - - - - - F2 - - - - - - - E2 - - - - - - - D2 - - - - - - -',
-    drum: 'h . . . h . . . h . . . h . . . h . . . h . . . h . . . h . . .'
-  },
-  council: {
-    bpm: 100, lead: 'square',
-    lead_: '. . . . E4 . F4 . . . . . E4 . . . . . . . G#4 . F4 . E4 - - - . . . .',
-    bass: 'E2 E2 F2 E2 E2 E2 F2 E2 E2 E2 F2 E2 E2 E2 F2 E2 E2 E2 F2 E2 E2 E2 F2 E2 E2 E2 F2 E2 D2 D2 F2 E2',
-    drum: 'k . h . k . h . k . h . k . h . k . h . k . h . k . h . k h h h'
+// Themes live in data/music.json (one per chapter and mini-game). main.js passes them in with setThemes().
+let THEMES = {};
+export function setThemes(data) {
+  THEMES = {};
+  for (const [id, th] of Object.entries(data)) {
+    if (id.startsWith('_')) continue;
+    const split = bars => (bars || []).join(' ').trim().split(/\s+/).filter(Boolean);
+    const t = { bpm: th.bpm, lead: th.wave || 'square', harmWave: th.harmWave || 'triangle', L: split(th.lead), H: split(th.harm), B: split(th.bass), D: split(th.drum) };
+    t.len = Math.max(t.L.length, t.H.length, t.B.length, t.D.length);
+    THEMES[id] = t;
   }
-};
-for (const th of Object.values(THEMES)) {
-  th.L = th.lead_.trim().split(/\s+/); th.B = th.bass.trim().split(/\s+/); th.D = th.drum.trim().split(/\s+/);
-  th.len = Math.max(th.L.length, th.B.length, th.D.length);
+  refresh();
 }
 
 const held = (arr, i) => { let n = 1; while (arr[(i + n) % arr.length] === '-' && n < arr.length) n++; return n; };
 
+const on = tok => tok && tok !== '-' && tok !== '.';
 function playStep(th, i, t, dt) {
-  const l = th.L[i % th.L.length], b = th.B[i % th.B.length], d = th.D[i % th.D.length];
-  if (l && l !== '-' && l !== '.') tone(freq(l), t, dt * held(th.L, i % th.L.length) * 0.95, { type: th.lead, gain: th.lead === 'square' ? 0.035 : 0.06, bus: musicBus });
-  if (b && b !== '-' && b !== '.') tone(freq(b), t, dt * held(th.B, i % th.B.length) * 0.9, { type: 'triangle', gain: 0.09, bus: musicBus });
+  const at = arr => (arr.length ? arr[i % arr.length] : null);
+  const l = at(th.L), hm = at(th.H), b = at(th.B), d = at(th.D);
+  if (on(l)) tone(freq(l), t, dt * held(th.L, i % th.L.length) * 0.95, { type: th.lead, gain: th.lead === 'square' ? 0.035 : 0.06, bus: musicBus });
+  if (on(hm)) tone(freq(hm), t, dt * held(th.H, i % th.H.length) * 0.92, { type: th.harmWave, gain: th.harmWave === 'square' ? 0.02 : 0.04, bus: musicBus });
+  if (on(b)) tone(freq(b), t, dt * held(th.B, i % th.B.length) * 0.9, { type: 'triangle', gain: 0.09, bus: musicBus });
   if (d === 'k') tone(65, t, 0.15, { type: 'sine', gain: 0.18, slide: 40, bus: musicBus });
   if (d === 's') noise(t, 0.08, { gain: 0.05, freq: 1800, bus: musicBus });
   if (d === 'h') noise(t, 0.03, { gain: 0.015, freq: 6500, bus: musicBus });
+  if (d === 't') tone(150, t, 0.22, { type: 'sine', gain: 0.16, slide: 80, bus: musicBus });
+  if (d === 'c') noise(t, 0.9, { gain: 0.045, freq: 4500, bus: musicBus });
 }
 
 function schedule() {
@@ -142,10 +124,14 @@ export function sceneMusic(name) { base = name; refresh(); }
 // A mini-game or screen's own theme; pass null to go back to the scene's theme.
 export function overrideMusic(name) { override = name; refresh(); }
 
-export const themeForScene = desc => {
-  if (!desc) return 'title';
-  if (desc.t === 'road') return 'march';
-  if (desc.t === 'night') return 'night';
-  if (desc.t === 'strait') return 'council';
-  return 'title';
+// Each chapter has its own theme; battles and the Strait have theirs.
+export const themeForScene = (desc, ch = 0) => {
+  if (!desc || !ch) return 'title';
+  if (desc.t === 'battle') return 'battle';
+  if (desc.t === 'strait') return 'strait';
+  if (ch === 1) return 'flight';
+  if (ch === 2) return 'night';
+  if (ch === 3) return 'march';
+  if (ch === 4) return 'council';
+  return 'madrid';
 };

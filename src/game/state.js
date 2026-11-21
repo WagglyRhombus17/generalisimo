@@ -9,7 +9,7 @@ export function newState(seed, D) {
     v: 1, seed, r: (seed >>> 0) || 1, pc: 0, ch: 1, day: 0, delay: 0,
     tS: 0, tA: 0, ammo: 55, funds: 40, morale: 65, legit: 40, ger: 0, ita: 0, terror: 0,
     inf, loy, rev: { franco: 1, kindelan: 1, orgaz: 1 }, alive: { sanjurjo: true },
-    flags: {}, used: [], ledger: [], route: [], pos: 0, trail: [], scene: null, end: null, rival: null, votes: null
+    flags: {}, used: [], ledger: [], notes: {}, route: [], pos: 0, trail: [], scene: null, end: null, rival: null, votes: null
   };
 }
 

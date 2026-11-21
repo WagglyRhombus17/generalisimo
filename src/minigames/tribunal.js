@@ -38,7 +38,7 @@ export function tribunal(S, ctx) {
 
     const ov = document.getElementById('ov-trib');
     ov.hidden = false;
-    overrideMusic('council');
+    overrideMusic('tribunal');
     ov.innerHTML = `<div class="trib-file" data-f="file"></div>
       <div class="bev trib-side"><h3>MILITARY TRIBUNAL</h3><p class="sub" data-f="sub"></p><div class="verdicts" data-f="btns"></div><p class="note" data-f="note"></p></div>`;
     const $f = n => ov.querySelector(`[data-f="${n}"]`);

@@ -9,6 +9,8 @@ import { chapterCard, showEnding } from '../screens/cards.js';
 import { airlift } from '../minigames/ju52.js';
 import { council, vote } from '../minigames/council.js';
 import { tribunal } from '../minigames/tribunal.js';
+import { siege } from '../minigames/siege.js';
+import { noteLoyalty } from './politics.js';
 
 export async function run(S, ctx) {
   const { D } = ctx;
@@ -68,6 +70,8 @@ const STEP = {
   async air(S, st, ctx) { await airlift(S, ctx); },
   async council(S, st, ctx) { await council(S, ctx); },
   async tribunal(S, st, ctx) { await tribunal(S, ctx); },
+  async siege(S, st, ctx) { await siege(S, ctx); },
+  async end(S, st) { if (!S.end) S.end = st.id; },
   async vote(S, st, ctx) { await vote(S, ctx); }
 };
 
@@ -96,6 +100,7 @@ export async function playEvent(S, ev, ctx) {
   const c = choices[i];
   const before = snapshot(S);
   const extra = c.run ? c.run(S) : applyFx(S, c.fx);
+  noteLoyalty(S, before.loy, title.split(' · ')[0]);
   const text = [c.r, extra].filter(Boolean).join(' ');
   if (ev.ledger) S.ledger.push({ k: ev.ledger.k, you: ev.ledger.you || c.you || c.t, hist: ev.ledger.hist });
   renderHUD(S, ctx.D);

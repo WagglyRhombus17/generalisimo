@@ -16,16 +16,26 @@ export function truck(fb, x, y, P) {
 }
 
 export function soldier(fb, x, y, P, f) {
-  fb.rect(x + 1, y - 9, 2, 1, P.cap); fb.rect(x + 1, y - 8, 2, 1, P.skin);
-  fb.rect(x, y - 7, 4, 4, P.olive); fb.set(x, y - 7, P.oliveD); fb.rect(x + 3, y - 7, 1, 4, P.oliveD);
-  fb.line(x + 4, y - 11, x + 4, y - 5, P.outline);
+  const o = P.outline;
+  fb.rect(x + 2, y - 12, 2, 1, P.cap); fb.rect(x + 1, y - 11, 4, 1, P.cap); fb.set(x + 5, y - 11, P.cap);
+  fb.rect(x + 2, y - 10, 2, 2, P.skin); fb.set(x + 4, y - 10, P.skin);
+  fb.rect(x + 1, y - 8, 4, 4, P.olive); fb.rect(x + 4, y - 8, 1, 4, P.oliveD);
+  fb.rect(x + 1, y - 5, 4, 1, P.trunk || o);
+  fb.rect(x, y - 8, 1, 3, P.oliveD);
+  fb.line(x + 6, y - 12, x + 4, y - 5, o);
   if (f % 2) {
-    fb.set(x, y - 3, P.oliveD); fb.set(x - 1, y - 2, P.oliveD); fb.set(x - 1, y - 1, P.outline);
-    fb.set(x + 3, y - 3, P.oliveD); fb.set(x + 4, y - 2, P.oliveD); fb.set(x + 4, y - 1, P.outline);
+    fb.rect(x + 1, y - 4, 1, 3, P.oliveD); fb.rect(x + 4, y - 4, 1, 3, P.oliveD);
+    fb.rect(x, y - 1, 2, 1, o); fb.rect(x + 4, y - 1, 2, 1, o);
   } else {
-    fb.rect(x + 1, y - 3, 1, 2, P.oliveD); fb.rect(x + 2, y - 3, 1, 2, P.oliveD);
-    fb.set(x + 1, y - 1, P.outline); fb.set(x + 2, y - 1, P.outline);
+    fb.rect(x + 2, y - 4, 2, 3, P.oliveD); fb.rect(x + 2, y - 1, 3, 1, o);
   }
+}
+
+// A soldier lying prone, firing to the right.
+export function prone(fb, x, y, P) {
+  fb.rect(x, y - 2, 7, 2, P.olive); fb.rect(x, y - 2, 2, 1, P.oliveD);
+  fb.rect(x + 7, y - 3, 2, 2, P.skin); fb.rect(x + 7, y - 4, 2, 1, P.cap);
+  fb.line(x + 8, y - 2, x + 12, y - 3, P.outline);
 }
 
 export function tree(fb, x, y, P, s = 1) {

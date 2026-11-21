@@ -7,22 +7,22 @@ import { openMap, closeMap } from './screens/map.js';
 import { openGenerals, closeGenerals } from './screens/generals.js';
 import { renderHUD } from './screens/hud.js';
 import { hideDlg, finishTyping } from './screens/dialog.js';
-import { unlock, sceneMusic, overrideMusic, themeForScene } from './audio/audio.js';
+import { unlock, sceneMusic, overrideMusic, themeForScene, setThemes } from './audio/audio.js';
 import { settings, setSetting, onSettings, motionOn } from './settings.js';
 
 const $ = s => document.querySelector(s);
 const D = {};
 const canvas = $('#scene');
-const OVERLAYS = ['#ov-map', '#ov-gen', '#ov-air', '#ov-trib', '#ov-council', '#ov-vote', '#ov-card', '#ov-end'];
+const OVERLAYS = ['#ov-map', '#ov-gen', '#ov-air', '#ov-trib', '#ov-siege', '#ov-council', '#ov-vote', '#ov-card', '#ov-end'];
 // Topmost first: keyboard shortcuts go to the first visible layer.
-const LAYERS = ['#ov-map', '#ov-gen', '#ov-title', '#ov-end', '#ov-card', '#ov-vote', '#ov-council', '#ov-trib', '#ov-air', '#dlg'];
+const LAYERS = ['#ov-map', '#ov-gen', '#ov-title', '#ov-end', '#ov-card', '#ov-vote', '#ov-council', '#ov-siege', '#ov-trib', '#ov-air', '#dlg'];
 let S = null, token = 0, lastScene = null;
 
 function showScene(desc) {
   if (S) S.scene = desc;
   lastScene = desc;
   setScene(canvas, desc);
-  sceneMusic(themeForScene(desc));
+  sceneMusic(themeForScene(desc, S ? S.ch : 0));
 }
 
 function hideAll() { OVERLAYS.forEach(s => { $(s).hidden = true; }); hideTitle(); hideDlg(); }
@@ -100,13 +100,14 @@ function showError(err) {
 
 async function boot() {
   try {
-    const files = ['events', 'generals', 'chapters', 'tribunal'];
+    const files = ['events', 'generals', 'chapters', 'tribunal', 'music'];
     const data = await Promise.all(files.map(n => fetch(`data/${n}.json`).then(r => {
       if (!r.ok) throw new Error(`could not load data/${n}.json`);
       return r.json();
     })));
     files.forEach((n, i) => { D[n] = data[i]; });
   } catch (err) { showError(err); return; }
+  setThemes(D.music);
   $('#loading').hidden = true;
   $('#b-map').addEventListener('click', toggleMap);
   $('#b-gen').addEventListener('click', toggleGenerals);

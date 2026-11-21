@@ -1,0 +1,99 @@
+{
+  "_format": "Each theme: tempo in quarter-note beats per minute, and tracks as bars of eight eighth-note tokens. A note name (E4, G#3) plays, '-' holds the previous note, '.' is a rest. Drums: k kick, s snare, h hi-hat, t tom, c crash. Scale: E Phrygian dominant (E F G# A B C D). Export to MuseScore with: python3 tools/export_musicxml.py",
+  "title": {
+    "name": "Generalísimo (title)", "bpm": 84, "wave": "triangle",
+    "lead": ["E4 - - - F4 - G#4 -", "A4 - - - G#4 - F4 -", "E4 - F4 - G#4 - B4 -", "A4 - G#4 - F4 - E4 -"],
+    "bass": ["E2 - - - - - - -", "D2 - - - - - - -", "C2 - - - - - - -", "B1 - - - - - - -"],
+    "drum": ["k . . . . . . .", "k . . . . . . .", "k . . . . . . .", "k . . . k . . ."]
+  },
+  "flight": {
+    "name": "Chapter I: The Flight", "bpm": 104, "wave": "square",
+    "lead": ["B4 . E5 . D5 C5 B4 .", "A4 . C5 . B4 A4 G#4 .", "A4 B4 C5 D5 E5 - D5 C5", "B4 - - - . . . .",
+             "B4 . E5 . D5 C5 B4 .", "A4 . C5 . B4 A4 G#4 .", "F4 G#4 A4 B4 C5 B4 A4 G#4", "E4 - - - . . . ."],
+    "bass": ["E2 - B2 - E2 - B2 -", "A1 - E2 - A1 - E2 -", "F2 - C3 - F2 - C3 -", "E2 - B1 - E2 - B1 -",
+             "E2 - B2 - E2 - B2 -", "A1 - E2 - A1 - E2 -", "D2 - A2 - D2 - A2 -", "E2 - B1 - E2 - - -"],
+    "drum": ["k . h . s . h .", "k . h . s . h .", "k . h . s . h .", "k . h . s . h .",
+             "k . h . s . h .", "k . h . s . h .", "k . h . s . h .", "k . h . s s s s"]
+  },
+  "night": {
+    "name": "Chapter II: Tetuán at Night", "bpm": 70, "wave": "triangle",
+    "lead": ["E3 G#3 B3 E4 B3 G#3 E3 .", "F3 A3 C4 F4 C4 A3 F3 .", "E3 G#3 B3 E4 B3 G#3 E3 .", "D3 F3 A3 D4 A3 F3 D3 ."],
+    "bass": ["E2 - - - - - - -", "F2 - - - - - - -", "E2 - - - - - - -", "D2 - - - - - - -"],
+    "drum": ["h . . . h . . .", "h . . . h . . .", "h . . . h . . .", "h . . . h . . ."]
+  },
+  "strait": {
+    "name": "Chapter II: The Strait", "bpm": 96, "wave": "square", "harmWave": "triangle",
+    "lead": ["E4 - - - G#4 - - -", "A4 - - - F4 - - -", "B4 - A4 - G#4 - F4 -", "E4 - - - - - - ."],
+    "harm": ["B3 - - - - - - -", "C4 - - - - - - -", "B3 - - - - - - -", "A3 - - - G#3 - - -"],
+    "bass": ["E2 E2 E2 E2 E2 E2 E2 E2", "F2 F2 F2 F2 F2 F2 F2 F2", "E2 E2 E2 E2 E2 E2 E2 E2", "D2 D2 D2 D2 F2 F2 F2 F2"],
+    "drum": ["k . . h k . . h", "k . . h k . . h", "k . . h k . . h", "k . s . k s s s"]
+  },
+  "airlift": {
+    "name": "Mini-game: Load the Junkers", "bpm": 140, "wave": "square",
+    "lead": ["E4 . G#4 . B4 . G#4 .", "F4 . A4 . C5 . A4 .", "D4 . F4 . A4 . F4 .", "G#4 . B4 . E5 - - ."],
+    "bass": ["E2 E3 E2 E3 E2 E3 E2 E3", "F2 F3 F2 F3 F2 F3 F2 F3", "D2 D3 D2 D3 D2 D3 D2 D3", "E2 E3 E2 E3 E2 E3 B1 B2"],
+    "drum": ["k h s h k h s h", "k h s h k h s h", "k h s h k h s h", "k h s h k s s s"]
+  },
+  "march": {
+    "name": "Chapter III: The March North", "bpm": 118, "wave": "square",
+    "lead": ["E4 - G#4 A4 B4 - A4 G#4", "A4 - F4 G#4 E4 - - .", "B4 - B4 C5 B4 A4 G#4 A4", "G#4 - F4 - E4 - - .",
+             "E5 - D5 C5 B4 - C5 B4", "A4 - G#4 A4 B4 - - .", "C5 B4 A4 G#4 A4 G#4 F4 G#4", "E4 - - - . . . ."],
+    "bass": ["E2 - B1 - E2 - B1 -", "F2 - C2 - E2 - B1 -", "E2 - B1 - A1 - E2 -", "F2 - C2 - E2 - B1 -",
+             "A1 - E2 - A1 - E2 -", "F2 - C2 - E2 - B1 -", "A1 - E2 - F2 - C2 -", "E2 - B1 - E2 - - -"],
+    "drum": ["k . s . k . s .", "k . s . k . s .", "k . s . k . s .", "k . s . k . s .",
+             "k . s . k . s .", "k . s . k . s .", "k . s . k . s .", "k . s s s s s s"]
+  },
+  "tribunal": {
+    "name": "Mini-game: The Tribunal", "bpm": 66, "wave": "triangle", "harmWave": "triangle",
+    "lead": ["A4 - - - C5 - B4 -", "A4 - - - G#4 - - -", "F4 - - - E4 - D4 -", "E4 - - - - - - -"],
+    "harm": ["E4 - - - E4 - - -", "D4 - - - B3 - - -", "A3 - - - G#3 - - -", "G#3 - - - - - - -"],
+    "bass": ["A1 - - - - - - -", "E2 - - - - - - -", "D2 - - - - - - -", "E2 - - - - - - -"],
+    "drum": ["h . . . . . . .", ". . . . . . . .", "h . . . . . . .", ". . . . . . . ."]
+  },
+  "battle": {
+    "name": "Battle", "bpm": 128, "wave": "square", "harmWave": "square",
+    "lead": ["E5 - - - D5 C5 B4 -", "C5 - - - B4 A4 G#4 -", "A4 - B4 - C5 - D5 -", "E5 - - - - - - -"],
+    "harm": ["G#4 - - - F4 - - -", "A4 - - - G#4 - - -", "F4 - G#4 - A4 - B4 -", "G#4 - - - - - - -"],
+    "bass": ["E2 - E2 E2 F2 - E2 -", "E2 - E2 E2 F2 - E2 -", "C2 - C2 C2 D2 - D2 -", "E2 - - - B1 - - -"],
+    "drum": ["k . s k k . s .", "k . s k k . s .", "k . s k k s s s", "c . . . t t t t"]
+  },
+  "council": {
+    "name": "Chapter IV: Salamanca", "bpm": 100, "wave": "square",
+    "lead": [". . . . E4 . F4 .", ". . . . E4 . . .", ". . . . G#4 . F4 .", "E4 - - - . . . ."],
+    "bass": ["E2 E2 F2 E2 E2 E2 F2 E2", "E2 E2 F2 E2 E2 E2 F2 E2", "E2 E2 F2 E2 E2 E2 F2 E2", "E2 E2 F2 E2 D2 D2 F2 E2"],
+    "drum": ["k . h . k . h .", "k . h . k . h .", "k . h . k . h .", "k . h . k h h h"]
+  },
+  "madrid": {
+    "name": "Chapter V: Madrid", "bpm": 108, "wave": "square", "harmWave": "square",
+    "lead": ["E4 - - G#4 B4 - - -", "C5 - B4 - A4 - G#4 -", "A4 - - C5 E5 - - -", "D5 - C5 - B4 - - -",
+             "E5 - - D5 C5 - B4 -", "A4 - - G#4 F4 - - -", "G#4 - A4 - B4 - C5 -", "B4 - - - E4 - - -"],
+    "harm": ["B3 - - E4 G#4 - - -", "A4 - G#4 - F4 - E4 -", "E4 - - A4 C5 - - -", "B4 - A4 - G#4 - - -",
+             "C5 - - B4 A4 - G#4 -", "F4 - - E4 D4 - - -", "E4 - F4 - G#4 - A4 -", "G#4 - - - B3 - - -"],
+    "bass": ["E2 - E3 - E2 - E3 -", "A1 - A2 - E2 - E3 -", "A1 - A2 - A1 - A2 -", "E2 - E3 - E2 - E3 -",
+             "C2 - C3 - C2 - C3 -", "D2 - D3 - D2 - D3 -", "F2 - F3 - F2 - F3 -", "E2 - E3 - E2 - - -"],
+    "drum": ["k . s . k t s .", "k . s . k t s .", "k . s . k t s .", "k . s . t t s s",
+             "k . s . k t s .", "k . s . k t s .", "k . s . k t s .", "c . s s t t t t"]
+  },
+  "siege": {
+    "name": "Mini-game: The Assault on Madrid", "bpm": 120, "wave": "square", "harmWave": "square",
+    "lead": ["E5 - - - F5 - E5 -", "D5 - C5 - B4 - A4 -", "G#4 - A4 - B4 - C5 -", "B4 - - - - - - -",
+             "E5 - - - G#5 - F5 -", "E5 - D5 - C5 - B4 -", "A4 - C5 - B4 - G#4 -", "E4 - - - - - - -"],
+    "harm": ["G#4 - - - A4 - G#4 -", "F4 - E4 - D4 - C4 -", "E4 - F4 - G#4 - A4 -", "G#4 - - - - - - -",
+             "B4 - - - B4 - A4 -", "G#4 - F4 - E4 - D4 -", "C4 - E4 - D4 - B3 -", "G#3 - - - - - - -"],
+    "bass": ["E2 E2 E3 E2 F2 F2 E2 E2", "D2 D2 D3 D2 C2 C2 A1 A1", "E2 E2 E3 E2 F2 F2 A2 A2", "E2 E2 E3 E2 B1 B1 B1 B1",
+             "E2 E2 E3 E2 F2 F2 E2 E2", "D2 D2 D3 D2 C2 C2 A1 A1", "A1 A1 A2 A1 D2 D2 D3 D2", "E2 E2 E3 E2 E2 - - -"],
+    "drum": ["k h s k t h s h", "k h s k t h s h", "k h s k t h s h", "k h s k t t t t",
+             "c h s k t h s h", "k h s k t h s h", "k h s k t h s h", "c . . . c . t t"]
+  },
+  "finale": {
+    "name": "Finale", "bpm": 72, "wave": "square", "harmWave": "triangle",
+    "lead": ["E4 - - - G#4 - B4 -", "C5 - - - B4 - A4 -", "G#4 - A4 - B4 - D5 -", "C5 - B4 - A4 - G#4 -",
+             "A4 - - - C5 - E5 -", "D5 - C5 - B4 - A4 -", "G#4 - - - F4 - G#4 -", "E4 - - - - - - -"],
+    "harm": ["B3 - - - E4 - G#4 -", "A4 - - - G#4 - F4 -", "E4 - F4 - G#4 - B4 -", "A4 - G#4 - F4 - E4 -",
+             "E4 - - - A4 - C5 -", "B4 - A4 - G#4 - F4 -", "E4 - - - D4 - E4 -", "B3 - - - - - - -"],
+    "bass": ["E2 - - - - - - -", "A1 - - - - - - -", "E2 - - - - - - -", "F2 - - - E2 - - -",
+             "A1 - - - - - - -", "D2 - - - - - - -", "B1 - - - - - - -", "E2 - - - - - - -"],
+    "drum": ["c . . . k . . .", "k . . . k . . .", "k . . . k . . .", "k . . . t . t .",
+             "c . . . k . . .", "k . . . k . . .", "k . . . t . t t", "c . . . . . . ."]
+  }
+}
