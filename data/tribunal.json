@@ -1,0 +1,238 @@
+{
+  "intro": "Sevilla, August 1936. The legal officer of the Army of Africa brings you four files from the military court. Each needs your signature: release the prisoner, or send them before a court-martial, where the sentence is rarely in doubt. You may order two investigations before you sign.",
+  "hist": "Behind the Nationalist lines in 1936, military courts and Falange squads killed tens of thousands of people, often on an informer's word and with no real defence. As commander, Franco confirmed death sentences himself.",
+  "cases": [
+    {
+      "id": "rubio",
+      "name": "Manuel Rubio",
+      "age": 34,
+      "job": "Tram conductor",
+      "place": "Sevilla",
+      "look": {
+        "civil": 1,
+        "shirt": "#5a6a7a",
+        "must": 1,
+        "hair": "#2a1a14"
+      },
+      "accuser": "A neighbour",
+      "accusation": "Seen at the Casa del Pueblo, the workers' centre, on the morning of 18 July.",
+      "evidence": [
+        "UGT union card, issued 1934.",
+        "No weapon found in his flat."
+      ],
+      "statement": "I went for the bread queue on Calle Feria. Ask the baker.",
+      "witness": "The baker remembers serving him that morning.",
+      "hidden": "The neighbour has been trying to take over Rubio's flat for a year, and has denounced two other tenants.",
+      "truth": "feud"
+    },
+    {
+      "id": "gil",
+      "name": "Antonio Gil",
+      "age": 27,
+      "job": "Farm labourer",
+      "place": "Almendralejo",
+      "look": {
+        "civil": 1,
+        "shirt": "#7a6a4a",
+        "hair": "#3a2a1a",
+        "beret": 1
+      },
+      "accuser": "Taken by the column at a roadblock",
+      "accusation": "Fired on the column from a farmhouse outside the town.",
+      "evidence": [
+        "A rifle found in the farmhouse.",
+        "The medical officer notes powder burns on his right hand."
+      ],
+      "statement": "The rifle is my father's. We use it for rabbits.",
+      "witness": "No one speaks for him.",
+      "hidden": "Two other men taken at the farmhouse name him as the leader of the village militia.",
+      "truth": "militia"
+    },
+    {
+      "id": "perez",
+      "name": "Dolores Pérez",
+      "age": 41,
+      "job": "Schoolteacher",
+      "place": "Mérida",
+      "she": 1,
+      "look": {
+        "civil": 1,
+        "shirt": "#4a3a5a",
+        "long": 1,
+        "hair": "#3a2418"
+      },
+      "accuser": "The parish priest",
+      "accusation": "Taught atheist ideas and voted for the Popular Front in February.",
+      "evidence": [
+        "Republican schoolbooks taken from her classroom.",
+        "A membership card for the teachers' union."
+      ],
+      "statement": "I taught what the Ministry required. I did not vote for anyone. I was ill in February.",
+      "witness": "The school inspector's last report praises her work.",
+      "hidden": "The hospital register shows her admitted from 14 to 20 February, over the day of the election.",
+      "truth": "union"
+    },
+    {
+      "id": "lozano",
+      "name": "José Lozano",
+      "age": 52,
+      "job": "Mayor",
+      "place": "Fuente de Cantos",
+      "look": {
+        "civil": 1,
+        "shirt": "#3a3a3a",
+        "must": 1,
+        "hair": "#8a8478",
+        "glasses": 1
+      },
+      "accuser": "The local Falange",
+      "accusation": "As mayor, handed out rifles to the militia on 19 July.",
+      "evidence": [
+        "An order in his name releasing rifles from the Civil Guard post."
+      ],
+      "statement": "The Civil Governor ordered it by telephone. I had no choice.",
+      "witness": "The Civil Guard sergeant confirms the order came from the Governor.",
+      "hidden": "On the same night he hid the village priest in his own house to keep him safe.",
+      "truth": "union"
+    },
+    {
+      "id": "moreno",
+      "name": "Rafael Moreno",
+      "age": 19,
+      "job": "Student",
+      "place": "Sevilla",
+      "look": {
+        "civil": 1,
+        "shirt": "#e8e0d0",
+        "hair": "#1a1210"
+      },
+      "accuser": "An anonymous letter",
+      "accusation": "Painted communist slogans on the walls of the university.",
+      "evidence": [
+        "The letter is unsigned.",
+        "Red paint on his shoes."
+      ],
+      "statement": "I was painting my mother's front door.",
+      "witness": "His mother confirms it. Her door is freshly painted red.",
+      "hidden": "The handwriting matches a student who quarrelled with Moreno over a girl.",
+      "truth": "feud"
+    },
+    {
+      "id": "ruiz",
+      "name": "Francisco Ruiz",
+      "age": 30,
+      "job": "Railway worker",
+      "place": "Mérida",
+      "look": {
+        "civil": 1,
+        "shirt": "#3a4a6a",
+        "hair": "#2a1a14",
+        "beret": 1
+      },
+      "accuser": "Railway police",
+      "accusation": "Sabotaged the line to stop your supply trains.",
+      "evidence": [
+        "Detonators found in his locker.",
+        "A timetable with your troop trains marked in pencil."
+      ],
+      "statement": "Someone put them there. Anyone can open those lockers.",
+      "witness": "The station master says Ruiz was on duty that night.",
+      "hidden": "He was seen twice at the river meeting militia couriers from the Republican side.",
+      "truth": "militia"
+    },
+    {
+      "id": "vidal",
+      "name": "Carmen Vidal",
+      "age": 23,
+      "job": "Seamstress",
+      "place": "Sevilla",
+      "she": 1,
+      "look": {
+        "civil": 1,
+        "shirt": "#7a3a3a",
+        "long": 1,
+        "hair": "#1a1210"
+      },
+      "accuser": "Her employer",
+      "accusation": "Sewed flags for the Socialist Youth.",
+      "evidence": [
+        "Offcuts of red cloth in her workroom."
+      ],
+      "statement": "I sew what customers order. Last week I sewed a Falange flag too.",
+      "witness": "A Falangist confirms she made their flag.",
+      "hidden": "Her employer owes her three months' wages.",
+      "truth": "feud"
+    },
+    {
+      "id": "ortega",
+      "name": "Juan Ortega",
+      "age": 45,
+      "job": "Union secretary",
+      "place": "Badajoz",
+      "look": {
+        "civil": 1,
+        "shirt": "#5a5048",
+        "must": 1,
+        "hair": "#4a3a2a"
+      },
+      "accuser": "Military intelligence",
+      "accusation": "Led the 1934 strike and sat on the town's defence committee in July.",
+      "evidence": [
+        "Committee minutes signed by him.",
+        "No weapons found."
+      ],
+      "statement": "I organised workers. I never carried a gun.",
+      "witness": "Two prisoners say he argued against shooting hostages in July.",
+      "hidden": "The minutes show him voting to release the town's landowners unharmed.",
+      "truth": "union"
+    },
+    {
+      "id": "sanchez",
+      "name": "Pedro Sánchez",
+      "age": 38,
+      "job": "Blacksmith",
+      "place": "Villafranca",
+      "look": {
+        "civil": 1,
+        "shirt": "#4a3a2a",
+        "bald": 1,
+        "must": 1,
+        "hair": "#2a1a14"
+      },
+      "accuser": "Taken by the column in his forge",
+      "accusation": "Made weapons for the militia.",
+      "evidence": [
+        "A dozen new bayonets in his forge.",
+        "A militia armband."
+      ],
+      "statement": "They made me work at gunpoint.",
+      "witness": "No one speaks for him.",
+      "hidden": "The armband has his name on it. He led the village column that attacked the Civil Guard post.",
+      "truth": "militia"
+    },
+    {
+      "id": "herrera",
+      "name": "Luis Herrera",
+      "age": 60,
+      "job": "Doctor",
+      "place": "Talavera",
+      "look": {
+        "civil": 1,
+        "shirt": "#2a2a30",
+        "beard": 1,
+        "hair": "#c8c2b6",
+        "glasses": 1
+      },
+      "accuser": "The local Falange",
+      "accusation": "A freemason who treated wounded militiamen.",
+      "evidence": [
+        "His name on a Masonic lodge list.",
+        "Hospital records of militia patients."
+      ],
+      "statement": "I treat whoever is brought to me. I have treated your soldiers too.",
+      "witness": "A wounded legionnaire says the doctor saved his leg last week.",
+      "hidden": "The lodge list is from 1919. He left the lodge in 1923.",
+      "truth": "innocent"
+    }
+  ]
+}

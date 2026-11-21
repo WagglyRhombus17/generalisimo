@@ -1,116 +1,417 @@
 {
   "chapters": {
-    "1": { "n": "I", "title": "The Flight", "dates": "16 – 19 JULY 1936",
-      "intro": "The government distrusts you and has posted you far from Madrid, to the Canary Islands. The army's rising is about to begin. You must reach the Army of Africa in Morocco before it starts without you." },
-    "2": { "n": "II", "title": "The Strait", "dates": "20 JULY – 7 AUGUST 1936",
-      "intro": "You command Spain's best troops, but they are stuck in Morocco. The Republic's fleet holds the Strait of Gibraltar. You need foreign aircraft, and the nerve to cross." },
-    "3": { "n": "III", "title": "The March North", "dates": "7 AUGUST – 21 SEPTEMBER 1936",
-      "intro": "From Sevilla, your columns drive north through Extremadura toward Madrid. Every day you spend, the other generals are watching." },
-    "4": { "n": "IV", "title": "Salamanca", "dates": "21 – 28 SEPTEMBER 1936",
-      "intro": "The generals have agreed that the war needs one commander. They will meet near Salamanca to choose him. You have three days to win their votes." }
+    "1": {
+      "n": "I",
+      "title": "The Flight",
+      "dates": "16 – 19 JULY 1936",
+      "intro": "The government distrusts you and has posted you far from Madrid, to the Canary Islands. The army's rising is about to begin. You must reach the Army of Africa in Morocco before it starts without you."
+    },
+    "2": {
+      "n": "II",
+      "title": "The Strait",
+      "dates": "20 JULY – 7 AUGUST 1936",
+      "intro": "You command Spain's best troops, but they are stuck in Morocco. The Republic's fleet holds the Strait of Gibraltar. You need foreign aircraft, and the nerve to cross."
+    },
+    "3": {
+      "n": "III",
+      "title": "The March North",
+      "dates": "7 AUGUST – 21 SEPTEMBER 1936",
+      "intro": "From Sevilla, your columns drive north through Extremadura toward Madrid. Every day you spend, the other generals are watching."
+    },
+    "4": {
+      "n": "IV",
+      "title": "Salamanca",
+      "dates": "21 – 28 SEPTEMBER 1936",
+      "intro": "The generals have agreed that the war needs one commander. They will meet near Salamanca to choose him. You have three days to win their votes."
+    }
   },
-
   "scenes": {
-    "Tenerife": { "t": "island" },
-    "Gran Canaria": { "t": "airfield" },
-    "Casablanca": { "t": "sky" },
-    "Tetuán": { "t": "night" },
-    "Berlin & Rome": { "t": "night" },
-    "Airlift": { "t": "night" },
-    "Convoy": { "t": "strait" },
-    "Sevilla": { "t": "road", "town": "seville", "sky": "day" },
-    "Mérida": { "t": "road", "town": "aqueduct", "sky": "day" },
-    "Badajoz": { "t": "road", "town": "walled", "sky": "sunset" },
-    "Talavera": { "t": "road", "town": "village", "sky": "dawn" },
-    "Maqueda": { "t": "road", "town": "toledo", "sky": "sunset" },
-    "Salamanca": { "t": "road", "town": "village", "sky": "sunset" }
+    "Tenerife": {
+      "t": "island"
+    },
+    "Gran Canaria": {
+      "t": "airfield"
+    },
+    "Casablanca": {
+      "t": "sky"
+    },
+    "Tetuán": {
+      "t": "night"
+    },
+    "Berlin & Rome": {
+      "t": "night"
+    },
+    "Airlift": {
+      "t": "night"
+    },
+    "Convoy": {
+      "t": "strait"
+    },
+    "Sevilla": {
+      "t": "road",
+      "town": "seville",
+      "sky": "day"
+    },
+    "Mérida": {
+      "t": "road",
+      "town": "aqueduct",
+      "sky": "day"
+    },
+    "Badajoz": {
+      "t": "road",
+      "town": "walled",
+      "sky": "sunset"
+    },
+    "Talavera": {
+      "t": "road",
+      "town": "village",
+      "sky": "dawn"
+    },
+    "Maqueda": {
+      "t": "road",
+      "town": "toledo",
+      "sky": "sunset"
+    },
+    "Salamanca": {
+      "t": "road",
+      "town": "village",
+      "sky": "sunset"
+    }
   },
-
   "locations": {
-    "Tetuán": [130, 294], "Convoy": [142, 286], "Sevilla": [152, 238], "Mérida": [106, 190], "Badajoz": [92, 184],
-    "Talavera": [162, 146], "Maqueda": [176, 140], "Salamanca": [136, 116]
+    "Tetuán": [
+      130,
+      294
+    ],
+    "Convoy": [
+      142,
+      286
+    ],
+    "Sevilla": [
+      152,
+      238
+    ],
+    "Mérida": [
+      106,
+      190
+    ],
+    "Badajoz": [
+      92,
+      184
+    ],
+    "Talavera": [
+      162,
+      146
+    ],
+    "Maqueda": [
+      176,
+      140
+    ],
+    "Salamanca": [
+      136,
+      116
+    ]
   },
-
   "battles": {
-    "merida": { "name": "Mérida", "res": 3,
+    "merida": {
+      "name": "Mérida",
+      "res": 3,
       "text": "Militias hold the Roman bridge over the Guadiana and the town behind it.",
       "win": "Your legionnaires cross the Roman bridge. The rebel north and south are now joined.",
-      "hist": "Mérida fell on 10–11 August, linking the rebel zones in the north and south." },
-    "badajoz": { "name": "Badajoz", "res": 5,
+      "hist": "Mérida fell on 10–11 August, linking the rebel zones in the north and south."
+    },
+    "badajoz": {
+      "name": "Badajoz",
+      "res": 5,
       "text": "Badajoz is a walled border city, defended by several thousand militiamen and loyal soldiers.",
       "win": "After a bloody assault on the walls, your troops are inside the city.",
-      "hist": "Badajoz was stormed on 14 August after heavy fighting at the walls." },
-    "talavera": { "name": "Talavera de la Reina", "res": 4.5,
+      "hist": "Badajoz was stormed on 14 August after heavy fighting at the walls."
+    },
+    "talavera": {
+      "name": "Talavera de la Reina",
+      "res": 4.5,
       "text": "This is the last large town on the road to Madrid. The Republic has rushed militias here by train.",
       "win": "The militias break and fall back toward Madrid along the Tagus valley.",
-      "hist": "Talavera fell on 3 September." }
+      "hist": "Talavera fell on 3 September."
+    }
   },
-
   "steps": [
-    { "k": "card", "ch": 1 },
-    { "k": "route", "stops": ["Tenerife", "Gran Canaria", "Casablanca", "Tetuán"] },
-    { "k": "ev", "id": "balmes" },
-    { "k": "move", "to": 1, "day": 1, "text": "The mail steamer carries you overnight to Las Palmas." },
-    { "k": "ev", "id": "lasPalmas", "day": 2 },
-    { "k": "ev", "id": "flight" },
-    { "k": "rand", "pool": "flight" },
-    { "k": "move", "to": 2, "day": 2, "unless": "straight", "text": "You land at Casablanca in the evening and check into a hotel under another name." },
-    { "k": "rand", "pool": "flight", "unless": "straight" },
-    { "k": "move", "to": 3, "day": 3, "text": "The Dragon Rapide touches down at Tetuán." },
-    { "k": "ev", "id": "tetuan" },
-
-    { "k": "card", "ch": 2 },
-    { "k": "route", "stops": ["Tetuán", "Berlin & Rome", "Airlift", "Convoy", "Sevilla"] },
-    { "k": "ev", "id": "sanjurjo", "special": true, "day": 4 },
-    { "k": "ev", "id": "envoyGer", "day": 6 },
-    { "k": "ev", "id": "envoyIta" },
-    { "k": "rand", "pool": "strait" },
-    { "k": "move", "to": 1, "day": 10, "text": "Your envoys reach Germany and Italy." },
-    { "k": "ev", "id": "hitler", "special": true },
-    { "k": "rand", "pool": "strait" },
-    { "k": "move", "to": 2, "day": 13, "text": "Transport aircraft gather at Tetuán." },
-    { "k": "air" },
-    { "k": "rand", "pool": "strait" },
-    { "k": "move", "to": 3, "day": 20, "text": "Ships and men gather in the harbour at Ceuta." },
-    { "k": "ev", "id": "convoy", "special": true },
-    { "k": "move", "to": 4, "day": 22, "text": "You cross to Spain and set up your headquarters in Sevilla." },
-
-    { "k": "card", "ch": 3 },
-    { "k": "route", "stops": ["Sevilla", "Mérida", "Badajoz", "Talavera", "Maqueda"] },
-    { "k": "ev", "id": "sevilla" },
-    { "k": "rand", "pool": "march" },
-    { "k": "move", "to": 1, "day": 25, "text": "Your columns drive north over the Sierra Morena into Extremadura." },
-    { "k": "battle", "id": "merida" },
-    { "k": "rand", "pool": "march" },
-    { "k": "move", "to": 2, "day": 29, "text": "The columns turn west toward the Portuguese border." },
-    { "k": "battle", "id": "badajoz" },
-    { "k": "ev", "id": "badajozAfter" },
-    { "k": "rand", "pool": "march" },
-    { "k": "ev", "id": "molaAmmo", "day": 40 },
-    { "k": "rand", "pool": "march" },
-    { "k": "move", "to": 3, "day": 49, "text": "The march turns east along the Tagus valley toward Madrid." },
-    { "k": "battle", "id": "talavera" },
-    { "k": "rand", "pool": "march" },
-    { "k": "move", "to": 4, "day": 67, "text": "Your columns push up the valley to the crossroads at Maqueda." },
-    { "k": "ev", "id": "maqueda", "special": true },
-
-    { "k": "card", "ch": 4 },
-    { "k": "route", "stops": ["Maqueda", "Salamanca"] },
-    { "k": "move", "to": 1, "day": 73, "text": "The generals gather at an airfield outside Salamanca." },
-    { "k": "council" },
-    { "k": "vote" }
+    {
+      "k": "card",
+      "ch": 1
+    },
+    {
+      "k": "route",
+      "stops": [
+        "Tenerife",
+        "Gran Canaria",
+        "Casablanca",
+        "Tetuán"
+      ]
+    },
+    {
+      "k": "ev",
+      "id": "balmes"
+    },
+    {
+      "k": "move",
+      "to": 1,
+      "day": 1,
+      "text": "The mail steamer carries you overnight to Las Palmas."
+    },
+    {
+      "k": "ev",
+      "id": "lasPalmas",
+      "day": 2
+    },
+    {
+      "k": "ev",
+      "id": "flight"
+    },
+    {
+      "k": "rand",
+      "pool": "flight"
+    },
+    {
+      "k": "move",
+      "to": 2,
+      "day": 2,
+      "unless": "straight",
+      "text": "You land at Casablanca in the evening and check into a hotel under another name."
+    },
+    {
+      "k": "rand",
+      "pool": "flight",
+      "unless": "straight"
+    },
+    {
+      "k": "move",
+      "to": 3,
+      "day": 3,
+      "text": "The Dragon Rapide touches down at Tetuán."
+    },
+    {
+      "k": "ev",
+      "id": "tetuan"
+    },
+    {
+      "k": "card",
+      "ch": 2
+    },
+    {
+      "k": "route",
+      "stops": [
+        "Tetuán",
+        "Berlin & Rome",
+        "Airlift",
+        "Convoy",
+        "Sevilla"
+      ]
+    },
+    {
+      "k": "ev",
+      "id": "sanjurjo",
+      "special": true,
+      "day": 4
+    },
+    {
+      "k": "ev",
+      "id": "envoyGer",
+      "day": 6
+    },
+    {
+      "k": "ev",
+      "id": "envoyIta"
+    },
+    {
+      "k": "rand",
+      "pool": "strait"
+    },
+    {
+      "k": "move",
+      "to": 1,
+      "day": 10,
+      "text": "Your envoys reach Germany and Italy."
+    },
+    {
+      "k": "ev",
+      "id": "hitler",
+      "special": true
+    },
+    {
+      "k": "rand",
+      "pool": "strait"
+    },
+    {
+      "k": "move",
+      "to": 2,
+      "day": 13,
+      "text": "Transport aircraft gather at Tetuán."
+    },
+    {
+      "k": "air"
+    },
+    {
+      "k": "rand",
+      "pool": "strait"
+    },
+    {
+      "k": "move",
+      "to": 3,
+      "day": 20,
+      "text": "Ships and men gather in the harbour at Ceuta."
+    },
+    {
+      "k": "ev",
+      "id": "convoy",
+      "special": true
+    },
+    {
+      "k": "move",
+      "to": 4,
+      "day": 22,
+      "text": "You cross to Spain and set up your headquarters in Sevilla."
+    },
+    {
+      "k": "card",
+      "ch": 3
+    },
+    {
+      "k": "route",
+      "stops": [
+        "Sevilla",
+        "Mérida",
+        "Badajoz",
+        "Talavera",
+        "Maqueda"
+      ]
+    },
+    {
+      "k": "ev",
+      "id": "sevilla"
+    },
+    {
+      "k": "tribunal"
+    },
+    {
+      "k": "rand",
+      "pool": "march"
+    },
+    {
+      "k": "move",
+      "to": 1,
+      "day": 25,
+      "text": "Your columns drive north over the Sierra Morena into Extremadura."
+    },
+    {
+      "k": "battle",
+      "id": "merida"
+    },
+    {
+      "k": "rand",
+      "pool": "march"
+    },
+    {
+      "k": "move",
+      "to": 2,
+      "day": 29,
+      "text": "The columns turn west toward the Portuguese border."
+    },
+    {
+      "k": "battle",
+      "id": "badajoz"
+    },
+    {
+      "k": "ev",
+      "id": "badajozAfter"
+    },
+    {
+      "k": "rand",
+      "pool": "march"
+    },
+    {
+      "k": "ev",
+      "id": "molaAmmo",
+      "day": 40
+    },
+    {
+      "k": "rand",
+      "pool": "march"
+    },
+    {
+      "k": "move",
+      "to": 3,
+      "day": 49,
+      "text": "The march turns east along the Tagus valley toward Madrid."
+    },
+    {
+      "k": "battle",
+      "id": "talavera"
+    },
+    {
+      "k": "ev",
+      "id": "sabotage",
+      "if": "saboteur"
+    },
+    {
+      "k": "rand",
+      "pool": "march"
+    },
+    {
+      "k": "move",
+      "to": 4,
+      "day": 67,
+      "text": "Your columns push up the valley to the crossroads at Maqueda."
+    },
+    {
+      "k": "ev",
+      "id": "maqueda",
+      "special": true
+    },
+    {
+      "k": "card",
+      "ch": 4
+    },
+    {
+      "k": "route",
+      "stops": [
+        "Maqueda",
+        "Salamanca"
+      ]
+    },
+    {
+      "k": "move",
+      "to": 1,
+      "day": 73,
+      "text": "The generals gather at an airfield outside Salamanca."
+    },
+    {
+      "k": "council"
+    },
+    {
+      "k": "vote"
+    }
   ],
-
   "endings": {
-    "generalisimo": { "title": "GENERALÍSIMO",
-      "text": "The generals name you supreme commander of the Nationalist armies. Days later you are proclaimed head of state in Burgos. The war you now lead will last until April 1939, and your rule until 1975." },
-    "madrid": { "title": "MADRID HAS FALLEN",
-      "text": "With Madrid in your hands, the vote is a formality. You are Generalísimo and head of state, and the Republic's government flees to Valencia. In this history the war may end years earlier. Whether that means less suffering, or simply a faster dictatorship, is the question your victory leaves behind." },
-    "junta": { "title": "THE JUNTA DECIDES",
-      "text": "The generals choose {rival}. You keep command of the Army of Africa, one general among several, and the war goes on without you at its head." },
-    "dead": { "title": "LOST OVER MOROCCO",
-      "text": "Ground fire hits the Dragon Rapide on its approach to Tetuán, and the plane goes down in the hills. The rising continues without you. History will remember other names." },
-    "army": { "title": "THE COLUMN BREAKS",
-      "text": "Your army has bled away on the road north. Without troops you have no voice, and the generals take the war out of your hands." }
+    "generalisimo": {
+      "title": "GENERALÍSIMO",
+      "text": "The generals name you supreme commander of the Nationalist armies. Days later you are proclaimed head of state in Burgos. The war you now lead will last until April 1939, and your rule until 1975."
+    },
+    "madrid": {
+      "title": "MADRID HAS FALLEN",
+      "text": "With Madrid in your hands, the vote is a formality. You are Generalísimo and head of state, and the Republic's government flees to Valencia. In this history the war may end years earlier. Whether that means less suffering, or simply a faster dictatorship, is the question your victory leaves behind."
+    },
+    "junta": {
+      "title": "THE JUNTA DECIDES",
+      "text": "The generals choose {rival}. You keep command of the Army of Africa, one general among several, and the war goes on without you at its head."
+    },
+    "dead": {
+      "title": "LOST OVER MOROCCO",
+      "text": "Ground fire hits the Dragon Rapide on its approach to Tetuán, and the plane goes down in the hills. The rising continues without you. History will remember other names."
+    },
+    "army": {
+      "title": "THE COLUMN BREAKS",
+      "text": "Your army has bled away on the road north. Without troops you have no voice, and the generals take the war out of your hands."
+    }
   }
 }

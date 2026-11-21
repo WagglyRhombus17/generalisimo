@@ -2,7 +2,7 @@
 
 A pixel-art strategy game about the first months of the Spanish Civil War, played as Francisco Franco, from the Canary Islands in July 1936 to the generals' vote at Salamanca in September. Oregon Trail-style: travel legs, random events, resources, mini-games, and choices with consequences. Each run ends by comparing your choices with what really happened.
 
-Draft 1 covers four chapters: The Flight, The Strait, The March North and Salamanca.
+Draft 2 covers four chapters: The Flight, The Strait, The March North and Salamanca. It has chiptune music and sound effects (synthesised in the browser, no audio files), three mini-games (loading the Ju 52, the military tribunal, the Salamanca council) and 41 random events.
 
 ## Play it
 
@@ -31,12 +31,15 @@ data/
   events.json           landmark events ("anchors") and the random event deck
   generals.json         generals: starting influence, loyalty, portrait traits
   chapters.json         chapter cards, the story script (steps), scenes, map locations, battles, endings
+  tribunal.json         case files for the military tribunal mini-game
 src/
   main.js               boot, keyboard, title screen and game switching
+  settings.js           music, sound effects and motion settings (saved in the browser)
+  audio/                chiptune music sequencer and sound effects (Web Audio API)
   engine/               pixel framebuffer, palettes, sprites (incl. portraits)
   scenes/               one file per scene: road (the march), island, airfield, sky, night, strait
   screens/              HUD, event dialog, campaign map, generals board, title/chapter/ending cards
-  minigames/            ju52.js (load the transport), council.js (Salamanca meetings and vote)
+  minigames/            ju52.js (load the transport), tribunal.js (case files), council.js (Salamanca meetings and vote)
   game/                 state + seeded RNG, effect interpreter, story runner, battles, special events
 ```
 
@@ -54,7 +57,9 @@ Most content is data. To add a random event, append to `deck` in `data/events.js
 
 Pools are `flight`, `strait` and `march`. Effect keys are documented at the top of `src/game/effects.js`. Events whose odds depend on the game state live in `src/game/specials.js`.
 
-The story order is the `steps` list in `data/chapters.json`. Step kinds: `card`, `route`, `ev`, `rand`, `move`, `battle`, `air`, `council`, `vote`.
+The story order is the `steps` list in `data/chapters.json`. Step kinds: `card`, `route`, `ev`, `rand`, `move`, `battle`, `air`, `tribunal`, `council`, `vote`. A step with `"if": "flag"` or `"unless": "flag"` runs only when that story flag is set or unset.
+
+Music themes are text patterns at the top of `src/audio/audio.js`: one token per eighth note, a note name to play, `-` to hold, `.` for a rest.
 
 ## Determinism
 

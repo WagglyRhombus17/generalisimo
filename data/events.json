@@ -3,310 +3,1683 @@
     "balmes": {
       "title": "Tenerife · 16 July 1936",
       "text": "You command the Canary Islands, posted far from Madrid because the government does not trust you. The rising is set for 17 and 18 July. This morning General Balmes, the commander on Gran Canaria, died of a gunshot wound. His funeral gives you a lawful reason to leave Tenerife.",
-      "ledger": { "k": "Leaving Tenerife", "hist": "Franco asked the government for permission to attend Balmes's funeral and used the journey as cover." },
+      "ledger": {
+        "k": "Leaving Tenerife",
+        "hist": "Franco asked the government for permission to attend Balmes's funeral and used the journey as cover."
+      },
       "choices": [
-        { "t": "Ask Madrid's permission to attend the funeral", "h": "Keeps your cover", "you": "You asked Madrid's permission and used the funeral as cover.",
-          "fx": { "flag": { "cover": 1 }, "legit": 2 }, "r": "The War Ministry approves. Nobody asks why you have packed a field uniform." },
-        { "t": "Wait for a final signal from Mola", "h": "Mola trusts you more · you look hesitant", "you": "You waited for Mola's signal before moving.",
-          "fx": { "loy": { "mola": 10 }, "rev": ["mola"], "inf": { "franco": -4 } }, "r": "Mola's reply is curt but warm. Among the conspirators a joke goes round that you are \"Miss Canary Islands 1936\": the general who cannot make up his mind." }
+        {
+          "t": "Ask Madrid's permission to attend the funeral",
+          "h": "Keeps your cover",
+          "you": "You asked Madrid's permission and used the funeral as cover.",
+          "fx": {
+            "flag": {
+              "cover": 1
+            },
+            "legit": 2
+          },
+          "r": "The War Ministry approves. Nobody asks why you have packed a field uniform."
+        },
+        {
+          "t": "Wait for a final signal from Mola",
+          "h": "Mola trusts you more · you look hesitant",
+          "you": "You waited for Mola's signal before moving.",
+          "fx": {
+            "loy": {
+              "mola": 10
+            },
+            "rev": [
+              "mola"
+            ],
+            "inf": {
+              "franco": -4
+            }
+          },
+          "r": "Mola's reply is curt but warm. Among the conspirators a joke goes round that you are \"Miss Canary Islands 1936\": the general who cannot make up his mind."
+        }
       ]
     },
     "lasPalmas": {
       "title": "Las Palmas · 18 July 1936",
       "text": "News arrives that the Army of Africa rose in Melilla yesterday. At dawn you declare a state of war in the Canaries. At Gando airfield, a chartered British de Havilland Dragon Rapide is waiting to fly you to Morocco.",
-      "ledger": { "k": "Las Palmas", "hist": "Franco declared a state of war and broadcast a manifesto at dawn on 18 July, then flew from Gando." },
+      "ledger": {
+        "k": "Las Palmas",
+        "hist": "Franco declared a state of war and broadcast a manifesto at dawn on 18 July, then flew from Gando."
+      },
       "choices": [
-        { "t": "Broadcast a manifesto before you leave", "h": "Legitimacy · Madrid will know where you are", "you": "You broadcast a manifesto.",
-          "fx": { "legit": 8, "flag": { "manifesto": 1 } }, "r": "Your voice carries across the islands. Madrid now knows exactly where you are." },
-        { "t": "Slip away quietly", "h": "A safer flight", "you": "You left without a broadcast.",
-          "fx": { "flag": { "quiet": 1 } }, "r": "You leave the announcements to your officers and drive to the airfield in a closed car." }
+        {
+          "t": "Broadcast a manifesto before you leave",
+          "h": "Legitimacy · Madrid will know where you are",
+          "you": "You broadcast a manifesto.",
+          "fx": {
+            "legit": 8,
+            "flag": {
+              "manifesto": 1
+            }
+          },
+          "r": "Your voice carries across the islands. Madrid now knows exactly where you are."
+        },
+        {
+          "t": "Slip away quietly",
+          "h": "A safer flight",
+          "you": "You left without a broadcast.",
+          "fx": {
+            "flag": {
+              "quiet": 1
+            }
+          },
+          "r": "You leave the announcements to your officers and drive to the airfield in a closed car."
+        }
       ]
     },
     "flight": {
       "title": "Over the Atlantic · 18 July 1936",
-      "scene": { "t": "sky" },
+      "scene": {
+        "t": "sky"
+      },
       "text": "The pilot, Captain Bebb, asks no questions. You have shaved off your moustache and carry a diplomatic passport. Tetuán is a day away, but nobody can confirm that its airfield is in rebel hands.",
-      "ledger": { "k": "The flight", "hist": "The Dragon Rapide stopped at Agadir and Casablanca. Franco reached Tetuán on the morning of 19 July." },
+      "ledger": {
+        "k": "The flight",
+        "hist": "The Dragon Rapide stopped at Agadir and Casablanca. Franco reached Tetuán on the morning of 19 July."
+      },
       "choices": [
-        { "t": "Stop overnight in Casablanca", "h": "Safe · arrive on 19 July", "you": "You stopped overnight in Casablanca.",
-          "r": "Bebb turns north for French Morocco. You will reach Tetuán tomorrow morning." },
-        { "t": "Fly straight on to Tetuán", "h": "Arrive first · some risk", "you": "You flew straight on to Tetuán.",
-          "fx": { "flag": { "straight": 1 },
-            "roll": { "p": 0.86,
-              "win": { "inf": { "franco": 6 }, "r": "You land at Tetuán hours ahead of schedule. Officers who were hesitating now see you in person." },
-              "lose": { "roll": { "p": 0.7,
-                "win": { "inf": { "franco": 2 }, "morale": -5, "r": "Rifle fire from the edge of the airfield punches holes in the wings. Bebb lands anyway, white-faced." },
-                "lose": { "end": "dead", "r": "Machine-gun fire rakes the plane on its approach." } } } } } }
+        {
+          "t": "Stop overnight in Casablanca",
+          "h": "Safe · arrive on 19 July",
+          "you": "You stopped overnight in Casablanca.",
+          "r": "Bebb turns north for French Morocco. You will reach Tetuán tomorrow morning."
+        },
+        {
+          "t": "Fly straight on to Tetuán",
+          "h": "Arrive first · some risk",
+          "you": "You flew straight on to Tetuán.",
+          "fx": {
+            "flag": {
+              "straight": 1
+            },
+            "roll": {
+              "p": 0.86,
+              "win": {
+                "inf": {
+                  "franco": 6
+                },
+                "r": "You land at Tetuán hours ahead of schedule. Officers who were hesitating now see you in person."
+              },
+              "lose": {
+                "roll": {
+                  "p": 0.7,
+                  "win": {
+                    "inf": {
+                      "franco": 2
+                    },
+                    "morale": -5,
+                    "r": "Rifle fire from the edge of the airfield punches holes in the wings. Bebb lands anyway, white-faced."
+                  },
+                  "lose": {
+                    "end": "dead",
+                    "r": "Machine-gun fire rakes the plane on its approach."
+                  }
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "tetuan": {
       "title": "Tetuán · 19 July 1936",
       "text": "Lieutenant Colonel Yagüe and the officers of the Army of Africa salute you at the airfield. You now command Spain's best troops: about 24,000 legionnaires and Moroccan Regulares. But the sailors of the Republican fleet have turned on their officers, and their warships hold the Strait.",
       "choices": [
-        { "t": "Telegraph the other generals: Africa is yours", "h": "Influence · rivals take note",
-          "fx": { "tA": 24000, "inf": { "franco": 5 }, "loy": { "mola": -5, "cabanellas": -5 } }, "r": "The message reaches every rebel garrison. In Burgos and Pamplona it is read twice." },
-        { "t": "Report to Mola as director of the rising", "h": "Mola trusts you more",
-          "fx": { "tA": 24000, "loy": { "mola": 12 }, "inf": { "mola": 3 }, "rev": ["mola"] }, "r": "Mola replies that he is glad to have the Army of Africa under the plan." }
+        {
+          "t": "Telegraph the other generals: Africa is yours",
+          "h": "Influence · rivals take note",
+          "fx": {
+            "tA": 24000,
+            "inf": {
+              "franco": 5
+            },
+            "loy": {
+              "mola": -5,
+              "cabanellas": -5
+            }
+          },
+          "r": "The message reaches every rebel garrison. In Burgos and Pamplona it is read twice."
+        },
+        {
+          "t": "Report to Mola as director of the rising",
+          "h": "Mola trusts you more",
+          "fx": {
+            "tA": 24000,
+            "loy": {
+              "mola": 12
+            },
+            "inf": {
+              "mola": 3
+            },
+            "rev": [
+              "mola"
+            ]
+          },
+          "r": "Mola replies that he is glad to have the Army of Africa under the plan."
+        }
       ]
     },
     "envoyGer": {
       "title": "Tetuán · 22 July 1936",
       "text": "Two German businessmen in Morocco, Johannes Bernhardt and Adolf Langenheim, are members of the Nazi party. They offer to carry your letter to Hitler in a seized Lufthansa Ju 52. What will you offer Germany?",
-      "ledger": { "k": "The offer to Germany", "hist": "Hitler agreed to help on 25 July. Germany was later repaid through the HISMA company, which took control of Spanish mining exports." },
+      "ledger": {
+        "k": "The offer to Germany",
+        "hist": "Hitler agreed to help on 25 July. Germany was later repaid through the HISMA company, which took control of Spanish mining exports."
+      },
       "choices": [
-        { "t": "Future rights to Spanish iron, copper and tungsten", "h": "Strong appeal · a debt for later", "you": "You offered mining rights.",
-          "fx": { "ger": 40, "flag": { "ore": 1 } }, "r": "Bernhardt smiles. Berlin will like this." },
-        { "t": "Payment in cash, on Juan March's credit", "h": "Costs funds", "you": "You offered cash.",
-          "fx": { "funds": -20, "ger": 28 }, "r": "Money talks, though Berlin may want more later." },
-        { "t": "A shared crusade against communism", "h": "Costs nothing · weaker", "you": "You appealed to anti-communism.",
-          "fx": { "ger": 16 }, "r": "Your letter is long on ideals and short on terms." }
+        {
+          "t": "Future rights to Spanish iron, copper and tungsten",
+          "h": "Strong appeal · a debt for later",
+          "you": "You offered mining rights.",
+          "fx": {
+            "ger": 40,
+            "flag": {
+              "ore": 1
+            }
+          },
+          "r": "Bernhardt smiles. Berlin will like this."
+        },
+        {
+          "t": "Payment in cash, on Juan March's credit",
+          "h": "Costs funds",
+          "you": "You offered cash.",
+          "fx": {
+            "funds": -20,
+            "ger": 28
+          },
+          "r": "Money talks, though Berlin may want more later."
+        },
+        {
+          "t": "A shared crusade against communism",
+          "h": "Costs nothing · weaker",
+          "you": "You appealed to anti-communism.",
+          "fx": {
+            "ger": 16
+          },
+          "r": "Your letter is long on ideals and short on terms."
+        }
       ]
     },
     "envoyIta": {
       "title": "Tetuán · 22 July 1936",
       "text": "The journalist Luis Bolín will fly to Rome. Mussolini is cautious: he has already turned down one request from the conspirators.",
-      "ledger": { "k": "The offer to Italy", "hist": "Mussolini first refused, then sent twelve Savoia-Marchetti bombers, paid for with money arranged by Juan March." },
+      "ledger": {
+        "k": "The offer to Italy",
+        "hist": "Mussolini first refused, then sent twelve Savoia-Marchetti bombers, paid for with money arranged by Juan March."
+      },
       "choices": [
-        { "t": "Promise Italy naval bases in the Balearic Islands", "h": "Strong appeal · alarms Britain", "you": "You promised Italy bases in the Balearics.",
-          "fx": { "ita": 38, "legit": -4, "flag": { "balearic": 1 } }, "r": "Bolín carries a promise that London would not like to read." },
-        { "t": "Pay for the aircraft with Juan March's money", "h": "Costs funds", "you": "You offered to pay with March's money.",
-          "fx": { "funds": -18, "ita": 30 }, "r": "Bolín carries a letter of credit from a London bank." },
-        { "t": "Appeal to Mussolini as a fellow anti-communist", "h": "Weaker", "you": "You appealed to anti-communism.",
-          "fx": { "ita": 14 }, "r": "Bolín carries your good wishes and little else." }
+        {
+          "t": "Promise Italy naval bases in the Balearic Islands",
+          "h": "Strong appeal · alarms Britain",
+          "you": "You promised Italy bases in the Balearics.",
+          "fx": {
+            "ita": 38,
+            "legit": -4,
+            "flag": {
+              "balearic": 1
+            }
+          },
+          "r": "Bolín carries a promise that London would not like to read."
+        },
+        {
+          "t": "Pay for the aircraft with Juan March's money",
+          "h": "Costs funds",
+          "you": "You offered to pay with March's money.",
+          "fx": {
+            "funds": -18,
+            "ita": 30
+          },
+          "r": "Bolín carries a letter of credit from a London bank."
+        },
+        {
+          "t": "Appeal to Mussolini as a fellow anti-communist",
+          "h": "Weaker",
+          "you": "You appealed to anti-communism.",
+          "fx": {
+            "ita": 14
+          },
+          "r": "Bolín carries your good wishes and little else."
+        }
       ]
     },
     "sevilla": {
       "title": "Sevilla · 7 August 1936",
       "text": "General Queipo de Llano holds Sevilla, and every night he broadcasts on Radio Sevilla. He greets you as an equal, not a superior. Your columns will march north from here toward Madrid.",
       "choices": [
-        { "t": "Leave Andalusia to Queipo", "h": "Queipo grateful · he keeps his domain",
-          "fx": { "loy": { "queipo": 20 }, "rev": ["queipo"], "inf": { "queipo": 3 } }, "r": "Queipo toasts you at dinner, and then toasts himself." },
-        { "t": "Make it clear who commands here", "h": "Influence · Queipo resents it",
-          "fx": { "inf": { "franco": 4 }, "loy": { "queipo": -15 }, "rev": ["queipo"] }, "r": "Queipo salutes. That night his broadcast does not mention you." },
-        { "t": "Ask Queipo to praise you on the radio", "h": "A 50/50 chance",
-          "fx": { "rev": ["queipo"], "roll": { "p": 0.5,
-            "win": { "legit": 8, "loy": { "queipo": 5 }, "r": "Queipo calls you the man who brought the Army of Africa home. All of Spain hears it." },
-            "lose": { "loy": { "queipo": -10 }, "r": "He mentions you once, after ten minutes about himself." } } } }
+        {
+          "t": "Leave Andalusia to Queipo",
+          "h": "Queipo grateful · he keeps his domain",
+          "fx": {
+            "loy": {
+              "queipo": 20
+            },
+            "rev": [
+              "queipo"
+            ],
+            "inf": {
+              "queipo": 3
+            }
+          },
+          "r": "Queipo toasts you at dinner, and then toasts himself."
+        },
+        {
+          "t": "Make it clear who commands here",
+          "h": "Influence · Queipo resents it",
+          "fx": {
+            "inf": {
+              "franco": 4
+            },
+            "loy": {
+              "queipo": -15
+            },
+            "rev": [
+              "queipo"
+            ]
+          },
+          "r": "Queipo salutes. That night his broadcast does not mention you."
+        },
+        {
+          "t": "Ask Queipo to praise you on the radio",
+          "h": "A 50/50 chance",
+          "fx": {
+            "rev": [
+              "queipo"
+            ],
+            "roll": {
+              "p": 0.5,
+              "win": {
+                "legit": 8,
+                "loy": {
+                  "queipo": 5
+                },
+                "r": "Queipo calls you the man who brought the Army of Africa home. All of Spain hears it."
+              },
+              "lose": {
+                "loy": {
+                  "queipo": -10
+                },
+                "r": "He mentions you once, after ten minutes about himself."
+              }
+            }
+          }
+        }
       ]
     },
     "badajozAfter": {
       "title": "Badajoz · 15 August 1936",
       "text": "Badajoz has fallen after hard street fighting. Yagüe's troops are now shooting prisoners in large numbers, many of them in the bullring. Two foreign journalists are in the city and have seen it.",
-      "ledger": { "k": "After Badajoz", "hist": "Thousands of prisoners were killed after Badajoz fell. Foreign reporters exposed it, and Franco's headquarters denied it." },
+      "ledger": {
+        "k": "After Badajoz",
+        "hist": "Thousands of prisoners were killed after Badajoz fell. Foreign reporters exposed it, and Franco's headquarters denied it."
+      },
       "choices": [
-        { "t": "Order Yagüe to stop the killings", "h": "Legitimacy · morale falls", "you": "You ordered the killings stopped.",
-          "fx": { "legit": 6, "morale": -5, "flag": { "restraint": 1 } }, "r": "Yagüe obeys, slowly. Some of his officers say you have gone soft." },
-        { "t": "Say nothing and move the column on", "h": "Terror rises · legitimacy falls", "you": "You said nothing.",
-          "fx": { "terror": 25, "legit": -6 }, "r": "The column moves on. The reports reach Lisbon, Paris and New York within days." },
-        { "t": "Deny everything to the press", "h": "Terror rises · may be exposed later", "you": "You denied the reports.",
-          "fx": { "terror": 20, "flag": { "denied": 1 } }, "r": "Your press office calls the reports Red propaganda. Some newspapers believe it. The journalists keep their notes." }
+        {
+          "t": "Order Yagüe to stop the killings",
+          "h": "Legitimacy · morale falls",
+          "you": "You ordered the killings stopped.",
+          "fx": {
+            "legit": 6,
+            "morale": -5,
+            "flag": {
+              "restraint": 1
+            }
+          },
+          "r": "Yagüe obeys, slowly. Some of his officers say you have gone soft."
+        },
+        {
+          "t": "Say nothing and move the column on",
+          "h": "Terror rises · legitimacy falls",
+          "you": "You said nothing.",
+          "fx": {
+            "terror": 25,
+            "legit": -6
+          },
+          "r": "The column moves on. The reports reach Lisbon, Paris and New York within days."
+        },
+        {
+          "t": "Deny everything to the press",
+          "h": "Terror rises · may be exposed later",
+          "you": "You denied the reports.",
+          "fx": {
+            "terror": 20,
+            "flag": {
+              "denied": 1
+            }
+          },
+          "r": "Your press office calls the reports Red propaganda. Some newspapers believe it. The journalists keep their notes."
+        }
       ]
     },
     "molaAmmo": {
       "title": "A telegram from Burgos · 25 August 1936",
       "text": "Mola's columns are stuck in the mountain passes north of Madrid, at Somosierra and the Alto del León, and they are nearly out of ammunition. German supplies reach you, not him.",
-      "ledger": { "k": "Mola's ammunition", "hist": "Franco sent ammunition north. Because he controlled the foreign supplies, the other generals came to depend on him." },
+      "ledger": {
+        "k": "Mola's ammunition",
+        "hist": "Franco sent ammunition north. Because he controlled the foreign supplies, the other generals came to depend on him."
+      },
       "choices": [
-        { "t": "Send him a large share", "h": "Costs ammo · shows you control the aid", "you": "You sent Mola a large share.",
-          "fx": { "ammo": -20, "loy": { "mola": 20 }, "inf": { "franco": 5 }, "rev": ["mola"] }, "r": "Mola's thanks are stiff, but the whole army knows where the cartridges came from." },
-        { "t": "Send a token amount", "h": "Costs a little ammo", "you": "You sent Mola a token amount.",
-          "fx": { "ammo": -6, "loy": { "mola": 5 }, "inf": { "franco": 2 } }, "r": "Mola thanks you for your generosity in a tone that suggests the opposite." },
-        { "t": "Refuse. You need it for Madrid", "h": "Mola weakened, and angry", "you": "You refused Mola.",
-          "fx": { "inf": { "mola": -5 }, "loy": { "mola": -20 }, "rev": ["mola"] }, "r": "Mola's offensive stalls in the passes. He will not forget this." }
+        {
+          "t": "Send him a large share",
+          "h": "Costs ammo · shows you control the aid",
+          "you": "You sent Mola a large share.",
+          "fx": {
+            "ammo": -20,
+            "loy": {
+              "mola": 20
+            },
+            "inf": {
+              "franco": 5
+            },
+            "rev": [
+              "mola"
+            ]
+          },
+          "r": "Mola's thanks are stiff, but the whole army knows where the cartridges came from."
+        },
+        {
+          "t": "Send a token amount",
+          "h": "Costs a little ammo",
+          "you": "You sent Mola a token amount.",
+          "fx": {
+            "ammo": -6,
+            "loy": {
+              "mola": 5
+            },
+            "inf": {
+              "franco": 2
+            }
+          },
+          "r": "Mola thanks you for your generosity in a tone that suggests the opposite."
+        },
+        {
+          "t": "Refuse. You need it for Madrid",
+          "h": "Mola weakened, and angry",
+          "you": "You refused Mola.",
+          "fx": {
+            "inf": {
+              "mola": -5
+            },
+            "loy": {
+              "mola": -20
+            },
+            "rev": [
+              "mola"
+            ]
+          },
+          "r": "Mola's offensive stalls in the passes. He will not forget this."
+        }
+      ]
+    },
+    "sabotage": {
+      "title": "Behind the lines · 4 September 1936",
+      "text": "A railway bridge behind your columns is blown up in the night, and an ammunition train goes into the river. Among the saboteurs taken the next morning is a prisoner you released in Sevilla.",
+      "choices": [
+        {
+          "t": "Order reprisals in the nearest village",
+          "h": "Terror rises · the men approve",
+          "fx": {
+            "terror": 12,
+            "ammo": -10,
+            "morale": 3
+          },
+          "r": "The village pays for the bridge. Word of it travels ahead of your columns."
+        },
+        {
+          "t": "Hunt the saboteurs, but no reprisals",
+          "h": "Lose a day · legitimacy",
+          "fx": {
+            "ammo": -10,
+            "delay": 1,
+            "legit": 2
+          },
+          "r": "Your officers spend a day combing the river banks. Some of them think you are too soft."
+        }
       ]
     }
   },
-
   "deck": [
-    { "id": "engine", "pool": "flight", "title": "Engine trouble",
+    {
+      "id": "engine",
+      "pool": "flight",
+      "title": "Engine trouble",
       "text": "Over the sea, the Dragon Rapide's port engine starts to cough. Captain Bebb shouts over the noise that he can probably keep going.",
       "choices": [
-        { "t": "Land at the nearest strip and repair it", "h": "Safe · lose a day", "fx": { "delay": 1, "inf": { "franco": -3 } }, "r": "Mechanics at a French airstrip fix a fuel line. You hear on the radio that the rising has begun without you." },
-        { "t": "Tell him to keep going", "h": "Usually fine", "fx": { "roll": { "p": 0.75,
-          "win": { "r": "The engine clears its throat and settles. Nobody mentions it again." },
-          "lose": { "delay": 1, "inf": { "franco": -2 }, "r": "The engine dies over the coast. Bebb puts down in a field, and it takes a day to get moving again." } } } }
-      ] },
-    { "id": "pollard", "pool": "flight", "title": "The tourists",
+        {
+          "t": "Land at the nearest strip and repair it",
+          "h": "Safe · lose a day",
+          "fx": {
+            "delay": 1,
+            "inf": {
+              "franco": -3
+            }
+          },
+          "r": "Mechanics at a French airstrip fix a fuel line. You hear on the radio that the rising has begun without you."
+        },
+        {
+          "t": "Tell him to keep going",
+          "h": "Usually fine",
+          "fx": {
+            "roll": {
+              "p": 0.75,
+              "win": {
+                "r": "The engine clears its throat and settles. Nobody mentions it again."
+              },
+              "lose": {
+                "delay": 1,
+                "inf": {
+                  "franco": -2
+                },
+                "r": "The engine dies over the coast. Bebb puts down in a field, and it takes a day to get moving again."
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "pollard",
+      "pool": "flight",
+      "title": "The tourists",
       "text": "The plane was hired in London with a retired British major and two young women aboard, posing as holidaymakers. Major Pollard wants to know how long this charade must go on.",
       "choices": [
-        { "t": "Pay them well and send them home", "h": "Costs funds", "fx": { "funds": -4 }, "r": "The major pockets the money and promises never to speak of it. He speaks of it for the rest of his life." },
-        { "t": "Ask them to keep up the act as far as Casablanca", "h": "Usually works", "fx": { "roll": { "p": 0.7,
-          "win": { "r": "French officials wave the English tourists and their quiet friend straight through." },
-          "lose": { "delay": 1, "r": "A French official finds the story absurd and keeps you all waiting until evening." } } } }
-      ] },
-    { "id": "molaWire", "pool": "flight", "title": "A telegram from Mola",
+        {
+          "t": "Pay them well and send them home",
+          "h": "Costs funds",
+          "fx": {
+            "funds": -4
+          },
+          "r": "The major pockets the money and promises never to speak of it. He speaks of it for the rest of his life."
+        },
+        {
+          "t": "Ask them to keep up the act as far as Casablanca",
+          "h": "Usually works",
+          "fx": {
+            "roll": {
+              "p": 0.7,
+              "win": {
+                "r": "French officials wave the English tourists and their quiet friend straight through."
+              },
+              "lose": {
+                "delay": 1,
+                "r": "A French official finds the story absurd and keeps you all waiting until evening."
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "molaWire",
+      "pool": "flight",
+      "title": "A telegram from Mola",
       "text": "Mola asks you to confirm that you will lead the Army of Africa under his plan for the rising.",
       "choices": [
-        { "t": "Reply warmly. You serve the rising", "h": "Mola trusts you more", "fx": { "loy": { "mola": 12 }, "rev": ["mola"], "inf": { "mola": 2 } }, "r": "Mola is reassured. He begins to treat you as a dependable subordinate." },
-        { "t": "Reply as an equal, not a subordinate", "h": "Influence · Mola bristles", "fx": { "inf": { "franco": 4 }, "loy": { "mola": -10 }, "rev": ["mola"] }, "r": "Your reply is polite and gives nothing away. Mola reads it as a warning." }
-      ] },
-    { "id": "customs", "pool": "flight", "req": { "noflag": "straight" }, "title": "Customs at Casablanca",
+        {
+          "t": "Reply warmly. You serve the rising",
+          "h": "Mola trusts you more",
+          "fx": {
+            "loy": {
+              "mola": 12
+            },
+            "rev": [
+              "mola"
+            ],
+            "inf": {
+              "mola": 2
+            }
+          },
+          "r": "Mola is reassured. He begins to treat you as a dependable subordinate."
+        },
+        {
+          "t": "Reply as an equal, not a subordinate",
+          "h": "Influence · Mola bristles",
+          "fx": {
+            "inf": {
+              "franco": 4
+            },
+            "loy": {
+              "mola": -10
+            },
+            "rev": [
+              "mola"
+            ]
+          },
+          "r": "Your reply is polite and gives nothing away. Mola reads it as a warning."
+        }
+      ]
+    },
+    {
+      "id": "customs",
+      "pool": "flight",
+      "req": {
+        "noflag": "straight"
+      },
+      "title": "Customs at Casablanca",
       "text": "A French customs officer studies your diplomatic passport, then your face. You shaved off your moustache this morning.",
       "choices": [
-        { "t": "Bluff, in careful French", "h": "Usually works", "fx": { "roll": { "p": 0.75,
-          "win": { "r": "He shrugs and stamps the passport." },
-          "lose": { "delay": 1, "legit": -2, "r": "He calls his superior. It takes until evening to sort out, and someone takes a photograph." } } } },
-        { "t": "Slip him an envelope", "h": "Costs funds", "fx": { "funds": -4 }, "r": "The envelope disappears. So does his interest." }
-      ] },
-    { "id": "radioNews", "pool": "flight", "title": "Bad news on the radio",
+        {
+          "t": "Bluff, in careful French",
+          "h": "Usually works",
+          "fx": {
+            "roll": {
+              "p": 0.75,
+              "win": {
+                "r": "He shrugs and stamps the passport."
+              },
+              "lose": {
+                "delay": 1,
+                "legit": -2,
+                "r": "He calls his superior. It takes until evening to sort out, and someone takes a photograph."
+              }
+            }
+          }
+        },
+        {
+          "t": "Slip him an envelope",
+          "h": "Costs funds",
+          "fx": {
+            "funds": -4
+          },
+          "r": "The envelope disappears. So does his interest."
+        }
+      ]
+    },
+    {
+      "id": "radioNews",
+      "pool": "flight",
+      "title": "Bad news on the radio",
       "text": "Radio reports say the rising has failed in Madrid and Barcelona. The officers around you go quiet.",
       "choices": [
-        { "t": "Tell them the rising will win", "h": "Morale", "fx": { "morale": 10, "inf": { "franco": 2 } }, "r": "Your calm spreads. Nobody asks how you can be so sure." },
-        { "t": "Admit it may be a long war", "h": "Legitimacy · morale falls", "fx": { "legit": 4, "morale": -6 }, "r": "Your frankness unsettles them, but word gets around that you see clearly." }
-      ] },
-
-    { "id": "march", "pool": "strait", "title": "Juan March's credit",
+        {
+          "t": "Tell them the rising will win",
+          "h": "Morale",
+          "fx": {
+            "morale": 10,
+            "inf": {
+              "franco": 2
+            }
+          },
+          "r": "Your calm spreads. Nobody asks how you can be so sure."
+        },
+        {
+          "t": "Admit it may be a long war",
+          "h": "Legitimacy · morale falls",
+          "fx": {
+            "legit": 4,
+            "morale": -6
+          },
+          "r": "Your frankness unsettles them, but word gets around that you see clearly."
+        }
+      ]
+    },
+    {
+      "id": "march",
+      "pool": "strait",
+      "title": "Juan March's credit",
       "text": "The financier Juan March, the richest man in Spain, offers you credit for aircraft, fuel and pay.",
       "choices": [
-        { "t": "Accept his money", "h": "Funds · a debt to March", "fx": { "funds": 30, "legit": -2, "flag": { "march": 1 } }, "r": "The money arrives through London banks. March will expect favours later." },
-        { "t": "Decline. You will owe no one", "h": "Legitimacy", "fx": { "legit": 3 }, "r": "March is surprised and a little offended. He will offer again, to someone else." }
-      ] },
-    { "id": "fleet", "pool": "strait", "title": "The fleet",
+        {
+          "t": "Accept his money",
+          "h": "Funds · a debt to March",
+          "fx": {
+            "funds": 30,
+            "legit": -2,
+            "flag": {
+              "march": 1
+            }
+          },
+          "r": "The money arrives through London banks. March will expect favours later."
+        },
+        {
+          "t": "Decline. You will owe no one",
+          "h": "Legitimacy",
+          "fx": {
+            "legit": 3
+          },
+          "r": "March is surprised and a little offended. He will offer again, to someone else."
+        }
+      ]
+    },
+    {
+      "id": "fleet",
+      "pool": "strait",
+      "title": "The fleet",
       "text": "Republican warships ride at anchor in the Strait. Their crews turned on their officers when they refused to support the Republic, and elected committees now command them.",
       "choices": [
-        { "t": "Send the Italian bombers against the fleet", "h": "May make the convoy safer", "req": { "min": { "ita": 30 } }, "fx": { "roll": { "p": 0.6,
-          "win": { "flag": { "fleetHit": 1 }, "r": "Bombs straddle the destroyers. Their captains grow cautious and keep further out." },
-          "lose": { "r": "The bombers miss, and the ships move out of range." } } } },
-        { "t": "Leave the fleet alone for now", "h": "No change", "r": "The warships keep patrolling." }
-      ] },
-    { "id": "molaBerlin", "pool": "strait", "title": "Mola's envoys in Berlin",
+        {
+          "t": "Send the Italian bombers against the fleet",
+          "h": "May make the convoy safer",
+          "req": {
+            "min": {
+              "ita": 30
+            }
+          },
+          "fx": {
+            "roll": {
+              "p": 0.6,
+              "win": {
+                "flag": {
+                  "fleetHit": 1
+                },
+                "r": "Bombs straddle the destroyers. Their captains grow cautious and keep further out."
+              },
+              "lose": {
+                "r": "The bombers miss, and the ships move out of range."
+              }
+            }
+          }
+        },
+        {
+          "t": "Leave the fleet alone for now",
+          "h": "No change",
+          "r": "The warships keep patrolling."
+        }
+      ]
+    },
+    {
+      "id": "molaBerlin",
+      "pool": "strait",
+      "title": "Mola's envoys in Berlin",
       "text": "Mola has sent his own men to Germany to ask for aircraft. If Berlin deals with both of you, it can play you off against each other.",
       "choices": [
-        { "t": "Insist that all German aid comes through you", "h": "Influence · Mola angry", "fx": { "inf": { "franco": 6 }, "loy": { "mola": -12 }, "ger": -4, "rev": ["mola"] }, "r": "Berlin agrees to deal with you alone. Mola learns of it from the Germans." },
-        { "t": "Agree to share the channel with Mola", "h": "Mola trusts you more", "fx": { "loy": { "mola": 12 }, "inf": { "franco": -3, "mola": 3 }, "rev": ["mola"] }, "r": "Mola appreciates the gesture. Some of the aid will go north." }
-      ] },
-    { "id": "tangier", "pool": "strait", "title": "Tangier",
+        {
+          "t": "Insist that all German aid comes through you",
+          "h": "Influence · Mola angry",
+          "fx": {
+            "inf": {
+              "franco": 6
+            },
+            "loy": {
+              "mola": -12
+            },
+            "ger": -4,
+            "rev": [
+              "mola"
+            ]
+          },
+          "r": "Berlin agrees to deal with you alone. Mola learns of it from the Germans."
+        },
+        {
+          "t": "Agree to share the channel with Mola",
+          "h": "Mola trusts you more",
+          "fx": {
+            "loy": {
+              "mola": 12
+            },
+            "inf": {
+              "franco": -3,
+              "mola": 3
+            },
+            "rev": [
+              "mola"
+            ]
+          },
+          "r": "Mola appreciates the gesture. Some of the aid will go north."
+        }
+      ]
+    },
+    {
+      "id": "tangier",
+      "pool": "strait",
+      "title": "Tangier",
       "text": "Republican warships refuel in the international port of Tangier, under the protection of the city's foreign administration.",
       "choices": [
-        { "t": "Protest to the international commission", "h": "Legitimacy", "fx": { "legit": 4 }, "r": "The commission promises to look into it. Diplomats notice that you used the proper channels." },
-        { "t": "Threaten to occupy Tangier", "h": "Morale · Italy approves", "fx": { "legit": -4, "morale": 6, "ita": 4 }, "r": "Rome approves. London does not." }
-      ] },
-    { "id": "rif", "pool": "strait", "title": "Recruiting in the Rif",
+        {
+          "t": "Protest to the international commission",
+          "h": "Legitimacy",
+          "fx": {
+            "legit": 4
+          },
+          "r": "The commission promises to look into it. Diplomats notice that you used the proper channels."
+        },
+        {
+          "t": "Threaten to occupy Tangier",
+          "h": "Morale · Italy approves",
+          "fx": {
+            "legit": -4,
+            "morale": 6,
+            "ita": 4
+          },
+          "r": "Rome approves. London does not."
+        }
+      ]
+    },
+    {
+      "id": "rif",
+      "pool": "strait",
+      "title": "Recruiting in the Rif",
       "text": "Your officers propose recruiting thousands more Moroccan Regulares from the Rif, with pay in advance and promises to local leaders.",
       "choices": [
-        { "t": "Pay for the recruitment", "h": "Costs funds", "req": { "min": { "funds": 15 } }, "fx": { "funds": -15, "tA": 3000 }, "r": "Three thousand men sign on in a week." },
-        { "t": "Promise future rewards instead", "h": "Fewer men · a promise to keep", "fx": { "tA": 1500, "flag": { "rifPromise": 1 } }, "r": "Fifteen hundred men sign on. Their leaders will remember what you promised." },
-        { "t": "Don't recruit more", "h": "No change", "r": "Your officers shrug and get back to work." }
-      ] },
-    { "id": "fuel", "pool": "strait", "title": "Fuel for the Junkers",
+        {
+          "t": "Pay for the recruitment",
+          "h": "Costs funds",
+          "req": {
+            "min": {
+              "funds": 15
+            }
+          },
+          "fx": {
+            "funds": -15,
+            "tA": 3000
+          },
+          "r": "Three thousand men sign on in a week."
+        },
+        {
+          "t": "Promise future rewards instead",
+          "h": "Fewer men · a promise to keep",
+          "fx": {
+            "tA": 1500,
+            "flag": {
+              "rifPromise": 1
+            }
+          },
+          "r": "Fifteen hundred men sign on. Their leaders will remember what you promised."
+        },
+        {
+          "t": "Don't recruit more",
+          "h": "No change",
+          "r": "Your officers shrug and get back to work."
+        }
+      ]
+    },
+    {
+      "id": "fuel",
+      "pool": "strait",
+      "title": "Fuel for the Junkers",
       "text": "The transport aircraft burn fuel faster than Tetuán can supply it. A Shell agent in Tangier will sell more, at a high price.",
       "choices": [
-        { "t": "Buy at any price", "h": "Costs funds", "fx": { "funds": -10 }, "r": "The fuel arrives by lorry at night." },
-        { "t": "Ration the flights", "h": "Fewer men will cross", "fx": { "flag": { "fuelShort": 1 } }, "r": "Fewer flights will cross each day." }
-      ] },
-    { "id": "journalist", "pool": "strait", "title": "A foreign journalist",
+        {
+          "t": "Buy at any price",
+          "h": "Costs funds",
+          "fx": {
+            "funds": -10
+          },
+          "r": "The fuel arrives by lorry at night."
+        },
+        {
+          "t": "Ration the flights",
+          "h": "Fewer men will cross",
+          "fx": {
+            "flag": {
+              "fuelShort": 1
+            }
+          },
+          "r": "Fewer flights will cross each day."
+        }
+      ]
+    },
+    {
+      "id": "journalist",
+      "pool": "strait",
+      "title": "A foreign journalist",
       "text": "An American reporter asks for an interview about your aims in this war.",
       "choices": [
-        { "t": "Grant the interview", "h": "Legitimacy, if it goes well", "fx": { "roll": { "p": 0.65,
-          "win": { "legit": 6, "r": "The article calls you calm and professional." },
-          "lose": { "legit": -6, "terror": 4, "r": "You say you will save Spain from Marxism at any cost. He asks whether that means shooting half of Spain, and you do not say no. The quote travels." } } } },
-        { "t": "Refuse", "h": "No change", "r": "He writes about the general who would not talk." }
-      ] },
-    { "id": "italLost", "pool": "strait", "req": { "min": { "ita": 30 } }, "title": "Lost bombers",
+        {
+          "t": "Grant the interview",
+          "h": "Legitimacy, if it goes well",
+          "fx": {
+            "roll": {
+              "p": 0.65,
+              "win": {
+                "legit": 6,
+                "r": "The article calls you calm and professional."
+              },
+              "lose": {
+                "legit": -6,
+                "terror": 4,
+                "r": "You say you will save Spain from Marxism at any cost. He asks whether that means shooting half of Spain, and you do not say no. The quote travels."
+              }
+            }
+          }
+        },
+        {
+          "t": "Refuse",
+          "h": "No change",
+          "r": "He writes about the general who would not talk."
+        }
+      ]
+    },
+    {
+      "id": "italLost",
+      "pool": "strait",
+      "req": {
+        "min": {
+          "ita": 30
+        }
+      },
+      "title": "Lost bombers",
       "text": "Of the twelve Italian bombers sent to you, three never arrive. One crashed into the sea and two landed in French territory, where officials are asking awkward questions.",
       "choices": [
-        { "t": "Ask Rome for replacements", "h": "Costs funds", "fx": { "funds": -8, "ita": 4 }, "r": "Rome sends replacements, and an invoice." },
-        { "t": "Make do with nine", "h": "Weaker air cover", "fx": { "flag": { "italLost": 1 } }, "r": "Nine bombers will have to do." }
-      ] },
-    { "id": "khalifa", "pool": "strait", "title": "The Khalifa of Tetuán",
+        {
+          "t": "Ask Rome for replacements",
+          "h": "Costs funds",
+          "fx": {
+            "funds": -8,
+            "ita": 4
+          },
+          "r": "Rome sends replacements, and an invoice."
+        },
+        {
+          "t": "Make do with nine",
+          "h": "Weaker air cover",
+          "fx": {
+            "flag": {
+              "italLost": 1
+            }
+          },
+          "r": "Nine bombers will have to do."
+        }
+      ]
+    },
+    {
+      "id": "khalifa",
+      "pool": "strait",
+      "title": "The Khalifa of Tetuán",
       "text": "The Khalifa, the nominal ruler of the Spanish zone of Morocco, offers his public blessing for the rising if you respect Moroccan religious life.",
       "choices": [
-        { "t": "Accept, with a public ceremony", "h": "Recruits and morale", "fx": { "legit": 3, "tA": 1000, "morale": 4 }, "r": "The ceremony brings a thousand more volunteers." },
-        { "t": "Keep it private", "h": "No change", "r": "The Khalifa is courteous and unconvinced." }
-      ] },
-
-    { "id": "heat", "pool": "march", "title": "Heat on the road",
+        {
+          "t": "Accept, with a public ceremony",
+          "h": "Recruits and morale",
+          "fx": {
+            "legit": 3,
+            "tA": 1000,
+            "morale": 4
+          },
+          "r": "The ceremony brings a thousand more volunteers."
+        },
+        {
+          "t": "Keep it private",
+          "h": "No change",
+          "r": "The Khalifa is courteous and unconvinced."
+        }
+      ]
+    },
+    {
+      "id": "heat",
+      "pool": "march",
+      "title": "Heat on the road",
       "text": "It is August in Extremadura. Water is short and men collapse on the march.",
       "choices": [
-        { "t": "Push on through the heat", "h": "Morale falls", "fx": { "morale": -8 }, "r": "The column keeps its pace and leaves stragglers behind." },
-        { "t": "Rest during the day, march at night", "h": "Lose a day · morale", "fx": { "delay": 1, "morale": 5 }, "r": "The men recover. The column loses a day." }
-      ] },
-    { "id": "train", "pool": "march", "title": "The ammunition train",
+        {
+          "t": "Push on through the heat",
+          "h": "Morale falls",
+          "fx": {
+            "morale": -8
+          },
+          "r": "The column keeps its pace and leaves stragglers behind."
+        },
+        {
+          "t": "Rest during the day, march at night",
+          "h": "Lose a day · morale",
+          "fx": {
+            "delay": 1,
+            "morale": 5
+          },
+          "r": "The men recover. The column loses a day."
+        }
+      ]
+    },
+    {
+      "id": "train",
+      "pool": "march",
+      "title": "The ammunition train",
       "text": "A train from Sevilla brings ammunition. Queipo de Llano makes sure everyone knows who sent it.",
       "choices": [
-        { "t": "Thank Queipo publicly", "h": "Ammo · Queipo pleased", "fx": { "ammo": 20, "loy": { "queipo": 12 }, "inf": { "queipo": 2 } }, "r": "Queipo reads your thanks aloud on Radio Sevilla." },
-        { "t": "Say nothing", "h": "Ammo · Queipo offended", "fx": { "ammo": 20, "loy": { "queipo": -6 } }, "r": "Queipo notices the silence." }
-      ] },
-    { "id": "ambush", "pool": "march", "title": "Ambush in the olive groves",
+        {
+          "t": "Thank Queipo publicly",
+          "h": "Ammo · Queipo pleased",
+          "fx": {
+            "ammo": 20,
+            "loy": {
+              "queipo": 12
+            },
+            "inf": {
+              "queipo": 2
+            }
+          },
+          "r": "Queipo reads your thanks aloud on Radio Sevilla."
+        },
+        {
+          "t": "Say nothing",
+          "h": "Ammo · Queipo offended",
+          "fx": {
+            "ammo": 20,
+            "loy": {
+              "queipo": -6
+            }
+          },
+          "r": "Queipo notices the silence."
+        }
+      ]
+    },
+    {
+      "id": "ambush",
+      "pool": "march",
+      "title": "Ambush in the olive groves",
       "text": "Militiamen open fire from the olive groves along the road.",
       "choices": [
-        { "t": "Fight through", "h": "Losses · influence", "fx": { "tS": -300, "inf": { "franco": 2 }, "morale": 3 }, "r": "The column clears the groves at a cost." },
-        { "t": "Detour around them", "h": "Lose two days", "fx": { "delay": 2 }, "r": "The detour takes two days through dry hills." }
-      ] },
-    { "id": "bombers", "pool": "march", "req": { "min": { "ger": 30 } }, "title": "German pilots",
+        {
+          "t": "Fight through",
+          "h": "Losses · influence",
+          "fx": {
+            "tS": -300,
+            "inf": {
+              "franco": 2
+            },
+            "morale": 3
+          },
+          "r": "The column clears the groves at a cost."
+        },
+        {
+          "t": "Detour around them",
+          "h": "Lose two days",
+          "fx": {
+            "delay": 2
+          },
+          "r": "The detour takes two days through dry hills."
+        }
+      ]
+    },
+    {
+      "id": "bombers",
+      "pool": "march",
+      "req": {
+        "min": {
+          "ger": 30
+        }
+      },
+      "title": "German pilots",
       "text": "German airmen flying your Ju 52s offer to bomb Republican positions ahead of your columns, and Madrid itself.",
       "choices": [
-        { "t": "Approve raids on the front only", "h": "Germany pleased · ammo", "fx": { "ger": 5, "ammo": 5 }, "r": "The bombers hit militia trenches ahead of the column." },
-        { "t": "Approve raids on Madrid too", "h": "Germany pleased · terror", "fx": { "ger": 10, "terror": 8, "legit": -6 }, "r": "Bombs fall on Madrid. Photographs of the damage appear in foreign newspapers." },
-        { "t": "Keep them flying transports", "h": "Germany cools", "fx": { "ger": -4 }, "r": "The Germans grumble and keep flying." }
-      ] },
-    { "id": "prisoners", "pool": "march", "title": "Prisoners on the road",
+        {
+          "t": "Approve raids on the front only",
+          "h": "Germany pleased · ammo",
+          "fx": {
+            "ger": 5,
+            "ammo": 5
+          },
+          "r": "The bombers hit militia trenches ahead of the column."
+        },
+        {
+          "t": "Approve raids on Madrid too",
+          "h": "Germany pleased · terror",
+          "fx": {
+            "ger": 10,
+            "terror": 8,
+            "legit": -6
+          },
+          "r": "Bombs fall on Madrid. Photographs of the damage appear in foreign newspapers."
+        },
+        {
+          "t": "Keep them flying transports",
+          "h": "Germany cools",
+          "fx": {
+            "ger": -4
+          },
+          "r": "The Germans grumble and keep flying."
+        }
+      ]
+    },
+    {
+      "id": "prisoners",
+      "pool": "march",
+      "title": "Prisoners on the road",
       "text": "Your column has taken several hundred prisoners. Guarding them slows the advance.",
       "choices": [
-        { "t": "Send them back to Sevilla under guard", "h": "Lose a day · fewer men", "fx": { "delay": 1, "tS": -200, "legit": 2 }, "r": "Two hundred of your men march them south." },
-        { "t": "Hand them over to the local Falange", "h": "Terror rises", "fx": { "terror": 15, "legit": -4 }, "r": "The column moves on. What happens to them is not recorded in your reports." }
-      ] },
-    { "id": "bishop", "pool": "march", "title": "A bishop's blessing",
+        {
+          "t": "Send them back to Sevilla under guard",
+          "h": "Lose a day · fewer men",
+          "fx": {
+            "delay": 1,
+            "tS": -200,
+            "legit": 2
+          },
+          "r": "Two hundred of your men march them south."
+        },
+        {
+          "t": "Hand them over to the local Falange",
+          "h": "Terror rises",
+          "fx": {
+            "terror": 15,
+            "legit": -4
+          },
+          "r": "The column moves on. What happens to them is not recorded in your reports."
+        }
+      ]
+    },
+    {
+      "id": "bishop",
+      "pool": "march",
+      "title": "A bishop's blessing",
       "text": "The bishop of a captured town offers to bless your troops in public and to call the war a crusade.",
       "choices": [
-        { "t": "Accept, with full ceremony", "h": "Legitimacy · lose a day", "fx": { "legit": 8, "morale": 5, "delay": 1 }, "r": "The ceremony is photographed for every newspaper in rebel Spain." },
-        { "t": "Thank him and march on", "h": "A little legitimacy", "fx": { "legit": 2 }, "r": "The bishop blesses the column as it passes." }
-      ] },
-    { "id": "deserters", "pool": "march", "title": "Deserters",
+        {
+          "t": "Accept, with full ceremony",
+          "h": "Legitimacy · lose a day",
+          "fx": {
+            "legit": 8,
+            "morale": 5,
+            "delay": 1
+          },
+          "r": "The ceremony is photographed for every newspaper in rebel Spain."
+        },
+        {
+          "t": "Thank him and march on",
+          "h": "A little legitimacy",
+          "fx": {
+            "legit": 2
+          },
+          "r": "The bishop blesses the column as it passes."
+        }
+      ]
+    },
+    {
+      "id": "deserters",
+      "pool": "march",
+      "title": "Deserters",
       "text": "Conscripts from Sevilla are slipping away at night.",
       "choices": [
-        { "t": "Make an example of the ringleaders", "h": "Morale · terror", "fx": { "morale": 4, "terror": 8 }, "r": "The desertions stop." },
-        { "t": "Raise their pay", "h": "Costs funds", "req": { "min": { "funds": 10 } }, "fx": { "funds": -10, "morale": 6 }, "r": "The desertions slow." },
-        { "t": "Let them go", "h": "Fewer men", "fx": { "tS": -400 }, "r": "Four hundred men are gone by the end of the week." }
-      ] },
-    { "id": "portugal", "pool": "march", "title": "Help from Portugal",
+        {
+          "t": "Make an example of the ringleaders",
+          "h": "Morale · terror",
+          "fx": {
+            "morale": 4,
+            "terror": 8
+          },
+          "r": "The desertions stop."
+        },
+        {
+          "t": "Raise their pay",
+          "h": "Costs funds",
+          "req": {
+            "min": {
+              "funds": 10
+            }
+          },
+          "fx": {
+            "funds": -10,
+            "morale": 6
+          },
+          "r": "The desertions slow."
+        },
+        {
+          "t": "Let them go",
+          "h": "Fewer men",
+          "fx": {
+            "tS": -400
+          },
+          "r": "Four hundred men are gone by the end of the week."
+        }
+      ]
+    },
+    {
+      "id": "portugal",
+      "pool": "march",
+      "title": "Help from Portugal",
       "text": "Salazar's government in Portugal lets supplies cross the border and hands Republican refugees back to you.",
       "choices": [
-        { "t": "Accept, quietly", "h": "Ammo", "fx": { "ammo": 12, "funds": -4 }, "r": "Lorries cross the border at night." },
-        { "t": "Accept, and thank Salazar publicly", "h": "Ammo · legitimacy falls", "fx": { "ammo": 12, "legit": -2, "ita": 2 }, "r": "London protests to Lisbon. Rome approves." }
-      ] },
-    { "id": "requetes", "pool": "march", "title": "Carlist volunteers",
+        {
+          "t": "Accept, quietly",
+          "h": "Ammo",
+          "fx": {
+            "ammo": 12,
+            "funds": -4
+          },
+          "r": "Lorries cross the border at night."
+        },
+        {
+          "t": "Accept, and thank Salazar publicly",
+          "h": "Ammo · legitimacy falls",
+          "fx": {
+            "ammo": 12,
+            "legit": -2,
+            "ita": 2
+          },
+          "r": "London protests to Lisbon. Rome approves."
+        }
+      ]
+    },
+    {
+      "id": "requetes",
+      "pool": "march",
+      "title": "Carlist volunteers",
       "text": "The Carlists of Navarre offer volunteer battalions, the requetés. Their leaders want a voice in any future government.",
       "choices": [
-        { "t": "Accept them", "h": "More men · a promise", "fx": { "tS": 1500, "flag": { "carlists": 1 }, "loy": { "mola": 4 } }, "r": "Fifteen hundred men in red berets join your columns." },
-        { "t": "Decline politely", "h": "No change", "r": "The Carlists go north to fight under Mola instead." }
-      ] },
-    { "id": "typhoid", "pool": "march", "title": "Sickness in the column",
+        {
+          "t": "Accept them",
+          "h": "More men · a promise",
+          "fx": {
+            "tS": 1500,
+            "flag": {
+              "carlists": 1
+            },
+            "loy": {
+              "mola": 4
+            }
+          },
+          "r": "Fifteen hundred men in red berets join your columns."
+        },
+        {
+          "t": "Decline politely",
+          "h": "No change",
+          "r": "The Carlists go north to fight under Mola instead."
+        }
+      ]
+    },
+    {
+      "id": "typhoid",
+      "pool": "march",
+      "title": "Sickness in the column",
       "text": "Typhoid has broken out in two companies.",
       "choices": [
-        { "t": "Quarantine them", "h": "Lose a day", "fx": { "delay": 1, "tS": -150 }, "r": "The outbreak is contained." },
-        { "t": "Keep marching", "h": "More men lost", "fx": { "tS": -600, "morale": -4 }, "r": "The sickness spreads through the column." }
-      ] },
-    { "id": "yague", "pool": "march", "title": "Yagüe complains",
+        {
+          "t": "Quarantine them",
+          "h": "Lose a day",
+          "fx": {
+            "delay": 1,
+            "tS": -150
+          },
+          "r": "The outbreak is contained."
+        },
+        {
+          "t": "Keep marching",
+          "h": "More men lost",
+          "fx": {
+            "tS": -600,
+            "morale": -4
+          },
+          "r": "The sickness spreads through the column."
+        }
+      ]
+    },
+    {
+      "id": "yague",
+      "pool": "march",
+      "title": "Yagüe complains",
       "text": "Yagüe says your orders are too cautious. He is popular with the legionnaires.",
       "choices": [
-        { "t": "Rebuke him", "h": "Influence · morale falls", "fx": { "morale": -5, "inf": { "franco": 2 } }, "r": "Yagüe salutes stiffly." },
-        { "t": "Praise him in the next communiqué", "h": "Morale", "fx": { "morale": 8 }, "r": "The legionnaires cheer when the communiqué is read out." }
-      ] },
-    { "id": "radioSevilla", "pool": "march", "title": "Radio Sevilla",
+        {
+          "t": "Rebuke him",
+          "h": "Influence · morale falls",
+          "fx": {
+            "morale": -5,
+            "inf": {
+              "franco": 2
+            }
+          },
+          "r": "Yagüe salutes stiffly."
+        },
+        {
+          "t": "Praise him in the next communiqué",
+          "h": "Morale",
+          "fx": {
+            "morale": 8
+          },
+          "r": "The legionnaires cheer when the communiqué is read out."
+        }
+      ]
+    },
+    {
+      "id": "radioSevilla",
+      "pool": "march",
+      "title": "Radio Sevilla",
       "text": "Every night Queipo fills Radio Sevilla with boasts, jokes and threats. Listeners across Spain know his voice better than yours.",
       "choices": [
-        { "t": "Start your own broadcasts", "h": "Costs funds · legitimacy", "fx": { "funds": -6, "legit": 5, "inf": { "queipo": -2 } }, "r": "Your broadcasts are drier than Queipo's, but they are yours." },
-        { "t": "Let him talk", "h": "No change", "r": "Queipo keeps talking." }
-      ] },
-    { "id": "monarchists", "pool": "march", "title": "The monarchists",
+        {
+          "t": "Start your own broadcasts",
+          "h": "Costs funds · legitimacy",
+          "fx": {
+            "funds": -6,
+            "legit": 5,
+            "inf": {
+              "queipo": -2
+            }
+          },
+          "r": "Your broadcasts are drier than Queipo's, but they are yours."
+        },
+        {
+          "t": "Let him talk",
+          "h": "No change",
+          "r": "Queipo keeps talking."
+        }
+      ]
+    },
+    {
+      "id": "monarchists",
+      "pool": "march",
+      "title": "The monarchists",
       "text": "Monarchist officers ask you to promise that the king will return once the war is won.",
       "choices": [
-        { "t": "Promise it", "h": "Kindelán pleased · a promise", "fx": { "loy": { "kindelan": 12 }, "legit": 3, "flag": { "monarchy": 1 }, "rev": ["kindelan"] }, "r": "Kindelán shakes your hand for a long time." },
-        { "t": "Stay vague", "h": "Kindelán disappointed", "fx": { "loy": { "kindelan": -6 } }, "r": "You say the army must decide nothing until the war is won." }
-      ] },
-    { "id": "mules", "pool": "march", "req": { "min": { "funds": 8 } }, "title": "Buying mules",
+        {
+          "t": "Promise it",
+          "h": "Kindelán pleased · a promise",
+          "fx": {
+            "loy": {
+              "kindelan": 12
+            },
+            "legit": 3,
+            "flag": {
+              "monarchy": 1
+            },
+            "rev": [
+              "kindelan"
+            ]
+          },
+          "r": "Kindelán shakes your hand for a long time."
+        },
+        {
+          "t": "Stay vague",
+          "h": "Kindelán disappointed",
+          "fx": {
+            "loy": {
+              "kindelan": -6
+            }
+          },
+          "r": "You say the army must decide nothing until the war is won."
+        }
+      ]
+    },
+    {
+      "id": "mules",
+      "pool": "march",
+      "req": {
+        "min": {
+          "funds": 8
+        }
+      },
+      "title": "Buying mules",
       "text": "Your lorries cannot reach every hill. Local dealers offer mules at wartime prices.",
       "choices": [
-        { "t": "Buy them", "h": "Costs funds · ammo · morale", "fx": { "funds": -8, "ammo": 6, "morale": 2 }, "r": "Supplies reach the forward companies." },
-        { "t": "Make do", "h": "No change", "r": "The men carry what they can." }
-      ] },
-    { "id": "press", "pool": "march", "req": { "min": { "terror": 25 } }, "title": "The foreign press",
+        {
+          "t": "Buy them",
+          "h": "Costs funds · ammo · morale",
+          "fx": {
+            "funds": -8,
+            "ammo": 6,
+            "morale": 2
+          },
+          "r": "Supplies reach the forward companies."
+        },
+        {
+          "t": "Make do",
+          "h": "No change",
+          "r": "The men carry what they can."
+        }
+      ]
+    },
+    {
+      "id": "press",
+      "pool": "march",
+      "req": {
+        "min": {
+          "terror": 25
+        }
+      },
+      "title": "The foreign press",
       "text": "Newspapers in London, Paris and New York report killings behind your lines.",
       "choices": [
-        { "t": "Invite correspondents to see for themselves", "h": "Legitimacy · less terror", "fx": { "legit": 4, "terror": -6 }, "r": "The correspondents see what you show them, and some of what you do not." },
-        { "t": "Ban foreign reporters from the front", "h": "Legitimacy falls", "fx": { "legit": -4 }, "r": "The reporters write about the ban instead." },
-        { "t": "Blame the reports on Red propaganda", "h": "A little legitimacy lost", "fx": { "legit": -1 }, "r": "Your supporters believe you. Few others do." }
-      ] }
+        {
+          "t": "Invite correspondents to see for themselves",
+          "h": "Legitimacy · less terror",
+          "fx": {
+            "legit": 4,
+            "terror": -6
+          },
+          "r": "The correspondents see what you show them, and some of what you do not."
+        },
+        {
+          "t": "Ban foreign reporters from the front",
+          "h": "Legitimacy falls",
+          "fx": {
+            "legit": -4
+          },
+          "r": "The reporters write about the ban instead."
+        },
+        {
+          "t": "Blame the reports on Red propaganda",
+          "h": "A little legitimacy lost",
+          "fx": {
+            "legit": -1
+          },
+          "r": "Your supporters believe you. Few others do."
+        }
+      ]
+    },
+    {
+      "id": "lufthansa",
+      "pool": "strait",
+      "title": "The German crews",
+      "text": "The Lufthansa pilots flying your Ju 52s are civilians on loan. They want danger money, paid in pesetas, before they fly another day.",
+      "choices": [
+        {
+          "t": "Pay them",
+          "h": "Costs funds · Germany pleased",
+          "fx": {
+            "funds": -6,
+            "ger": 3
+          },
+          "r": "The pilots fly double shifts all week."
+        },
+        {
+          "t": "Tell them to take it up with Berlin",
+          "h": "Germany cools",
+          "fx": {
+            "ger": -3
+          },
+          "r": "Berlin pays them in the end, and remembers who did not."
+        }
+      ]
+    },
+    {
+      "id": "gibraltar",
+      "pool": "strait",
+      "title": "British warships at Gibraltar",
+      "text": "Royal Navy ships watch the Strait from Gibraltar. Britain says it is neutral, but your aircraft keep flying close to its harbour.",
+      "choices": [
+        {
+          "t": "Assure London you will respect Gibraltar",
+          "h": "Legitimacy",
+          "fx": {
+            "legit": 4
+          },
+          "r": "The British consul in Tetuán calls you a reasonable man."
+        },
+        {
+          "t": "Ignore them",
+          "h": "No change",
+          "r": "The British keep watching."
+        }
+      ]
+    },
+    {
+      "id": "nonintervention",
+      "pool": "march",
+      "title": "Non-intervention",
+      "text": "Britain and France propose that no country send arms to Spain. Germany and Italy sign the agreement and keep sending aircraft anyway. The Republic, which can no longer buy French weapons, is furious.",
+      "choices": [
+        {
+          "t": "Welcome the agreement in public",
+          "h": "Legitimacy",
+          "fx": {
+            "legit": 5
+          },
+          "r": "You call it a wise step toward peace, knowing it hurts only your enemy."
+        },
+        {
+          "t": "Denounce it as a plot against Spain",
+          "h": "Italy pleased · legitimacy falls",
+          "fx": {
+            "ita": 3,
+            "legit": -2
+          },
+          "r": "Rome applauds. London sighs."
+        }
+      ]
+    },
+    {
+      "id": "viriatos",
+      "pool": "march",
+      "title": "Portuguese volunteers",
+      "text": "Several hundred Portuguese volunteers, the Viriatos, cross the border to join your columns.",
+      "choices": [
+        {
+          "t": "Take them into the Legion",
+          "h": "More men",
+          "fx": {
+            "tS": 500,
+            "legit": -1
+          },
+          "r": "The Legion has always taken foreigners."
+        },
+        {
+          "t": "Send them home",
+          "h": "Legitimacy",
+          "fx": {
+            "legit": 2
+          },
+          "r": "Lisbon is quietly relieved."
+        }
+      ]
+    },
+    {
+      "id": "harvest",
+      "pool": "march",
+      "title": "The harvest",
+      "text": "Villages along the road have just brought in the wheat harvest. Your quartermasters want it.",
+      "choices": [
+        {
+          "t": "Requisition it",
+          "h": "Funds · morale · terror",
+          "fx": {
+            "funds": 8,
+            "morale": 3,
+            "terror": 5
+          },
+          "r": "The granaries are emptied. The villages will go hungry this winter."
+        },
+        {
+          "t": "Pay the farmers",
+          "h": "Costs funds · legitimacy",
+          "req": {
+            "min": {
+              "funds": 6
+            }
+          },
+          "fx": {
+            "funds": -6,
+            "legit": 3
+          },
+          "r": "Some farmers cheer the column as it passes."
+        }
+      ]
+    },
+    {
+      "id": "hospitals",
+      "pool": "march",
+      "title": "The hospitals of Sevilla",
+      "text": "The hospitals in Sevilla are full of your wounded, short of bandages, morphine and surgeons.",
+      "choices": [
+        {
+          "t": "Divert supplies and money to them",
+          "h": "Costs funds · morale",
+          "req": {
+            "min": {
+              "funds": 6
+            }
+          },
+          "fx": {
+            "funds": -6,
+            "morale": 7
+          },
+          "r": "Word gets back to the front that the wounded are cared for."
+        },
+        {
+          "t": "The front comes first",
+          "h": "Morale falls",
+          "fx": {
+            "morale": -4
+          },
+          "r": "The men notice."
+        }
+      ]
+    },
+    {
+      "id": "warlimont",
+      "pool": "march",
+      "req": {
+        "min": {
+          "ger": 30
+        }
+      },
+      "title": "A German observer",
+      "text": "Lieutenant Colonel Walter Warlimont arrives from Berlin to report on how German aid is being used. He wants to see the front for himself.",
+      "choices": [
+        {
+          "t": "Give him a full tour",
+          "h": "Germany pleased · lose a day",
+          "fx": {
+            "ger": 6,
+            "delay": 1
+          },
+          "r": "Warlimont's report to Berlin is glowing."
+        },
+        {
+          "t": "Keep him at headquarters",
+          "h": "Germany cools",
+          "fx": {
+            "ger": -4
+          },
+          "r": "Warlimont writes that you are secretive."
+        }
+      ]
+    },
+    {
+      "id": "irun",
+      "pool": "march",
+      "title": "Irún falls",
+      "text": "Mola's troops have taken Irún and closed the French border to the Basques. The newspapers are full of Mola.",
+      "choices": [
+        {
+          "t": "Congratulate Mola publicly",
+          "h": "Mola grateful · his fame grows",
+          "fx": {
+            "loy": {
+              "mola": 8
+            },
+            "inf": {
+              "mola": 2
+            },
+            "rev": [
+              "mola"
+            ]
+          },
+          "r": "Mola thanks you. The press calls you both heroes."
+        },
+        {
+          "t": "Point out it was your German bombers",
+          "h": "Your influence · Mola angry",
+          "fx": {
+            "inf": {
+              "franco": 3
+            },
+            "loy": {
+              "mola": -8
+            },
+            "rev": [
+              "mola"
+            ]
+          },
+          "r": "Officers in Burgos repeat it. Mola hears it from three of them."
+        }
+      ]
+    },
+    {
+      "id": "regulares",
+      "pool": "march",
+      "title": "Back pay",
+      "text": "The Moroccan Regulares have not been paid for six weeks. Their officers warn of trouble.",
+      "choices": [
+        {
+          "t": "Pay them now",
+          "h": "Costs funds · morale",
+          "req": {
+            "min": {
+              "funds": 10
+            }
+          },
+          "fx": {
+            "funds": -10,
+            "morale": 5
+          },
+          "r": "The arrears are paid in silver duros."
+        },
+        {
+          "t": "Promise to pay after Madrid",
+          "h": "Morale falls",
+          "fx": {
+            "morale": -6
+          },
+          "r": "The promise is received in silence."
+        }
+      ]
+    },
+    {
+      "id": "chaplain",
+      "pool": "march",
+      "title": "A chaplain's letter",
+      "text": "An army chaplain writes to you directly. He has heard confessions from men about to be shot, and asks you to stop the executions behind the lines.",
+      "choices": [
+        {
+          "t": "Order the executions restricted to court-martial cases",
+          "h": "Less terror · legitimacy",
+          "fx": {
+            "terror": -8,
+            "legit": 4,
+            "loy": {
+              "queipo": -4
+            }
+          },
+          "r": "Some local commanders obey. Queipo calls the order an insult."
+        },
+        {
+          "t": "File the letter",
+          "h": "No change",
+          "r": "The letter goes into a drawer."
+        }
+      ]
+    },
+    {
+      "id": "aviator",
+      "pool": "march",
+      "title": "A captured aviator",
+      "text": "Your men have captured a Republican pilot whose plane came down near the road.",
+      "choices": [
+        {
+          "t": "Offer him for exchange through the Red Cross",
+          "h": "Legitimacy",
+          "fx": {
+            "legit": 4
+          },
+          "r": "The Red Cross arranges an exchange for one of your officers."
+        },
+        {
+          "t": "Hand him to the military court",
+          "h": "Terror rises",
+          "fx": {
+            "terror": 5
+          },
+          "r": "His trial takes twenty minutes."
+        }
+      ]
+    },
+    {
+      "id": "nicolas",
+      "pool": "march",
+      "title": "Your brother Nicolás",
+      "text": "Your staff is overwhelmed by politics: monarchists, Falangists, Carlists, bishops and foreign envoys. Your brother Nicolás offers to run your political office.",
+      "choices": [
+        {
+          "t": "Put Nicolás in charge",
+          "h": "Your influence · rivals notice",
+          "fx": {
+            "inf": {
+              "franco": 4
+            },
+            "legit": -1
+          },
+          "r": "Nicolás starts working the telephones. Within a week every faction has his number."
+        },
+        {
+          "t": "Keep politics in the army's hands",
+          "h": "No change",
+          "r": "The army keeps the files, and loses some of them."
+        }
+      ]
+    }
   ]
 }

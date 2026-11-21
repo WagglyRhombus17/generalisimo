@@ -1,8 +1,10 @@
 // The event panel in the bottom right: a question with numbered choices, then the result.
 // Text types itself out; a click or Enter finishes it at once.
 
+import { motionOn } from '../settings.js';
+import { sfx } from '../audio/audio.js';
+
 const box = () => document.getElementById('dlg');
-const reduceMotion = () => !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
 let typing = null;
 
 function el(tag, cls, text) {
@@ -15,15 +17,16 @@ function el(tag, cls, text) {
 // Types text into p without moving the layout: the untyped rest is present but invisible.
 function typeInto(p, text) {
   finishTyping();
-  if (reduceMotion() || !text) { p.textContent = text; return; }
+  if (!motionOn() || !text) { p.textContent = text; return; }
   const shown = el('span'), rest = el('span', 'ghost', text);
   p.replaceChildren(shown, rest);
-  let i = 0;
+  let i = 0, n = 0;
   const done = () => { clearInterval(id); p.textContent = text; typing = null; };
   const id = setInterval(() => {
     i = Math.min(text.length, i + 3);
     shown.textContent = text.slice(0, i);
     rest.textContent = text.slice(i);
+    if (n++ % 3 === 0) sfx('type');
     if (i >= text.length) done();
   }, 16);
   typing = { done };
@@ -55,7 +58,7 @@ export function ask({ title, text, choices }) {
       b.disabled = !!c.dis;
       b.append(el('b', null, `${i + 1}.`), document.createTextNode(c.t));
       if (c.dis || c.h) b.append(el('span', null, c.dis || c.h));
-      b.addEventListener('click', () => { if (!b.disabled) { finishTyping(); resolve(i); } });
+      b.addEventListener('click', () => { if (!b.disabled) { finishTyping(); sfx('select'); resolve(i); } });
       list.append(b);
     });
     const p = el('p', 'txt');
@@ -79,6 +82,8 @@ export function tell({ title, text, chips = [], btn = 'CONTINUE' }) {
       const row = el('div', 'chips');
       chips.forEach((c, i) => { const s = el('span', `chip ${c.c}`, c.t); s.style.animationDelay = `${0.15 + i * 0.06}s`; row.append(s); });
       d.append(row);
+      const good = chips.some(c => c.c === 'good'), bad = chips.some(c => c.c === 'bad');
+      if (good !== bad) sfx(good ? 'good' : 'bad');
     }
     const go = el('button', 'go', `${btn} ▶`);
     go.type = 'button';

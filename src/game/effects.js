@@ -55,7 +55,7 @@ export function passTime(S, days) {
     S.funds = clamp(S.funds - 0.25, 0, 100);
     if (S.funds <= 0) S.morale -= 0.5;
     S.morale = clamp(S.morale + (60 - S.morale) * 0.03, 0, 100);
-    S.inf.mola = clamp(S.inf.mola + 0.12, 0, 100);
+    S.inf.mola = clamp(S.inf.mola + 0.15, 0, 100);
     if (S.ch >= 2) S.inf.queipo = clamp(S.inf.queipo + 0.08, 0, 100);
     if (S.alive.sanjurjo && S.ch >= 2) S.inf.sanjurjo = clamp(S.inf.sanjurjo + 0.1, 0, 100);
     if (S.flags.pipe || S.flags.sea) {

@@ -3,6 +3,7 @@ import { rand, clamp, snapshot, chips } from './state.js';
 import { applyFx } from './effects.js';
 import { ask, tell } from '../screens/dialog.js';
 import { renderHUD } from '../screens/hud.js';
+import { sfx } from '../audio/audio.js';
 
 const TACTICS = [
   { t: 'Frontal assault', m: 1, win: 140, lose: 260, ld: 1, h: 'Fast · heavy losses' },
@@ -41,6 +42,7 @@ export async function battle(S, B, ctx) {
     const i = await ask({ title: `Battle of ${B.name}`, text, choices: opts });
     if (!ctx.alive()) return;
     const { T, p } = opts[i];
+    sfx('boom');
     const before = snapshot(S);
     S.ammo = clamp(S.ammo - 5 - (T.ammo || 0), 0, 100);
     const forced = tries >= 2;

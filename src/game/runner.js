@@ -8,6 +8,7 @@ import { renderHUD } from '../screens/hud.js';
 import { chapterCard, showEnding } from '../screens/cards.js';
 import { airlift } from '../minigames/ju52.js';
 import { council, vote } from '../minigames/council.js';
+import { tribunal } from '../minigames/tribunal.js';
 
 export async function run(S, ctx) {
   const { D } = ctx;
@@ -66,6 +67,7 @@ const STEP = {
   async battle(S, st, ctx) { await battle(S, ctx.D.chapters.battles[st.id], ctx); },
   async air(S, st, ctx) { await airlift(S, ctx); },
   async council(S, st, ctx) { await council(S, ctx); },
+  async tribunal(S, st, ctx) { await tribunal(S, ctx); },
   async vote(S, st, ctx) { await vote(S, ctx); }
 };
 

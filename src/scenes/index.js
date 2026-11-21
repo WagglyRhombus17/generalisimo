@@ -5,12 +5,12 @@ import { airfield } from './airfield.js';
 import { sky } from './sky.js';
 import { night } from './night.js';
 import { strait } from './strait.js';
+import { motionOn } from '../settings.js';
 
 const BUILD = { road, island, airfield, sky, night, strait };
 const cache = new Map();
 let raf = 0, lastKey = '';
 
-const reduceMotion = () => !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
 
 export function setScene(cv, desc) {
   cancelAnimationFrame(raf); raf = 0;
@@ -22,7 +22,7 @@ export function setScene(cv, desc) {
   }
   let sc = cache.get(key);
   if (!sc) { sc = BUILD[desc.t](desc); cache.set(key, sc); }
-  if (!sc.frame || reduceMotion()) {
+  if (!sc.frame || !motionOn()) {
     const f = sc.base.copy();
     if (sc.frame) sc.frame(f, 0);
     f.to(cv);

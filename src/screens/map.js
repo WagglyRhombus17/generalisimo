@@ -2,6 +2,7 @@
 import { FB, dith, hash } from '../engine/pixel.js';
 import { TACT } from '../engine/palettes.js';
 import { fmtDate } from '../game/state.js';
+import { sfx } from '../audio/audio.js';
 
 // Coastlines and fronts in a 400x320 "base" space, projected onto the screen.
 const IBERIA = [[48, 46], [62, 40], [90, 38], [120, 36], [160, 38], [200, 36], [232, 40], [262, 40], [300, 52], [340, 62], [346, 72], [338, 90], [320, 104], [306, 122], [300, 140], [296, 160], [308, 176], [318, 184], [300, 196], [290, 212], [282, 230], [264, 244], [246, 252], [228, 256], [200, 262], [178, 264], [160, 268], [140, 272], [132, 276], [120, 262], [108, 252], [94, 240], [72, 240], [60, 236], [52, 222], [56, 200], [46, 186], [48, 180], [50, 160], [44, 140], [42, 112], [44, 88], [40, 66], [44, 52]];
@@ -144,6 +145,7 @@ export const mapPhase = day => (day < 25 ? 0 : day < 45 ? 1 : 2);
 export function openMap(S, D) {
   const ov = document.getElementById('ov-map');
   ov.hidden = false;
+  sfx('paper');
   ov.innerHTML = `<div class="mapwrap"><canvas></canvas></div>
     <div class="topbar"><span class="date"></span><span class="tb-t">CAMPAIGN MAP</span></div>
     <div class="pnl side"><h3>THE ROUTE</h3><ol class="stops"></ol>

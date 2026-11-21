@@ -4,6 +4,7 @@ import { HOLD } from '../engine/palettes.js';
 import { rand, snapshot, chips } from '../game/state.js';
 import { applyFx } from '../game/effects.js';
 import { renderHUD } from '../screens/hud.js';
+import { sfx, overrideMusic } from '../audio/audio.js';
 
 const COLS = 10, ROWS = 3, CX = 65, CY = 61, CW = 18, CH = 16;
 const ITEMS = { S: { n: 'Legionnaire', w: 80 }, C: { n: 'Ammo crate', w: 120 }, M: { n: 'MG team', w: 190 }, U: { n: 'Mule', w: 300 } };
@@ -81,6 +82,7 @@ export function airlift(S, ctx) {
 
     const ov = document.getElementById('ov-air');
     ov.hidden = false;
+    overrideMusic('night');
     ov.innerHTML = `<canvas class="air-cv" aria-label="Cargo hold of the Ju 52"></canvas>
       <div class="pnl air-top"><span class="t">AIRLIFT · TETUÁN ▶ SEVILLA</span>
         <span class="m"><b>ROUND</b> <span data-f="round"></span></span>
@@ -141,7 +143,9 @@ export function airlift(S, ctx) {
       const { load, cg, n } = stats(), before = snapshot(S);
       const risk = 0.03 + (load > max ? 0.45 : 0) + (Math.abs(cg) > 1.5 ? 0.35 : Math.abs(cg) > 0.8 ? 0.12 : 0);
       let title, text;
+      sfx('takeoff');
       if (rand(S) < risk) {
+        setTimeout(() => sfx('boom'), 700);
         applyFx(S, { ger: -8, morale: -5 });
         S.tA = Math.max(0, S.tA - n.S * 15);
         title = 'A Junkers goes down';
@@ -161,6 +165,7 @@ export function airlift(S, ctx) {
         S.flags.pipe = 1;
         S.ledger.push({ k: 'The airlift', you: `Your Junkers carried ${total.toLocaleString('en-US')} men in ${rounds} round${rounds > 1 ? 's' : ''}.`, hist: 'German Ju 52s flew about 14,000 men across the Strait between late July and October 1936, the first large military airlift in history.' });
         ov.hidden = true;
+        overrideMusic(null);
         resolve();
       });
     };
@@ -177,7 +182,7 @@ export function airlift(S, ctx) {
       if (busy || qi >= queue.length) return;
       const i = cellAt(e);
       if (i < 0 || cells[i]) return;
-      cells[i] = queue[qi++]; update();
+      cells[i] = queue[qi++]; sfx('place'); update();
     });
     $f('skip').addEventListener('click', () => { if (!busy && qi < queue.length) { qi++; update(); } });
     $f('go').addEventListener('click', () => { if (!busy && cells.some(Boolean)) takeoff(); });

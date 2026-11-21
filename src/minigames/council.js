@@ -4,6 +4,7 @@ import { renderCards } from '../screens/generals.js';
 import { renderHUD } from '../screens/hud.js';
 import { portrait } from '../engine/sprites.js';
 import { TACT } from '../engine/palettes.js';
+import { sfx, overrideMusic } from '../audio/audio.js';
 
 const ACTIONS = [
   { id: 'promise', t: 'Promise promotion', h: '+25 loyalty · others jealous' },
@@ -48,6 +49,7 @@ export function council(S, ctx) {
     const { D } = ctx;
     const ov = document.getElementById('ov-council');
     ov.hidden = false;
+    overrideMusic('council');
     let turn = 0, sel = null;
     let msg = 'You have three days before the vote. Each day, choose a general and an action.';
     if (S.flags.denied && rand(S) < 0.4) { S.legit = clamp(S.legit - 10, 0, 100); msg = 'Foreign reports about Badajoz have reached the generals, and your denials look thin. Legitimacy −10. ' + msg; }
@@ -70,6 +72,7 @@ export function council(S, ctx) {
           b.addEventListener('click', () => {
             if (b.disabled) return;
             msg = doAction(S, D, a, a.noTarget ? null : sel);
+            sfx('stamp');
             turn++; renderHUD(S, D); render();
           });
           acts.append(b);
@@ -96,8 +99,8 @@ export function vote(S, ctx) {
     S.rival = rival;
     const results = vs.map(g => {
       if (g === rival) return { g, forYou: false };
-      let s = S.loy[g] + (S.inf.franco - S.inf[rival]) * 0.8 + (S.legit - 50) * 0.3 + (S.ger - 50) * 0.15 + (rand(S) * 12 - 6);
-      if (S.flags.alcazar) s += 8;
+      let s = S.loy[g] + (S.inf.franco - S.inf[rival]) * 0.6 + (S.legit - 50) * 0.3 + (S.ger - 50) * 0.15 + (rand(S) * 20 - 10);
+      if (S.flags.alcazar) s += 5;
       if (S.flags.madrid) s += 40;
       if (g === 'cabanellas') s -= S.terror * 0.2;
       return { g, forYou: s > 0 };
@@ -125,6 +128,7 @@ export function vote(S, ctx) {
     const finish = () => {
       tally.textContent = won ? `${yes} of ${vs.length} vote for you. You are Generalísimo.` : `Only ${yes} of ${vs.length} vote for you. The generals choose ${rivalName}.`;
       tally.className = 'tally ' + (won ? 'ok' : 'warn');
+      sfx(won ? 'fanfare' : 'bad');
       S.end = won ? (S.flags.madrid ? 'madrid' : 'generalisimo') : 'junta';
       S.votes = `The vote: ${yes} of ${vs.length} generals chose you.`;
       S.ledger.push({ k: 'The vote at Salamanca', you: `${yes} of ${vs.length} generals voted for you.`, hist: 'On 21 and 28 September 1936 the generals named Franco Generalísimo. Cabanellas argued against it.' });
@@ -139,6 +143,7 @@ export function vote(S, ctx) {
       slots[i].textContent = r.forYou ? 'FRANCO' : r.g === rival ? 'HIMSELF' : rivalName.toUpperCase();
       slots[i].className = 'tag ' + (r.forYou ? 'loyal' : 'opp');
       if (r.forYou) count++;
+      sfx('vote');
       tally.textContent = `For you: ${count}`;
       i++;
       setTimeout(step, reduce ? 0 : 650);

@@ -1,5 +1,7 @@
 // Full-screen cards: title screen, chapter openings and the ending with its history ledger.
 import { fmtDate } from '../game/state.js';
+import { settings, setSetting } from '../settings.js';
+import { sfx, overrideMusic } from '../audio/audio.js';
 
 const $ = s => document.querySelector(s);
 
@@ -36,6 +38,16 @@ export function showTitle({ hasSave, onNew, onContinue, onSeed }) {
   seedRow.append(label, input, button('PLAY SEED', null, () => { const n = parseInt(input.value, 10); if (n > 0) onSeed(n); else input.focus(); }));
   menu.append(seedRow);
   p.append(menu);
+  const opts = el('div', 'opts');
+  const optLabels = () => { const s = settings(); return [`MUSIC: ${s.music ? 'ON' : 'OFF'}`, `SOUND FX: ${s.sfx ? 'ON' : 'OFF'}`, `MOTION: ${s.motion.toUpperCase()}`]; };
+  const [bm, bs, bmo] = optLabels().map(t => button(t, null, () => {}));
+  const relabel = () => { const l = optLabels(); bm.textContent = l[0]; bs.textContent = l[1]; bmo.textContent = l[2]; };
+  bm.onclick = () => { setSetting('music', !settings().music); relabel(); };
+  bs.onclick = () => { setSetting('sfx', !settings().sfx); relabel(); };
+  bmo.onclick = () => { const order = ['auto', 'on', 'off']; setSetting('motion', order[(order.indexOf(settings().motion) + 1) % 3]); relabel(); };
+  bmo.title = 'Auto follows your device\'s reduce-motion setting';
+  opts.append(bm, bs, bmo);
+  p.append(opts);
   p.append(el('p', 'how', 'Keys: 1–4 choose · Enter continues · M opens the map · G opens the generals. Every run is different; the seed lets you replay one.'));
   p.append(el('p', 'note', 'This game depicts the politics and violence of the Spanish Civil War, including repression, without graphic detail. Each run ends by comparing your choices with what really happened.'));
   ov.append(p);
@@ -55,6 +67,7 @@ export function chapterCard(ch) {
     const go = button('BEGIN ▶', 'enter', () => { ov.hidden = true; resolve(); }, 'go');
     p.append(go);
     ov.append(p);
+    sfx('stamp');
     go.focus({ preventScroll: true });
   });
 }
@@ -65,6 +78,8 @@ export function showEnding(S, ctx) {
   const rival = S.rival ? D.generals[S.rival].full : 'another general';
   const ov = $('#ov-end');
   ov.hidden = false;
+  overrideMusic('title');
+  if (S.end === 'dead' || S.end === 'army') sfx('bad');
   ov.replaceChildren();
   const p = el('div', 'end-panel bev');
   p.append(el('div', 'k', `${fmtDate(S.day)} · SEED ${S.seed}`), el('h2', null, E.title), el('p', 'lead', E.text.replace('{rival}', rival)));

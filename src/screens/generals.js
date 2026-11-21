@@ -1,6 +1,7 @@
 // The Influence Board (direction C): every general's influence and, once known, their loyalty to you.
 import { portrait } from '../engine/sprites.js';
 import { TACT } from '../engine/palettes.js';
+import { sfx } from '../audio/audio.js';
 
 const faces = new Map();
 
@@ -40,6 +41,7 @@ export function renderCards(box, S, D, { selectable = false, selected = null, on
 export function openGenerals(S, D) {
   const ov = document.getElementById('ov-gen');
   ov.hidden = false;
+  sfx('paper');
   ov.innerHTML = `<div class="council"><div class="t">THE GENERALS<small>Influence decides who leads. Loyalty shows how each general would treat you today. "?" means you have not found out yet.</small></div>
     <div class="gens"></div><p class="detail">Select a general to read their file.</p>
     <div class="acts"><button type="button" class="primary" data-close>CLOSE [G]</button></div></div>`;

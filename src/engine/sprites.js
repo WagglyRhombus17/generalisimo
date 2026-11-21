@@ -1,5 +1,5 @@
 // Reusable pixel sprites: vehicles, people, aircraft, ships, trees and portraits.
-import { FB, vgrad } from './pixel.js';
+import { FB, vgrad, mix } from './pixel.js';
 
 export function wheel(fb, cx, cy, P) {
   fb.rect(cx - 2, cy - 1, 5, 3, P.outline); fb.rect(cx - 1, cy - 2, 3, 5, P.outline); fb.set(cx, cy, P.hub);
@@ -103,10 +103,14 @@ export function ship(fb, x, wy, L, P, war) {
 // 24x28 bust portrait. t = look traits from data/generals.json.
 export function portrait(P, t = {}) {
   const fb = new FB(24, 28), o = P.outline, hair = t.hair || P.hair;
+  // t.civil: civilian clothes in t.shirt instead of uniform
+  const U = t.civil ? (t.shirt || '#6a5a48') : P.uni, UL = t.civil ? mix(U, '#ffffff', 0.25) : P.uniL, UD = t.civil ? mix(U, '#000000', 0.3) : P.uniD;
   vgrad(fb, 0, 28, P.pbg);
-  for (let y = 21; y < 28; y++) { const half = 7 + Math.min(4, y - 21); fb.rect(12 - half, y, half * 2, 1, P.uni); }
-  fb.rect(5, 21, 14, 1, P.uniL); fb.rect(9, 20, 6, 2, P.uniD); fb.set(9, 21, P.tab); fb.set(14, 21, P.tab); fb.rect(11, 22, 2, 6, P.uniD);
-  if (t.medals) { fb.set(6, 24, P.medal); fb.set(7, 24, P.medal2); fb.set(6, 25, P.medal2); fb.set(7, 25, P.medal); }
+  for (let y = 21; y < 28; y++) { const half = 7 + Math.min(4, y - 21); fb.rect(12 - half, y, half * 2, 1, U); }
+  fb.rect(5, 21, 14, 1, UL);
+  if (t.civil) { fb.rect(9, 20, 6, 2, '#e8e0d0'); fb.rect(11, 22, 2, 6, UD); }
+  else { fb.rect(9, 20, 6, 2, UD); fb.set(9, 21, P.tab); fb.set(14, 21, P.tab); fb.rect(11, 22, 2, 6, UD); }
+  if (t.medals && !t.civil) { fb.set(6, 24, P.medal); fb.set(7, 24, P.medal2); fb.set(6, 25, P.medal2); fb.set(7, 25, P.medal); }
   fb.rect(10, 18, 4, 3, P.skinD);
   for (let y = 7; y < 19; y++) {
     const dy = y - 12.5, half = Math.round(Math.sqrt(Math.max(0, 1 - (dy / 6.5) ** 2)) * (t.wide ? 5.6 : 5));
@@ -135,8 +139,13 @@ export function portrait(P, t = {}) {
     fb.rect(7, 3, 10, 1, P.capL); fb.rect(6, 4, 12, 4, P.capC); fb.rect(5, 6, 14, 2, P.capC);
     fb.rect(6, 8, 12, 1, P.capBand); fb.rect(6, 9, 12, 1, o);
     fb.set(12, 5, P.badge); fb.set(11, 6, P.badge); fb.set(13, 6, P.badge);
+  } else if (t.beret) {
+    fb.rect(7, 5, 10, 2, '#2a2a2e'); fb.rect(6, 6, 12, 2, '#2a2a2e'); fb.set(12, 4, '#2a2a2e');
+  } else if (t.bald) {
+    fb.rect(6, 9, 2, 3, hair); fb.rect(16, 9, 2, 3, hair);
   } else {
     fb.rect(9, 5, 6, 1, hair); fb.rect(7, 6, 10, 2, hair); fb.set(7, 8, hair); fb.set(16, 8, hair);
   }
+  if (t.long) { fb.rect(5, 7, 2, 13, hair); fb.rect(17, 7, 2, 13, hair); fb.rect(6, 6, 12, 2, hair); }
   return fb;
 }

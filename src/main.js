@@ -7,16 +7,23 @@ import { openMap, closeMap } from './screens/map.js';
 import { openGenerals, closeGenerals } from './screens/generals.js';
 import { renderHUD } from './screens/hud.js';
 import { hideDlg, finishTyping } from './screens/dialog.js';
+import { unlock, sceneMusic, overrideMusic, themeForScene } from './audio/audio.js';
+import { settings, setSetting, onSettings, motionOn } from './settings.js';
 
 const $ = s => document.querySelector(s);
 const D = {};
 const canvas = $('#scene');
-const OVERLAYS = ['#ov-map', '#ov-gen', '#ov-air', '#ov-council', '#ov-vote', '#ov-card', '#ov-end'];
+const OVERLAYS = ['#ov-map', '#ov-gen', '#ov-air', '#ov-trib', '#ov-council', '#ov-vote', '#ov-card', '#ov-end'];
 // Topmost first: keyboard shortcuts go to the first visible layer.
-const LAYERS = ['#ov-map', '#ov-gen', '#ov-title', '#ov-end', '#ov-card', '#ov-vote', '#ov-council', '#ov-air', '#dlg'];
-let S = null, token = 0;
+const LAYERS = ['#ov-map', '#ov-gen', '#ov-title', '#ov-end', '#ov-card', '#ov-vote', '#ov-council', '#ov-trib', '#ov-air', '#dlg'];
+let S = null, token = 0, lastScene = null;
 
-function showScene(desc) { if (S) S.scene = desc; setScene(canvas, desc); }
+function showScene(desc) {
+  if (S) S.scene = desc;
+  lastScene = desc;
+  setScene(canvas, desc);
+  sceneMusic(themeForScene(desc));
+}
 
 function hideAll() { OVERLAYS.forEach(s => { $(s).hidden = true; }); hideTitle(); hideDlg(); }
 
@@ -24,6 +31,7 @@ function start(state) {
   const my = ++token;
   S = state;
   hideAll();
+  overrideMusic(null);
   const ctx = {
     D, showScene,
     alive: () => my === token,
@@ -39,7 +47,9 @@ function title() {
   S = null;
   hideAll();
   renderHUD(null, D);
-  setScene(canvas, { t: 'road', town: 'toledo', sky: 'sunset' });
+  overrideMusic(null);
+  showScene({ t: 'road', town: 'toledo', sky: 'sunset' });
+  sceneMusic('title');
   const saved = load();
   showTitle({
     hasSave: !!saved,
@@ -48,6 +58,18 @@ function title() {
     onSeed: n => { clearSave(); start(newState(n, D)); }
   });
 }
+
+// Motion and sound settings take effect immediately.
+function applySettings() {
+  document.documentElement.classList.toggle('still', !motionOn());
+  const on = settings().music || settings().sfx;
+  $('#b-sound').textContent = on ? 'SOUND ON' : 'SOUND OFF';
+  if (lastScene) setScene(canvas, lastScene);
+}
+onSettings(applySettings);
+
+// Browsers only allow audio after the player interacts with the page.
+['pointerdown', 'keydown'].forEach(ev => document.addEventListener(ev, unlock, { capture: true }));
 
 const canPanel = () => S && $('#ov-title').hidden && $('#ov-card').hidden && $('#ov-end').hidden;
 
@@ -78,7 +100,7 @@ function showError(err) {
 
 async function boot() {
   try {
-    const files = ['events', 'generals', 'chapters'];
+    const files = ['events', 'generals', 'chapters', 'tribunal'];
     const data = await Promise.all(files.map(n => fetch(`data/${n}.json`).then(r => {
       if (!r.ok) throw new Error(`could not load data/${n}.json`);
       return r.json();
@@ -89,6 +111,8 @@ async function boot() {
   $('#b-map').addEventListener('click', toggleMap);
   $('#b-gen').addEventListener('click', toggleGenerals);
   $('#b-menu').addEventListener('click', title);
+  $('#b-sound').addEventListener('click', () => { const on = !(settings().music || settings().sfx); setSetting('music', on); setSetting('sfx', on); });
+  applySettings();
   title();
 }
 
