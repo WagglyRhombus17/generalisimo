@@ -10,7 +10,13 @@ import { airlift } from '../minigames/ju52.js';
 import { council, vote } from '../minigames/council.js';
 import { tribunal } from '../minigames/tribunal.js';
 import { siege } from '../minigames/siege.js';
-import { noteLoyalty } from './politics.js';
+import { ironRing } from '../minigames/ironring.js';
+import { ebroCrossing } from '../minigames/ebro.js';
+import { noteLoyalty, topRival } from './politics.js';
+
+// Victory comes on 1 April 1939 plus the days you have lost. Past 1 September 1939, Europe is at war.
+export const WIDER = 153;
+const widerWar = S => { S.end = 'widerwar'; S.day = Math.max(S.day, 989 + WIDER); };
 
 export async function run(S, ctx) {
   const { D } = ctx;
@@ -41,6 +47,8 @@ const STEP = {
   },
   async route(S, st, ctx) {
     S.route = st.stops; S.pos = st.pos || 0;
+    S.over = st.scenes || null;
+    if (st.fresh) S.trail = [];
     arrive(S, ctx);
   },
   async ev(S, st, ctx) {
@@ -71,7 +79,22 @@ const STEP = {
   async council(S, st, ctx) { await council(S, ctx); },
   async tribunal(S, st, ctx) { await tribunal(S, ctx); },
   async siege(S, st, ctx) { await siege(S, ctx); },
-  async end(S, st) { if (!S.end) S.end = st.id; },
+  async ironring(S, st, ctx) { await ironRing(S, ctx); },
+  async ebro(S, st, ctx) { await ebroCrossing(S, ctx); },
+  // Between chapters: has the war run too long, and is a rival general close to overtaking you?
+  async check(S, st, ctx) {
+    if (S.ch >= 9 && S.delay > WIDER) { widerWar(S); return; }
+    if (S.delay > 90) await playEvent(S, SPECIALS.hurry(S), ctx);
+    if (!ctx.alive() || S.end) return;
+    const r = topRival(S);
+    const gap = S.inf[r] - S.inf.franco;
+    if (gap >= 15 && S.loy[r] < 10) { S.end = 'ousted'; S.rival = r; return; }
+    if (gap >= -8) await playEvent(S, SPECIALS.challenge(S, ctx.D, r), ctx);
+  },
+  async end(S, st) {
+    if (S.end) return;
+    if (st.id === 'victory' && S.delay > WIDER) widerWar(S); else S.end = st.id;
+  },
   async vote(S, st, ctx) { await vote(S, ctx); }
 };
 
@@ -84,7 +107,7 @@ function catchUp(S, st) {
 
 function arrive(S, ctx) {
   const stop = S.route[S.pos];
-  const sc = ctx.D.chapters.scenes[stop];
+  const sc = (S.over && S.over[stop]) || ctx.D.chapters.scenes[stop];
   if (sc) ctx.showScene(sc);
   const loc = ctx.D.chapters.locations[stop];
   const last = S.trail[S.trail.length - 1];
@@ -98,6 +121,7 @@ export async function playEvent(S, ev, ctx) {
   const i = await ask({ title, text: ev.text, choices });
   if (!ctx.alive()) return;
   const c = choices[i];
+  if (c.scene) ctx.showScene(c.scene);
   const before = snapshot(S);
   const extra = c.run ? c.run(S) : applyFx(S, c.fx);
   noteLoyalty(S, before.loy, title.split(' · ')[0]);

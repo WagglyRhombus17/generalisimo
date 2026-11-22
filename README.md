@@ -1,8 +1,12 @@
 # Generalísimo
 
-A pixel-art strategy game about the first months of the Spanish Civil War, played as Francisco Franco, from the Canary Islands in July 1936 to the generals' vote at Salamanca in September. Oregon Trail-style: travel legs, random events, resources, mini-games, and choices with consequences. Each run ends by comparing your choices with what really happened.
+A pixel-art strategy game about the Spanish Civil War, played as Francisco Franco, from the Canary Islands in July 1936 to the end of the war in April 1939. Oregon Trail-style: travel legs, random events, resources, mini-games, and choices with consequences. Each run ends by comparing your choices with what really happened.
 
-Draft 3 covers five chapters, from July to November 1936: The Flight, The Strait, The March North, Salamanca and Madrid. It has four mini-games (loading the Ju 52 against the clock, the military tribunal, the Salamanca council, and the three-day assault on Madrid), 47 random events, and a chiptune soundtrack with its own theme for each chapter and mini-game.
+The game has ten chapters: The Flight, The Strait, The March North, Salamanca, Madrid, The Long War, The North, Teruel and the Sea, The Ebro, and Victory. It has six mini-games: loading the Ju 52 against the clock, the military tribunal, the Salamanca council, the assault on Madrid, the Iron Ring of Bilbao (a memory and deduction game), and the Ebro crossing (real time). It also has 69 random events and a chiptune soundtrack with its own theme for each chapter and mini-game.
+
+Every mini-game can also be played on its own from **Mini-games** on the title screen, with a best score kept in the browser.
+
+Runs can end in several ways: losing the vote at Salamanca, being overthrown by your own generals, taking Madrid in 1936, a negotiated peace in 1939, letting the war drag on into the Second World War, or the historical victory.
 
 ## Play it
 
@@ -39,8 +43,9 @@ src/
   audio/                chiptune music sequencer and sound effects (Web Audio API)
   engine/               pixel framebuffer, palettes, sprites (incl. portraits)
   scenes/               one file per scene: road (the march), island, airfield, sky, night, strait
-  screens/              HUD, event dialog, campaign map, generals board, title/chapter/ending cards
-  minigames/            ju52.js (load the transport), tribunal.js (case files), council.js (Salamanca meetings and vote), siege.js (Madrid)
+  screens/              HUD, event dialog, campaign map, generals board, title/chapter/ending cards, mini-games menu
+  minigames/            ju52.js (load the transport), tribunal.js (case files), council.js (Salamanca meetings and vote),
+                        siege.js (Madrid), ironring.js (Bilbao), ebro.js (the Ebro crossing)
   game/                 state + seeded RNG, effect interpreter, story runner, battles, special events
 ```
 
@@ -56,9 +61,9 @@ Most content is data. To add a random event, append to `deck` in `data/events.js
   ] }
 ```
 
-Pools are `flight`, `strait` and `march`. Effect keys are documented at the top of `src/game/effects.js`. Events whose odds depend on the game state live in `src/game/specials.js`.
+Pools are `flight`, `strait`, `march`, `madrid`, `longwar`, `north`, `aragon`, `ebro` and `victory`. Effect keys are documented at the top of `src/game/effects.js`. Events whose odds depend on the game state live in `src/game/specials.js`.
 
-The story order is the `steps` list in `data/chapters.json`. Step kinds: `card`, `route`, `ev`, `rand`, `move`, `battle`, `air`, `tribunal`, `council`, `vote`. A step with `"if": "flag"` or `"unless": "flag"` runs only when that story flag is set or unset.
+The story order is the `steps` list in `data/chapters.json`. Step kinds: `card`, `route`, `ev`, `rand`, `move`, `battle`, `air`, `tribunal`, `council`, `vote`, `siege`, `ironring`, `ebro`, `check` (between chapters: has a rival general overtaken you, or has the war run too long?) and `end`. A step with `"if": "flag"` or `"unless": "flag"` runs only when that story flag is set or unset.
 
 ## Music
 
@@ -69,3 +74,7 @@ To open the music in MuseScore or another notation program, run `python3 tools/e
 ## Determinism
 
 All game randomness goes through `rand(S)` in `src/game/state.js`, seeded per run, so a seed replays the same way. Scenery uses its own fixed random numbers.
+
+## Time
+
+`S.delay` counts the days you are ahead of (negative) or behind (positive) the historical calendar. Historical choices cost no time; alternatives can gain or lose days. If victory would come after 1 September 1939, when the Second World War began, the run ends in "The Wider War".

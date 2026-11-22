@@ -95,5 +95,75 @@
              "A1 - - - - - - -", "D2 - - - - - - -", "B1 - - - - - - -", "E2 - - - - - - -"],
     "drum": ["c . . . k . . .", "k . . . k . . .", "k . . . k . . .", "k . . . t . t .",
              "c . . . k . . .", "k . . . k . . .", "k . . . t . t t", "c . . . . . . ."]
+  },
+  "longwar": {
+    "name": "Chapter VI: The Long War", "bpm": 96, "wave": "square", "harmWave": "triangle",
+    "lead": ["E4 - - F4 E4 - D4 -", "C4 - D4 - E4 - - .", "A4 - - G#4 A4 - B4 -", "C5 - B4 - A4 - - .",
+             "E5 - D5 C5 B4 - A4 -", "G#4 - A4 - B4 - - .", "C5 - B4 A4 G#4 - F4 -", "E4 - - - . . . ."],
+    "harm": ["B3 - - - C4 - - -", "A3 - - - G#3 - - -", "E4 - - - F4 - - -", "E4 - - - E4 - - -",
+             "C5 - - - G#4 - - -", "E4 - - - F4 - - -", "A4 - - - D4 - - -", "G#3 - - - - - - -"],
+    "bass": ["E2 - E2 - E2 - B1 -", "A1 - A1 - E2 - E2 -", "F2 - F2 - D2 - D2 -", "A1 - A1 - E2 - - -",
+             "A1 - A1 - A1 - E2 -", "E2 - E2 - B1 - B1 -", "F2 - F2 - D2 - D2 -", "E2 - B1 - E2 - - -"],
+    "drum": ["k . s . k . s h", "k . s . k . s h", "k . s . k . s h", "k . s . k . s h",
+             "k . s . k . s h", "k . s . k . s h", "k . s . k . s h", "k . s s t t t t"]
+  },
+  "north": {
+    "name": "Chapter VII: The North", "bpm": 88, "wave": "triangle", "harmWave": "triangle",
+    "lead": ["E4 F4 G#4 A4 B4 - A4 G#4", "A4 - - - G#4 F4 E4 -", "F4 G#4 A4 B4 C5 - B4 A4", "B4 - - - . . . .",
+             "C5 B4 A4 G#4 A4 - G#4 F4", "G#4 - F4 E4 F4 - - -", "D4 E4 F4 G#4 A4 G#4 F4 E4", "E4 - - - - - - ."],
+    "harm": ["B3 - - - E4 - - -", "C4 - - - B3 - - -", "D4 - - - E4 - - -", "G#3 - - - - - - -",
+             "E4 - - - E4 - - -", "D4 - - - C4 - - -", "B3 - - - C4 - - -", "G#3 - - - - - - -"],
+    "bass": ["E2 - - - E2 - - -", "A1 - - - E2 - - -", "D2 - - - A1 - - -", "E2 - - - E2 - - -",
+             "A1 - - - A1 - - -", "B1 - - - A1 - - -", "D2 - - - F2 - - -", "E2 - - - - - - -"],
+    "drum": ["k . . h . . h .", "k . . h . . h .", "k . . h . . h .", "k . . h . . h .",
+             "k . . h . . h .", "k . . h . . h .", "k . . h . . h .", "k . . h t . t ."]
+  },
+  "teruel": {
+    "name": "Chapter VIII: Teruel and the Sea", "bpm": 76, "wave": "triangle", "harmWave": "triangle",
+    "lead": ["B4 - - - - - A4 -", "G#4 - - - F4 - - -", "E4 - - - F4 - G#4 -", "A4 - - - - - - .",
+             "C5 - - - B4 - - -", "A4 - - - G#4 - - -", "F4 - E4 - D4 - F4 -", "E4 - - - - - - ."],
+    "harm": ["E4 - - - - - - -", "D4 - - - B3 - - -", "C4 - - - - - - -", "C4 - - - E4 - - -",
+             "E4 - - - - - - -", "F4 - - - E4 - - -", "A3 - - - B3 - - -", "G#3 - - - - - - -"],
+    "bass": ["E2 - - - - - - -", "B1 - - - - - - -", "A1 - - - - - - -", "F2 - - - - - - -",
+             "A1 - - - - - - -", "D2 - - - E2 - - -", "D2 - - - B1 - - -", "E2 - - - - - - -"],
+    "drum": ["h . . . h . . .", ". . h . . . h .", "h . . . h . . .", ". . h . . . h .",
+             "h . . . h . . .", ". . h . . . h .", "h . . . h . . .", "k . . . t . . ."]
+  },
+  "ebro": {
+    "name": "Chapter IX: The Ebro", "bpm": 116, "wave": "square", "harmWave": "square",
+    "lead": ["E4 - E4 F4 G#4 - A4 -", "B4 - - - C5 - B4 -", "A4 - G#4 - F4 - G#4 -", "E4 - - - - - B3 -",
+             "E5 - - D5 C5 - B4 -", "C5 - - B4 A4 - G#4 -", "A4 - B4 - C5 - D5 -", "E5 - - - B4 - - -"],
+    "harm": ["B3 - B3 C4 E4 - F4 -", "G#4 - - - A4 - G#4 -", "F4 - E4 - D4 - E4 -", "B3 - - - - - G#3 -",
+             "G#4 - - B4 A4 - G#4 -", "A4 - - G#4 F4 - E4 -", "F4 - G#4 - A4 - B4 -", "G#4 - - - E4 - - -"],
+    "bass": ["E2 E2 E3 E2 E2 E2 E3 E2", "E2 E2 E3 E2 A1 A1 A2 A1", "D2 D2 D3 D2 D2 D2 D3 D2", "E2 E2 E3 E2 B1 B1 B2 B1",
+             "C2 C2 C3 C2 C2 C2 C3 C2", "A1 A1 A2 A1 A1 A1 A2 A1", "F2 F2 F3 F2 D2 D2 D3 D2", "E2 E2 E3 E2 E2 - - -"],
+    "drum": ["k h s h k k s h", "k h s h k k s h", "k h s h k k s h", "k h s h t t t t",
+             "c h s h k k s h", "k h s h k k s h", "k h s h k k s h", "c . s s t t t t"]
+  },
+  "victory": {
+    "name": "Chapter X: Victory", "bpm": 100, "wave": "square", "harmWave": "square",
+    "lead": ["E4 - - - B4 - - -", "A4 - G#4 - F4 - E4 -", "F4 - - - C5 - - -", "B4 - A4 - G#4 - - -",
+             "E5 - - - D5 - C5 -", "B4 - C5 - D5 - E5 -", "F5 - - - E5 - D5 -", "E5 - - - - - - -"],
+    "harm": ["G#3 - - - E4 - - -", "C4 - B3 - A3 - G#3 -", "A3 - - - E4 - - -", "D4 - C4 - B3 - - -",
+             "G#4 - - - F4 - E4 -", "D4 - E4 - F4 - G#4 -", "A4 - - - G#4 - F4 -", "G#4 - - - - - - -"],
+    "bass": ["E2 - - - E2 - E3 -", "A1 - - - A1 - A2 -", "F2 - - - F2 - F3 -", "E2 - - - E2 - B1 -",
+             "C2 - - - C2 - C3 -", "E2 - - - E2 - E3 -", "D2 - - - D2 - D3 -", "E2 - - - B1 - E2 -"],
+    "drum": ["c . . . k . s .", "k . . . k . s .", "k . . . k . s .", "k . s . t t s .",
+             "c . . . k . s .", "k . . . k . s .", "k . s . k . s s", "c . t t t t t t"]
+  },
+  "ironring": {
+    "name": "Mini-game: The Iron Ring", "bpm": 112, "wave": "square",
+    "lead": ["E4 . . . F4 . . .", "E4 . . . D4 . . .", "E4 . . . G#4 . . .", "F4 . . . E4 . D4 .",
+             "B4 . . . C5 . . .", "B4 . . . A4 . . .", "G#4 . . . F4 . . .", "E4 . . . . . . ."],
+    "bass": ["E2 - - - - - - -", "D2 - - - - - - -", "C2 - - - - - - -", "B1 - - - - - - -",
+             "E2 - - - - - - -", "F2 - - - - - - -", "D2 - - - - - - -", "E2 - - - B1 - - -"],
+    "drum": ["h . h . h . h .", "h . h . h . h .", "h . h . h . h .", "h . h . k . k .",
+             "h . h . h . h .", "h . h . h . h .", "h . h . h . h .", "k . k . t t t t"]
+  },
+  "ebroGame": {
+    "name": "Mini-game: The Ebro Crossing", "bpm": 150, "wave": "square",
+    "lead": ["E4 G#4 B4 G#4 E4 G#4 B4 G#4", "F4 A4 C5 A4 F4 A4 C5 A4", "E4 G#4 B4 G#4 D4 F4 A4 F4", "E4 - - - B3 - - -"],
+    "bass": ["E2 . E2 . E2 . E2 .", "F2 . F2 . F2 . F2 .", "E2 . E2 . D2 . D2 .", "E2 . E2 . B1 . B1 ."],
+    "drum": ["k h s h k h s h", "k h s h k h s h", "k h s h k h s h", "k s s s t t t t"]
   }
 }

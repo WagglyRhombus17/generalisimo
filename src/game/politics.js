@@ -1,6 +1,10 @@
 // Who votes at Salamanca, who your main rival is, and how each general leans.
 
-export const voters = S => ['mola', 'queipo', 'cabanellas', 'kindelan', 'orgaz'].concat(S.alive.sanjurjo ? ['sanjurjo'] : []);
+export const voters = S => ['mola', 'queipo', 'cabanellas', 'kindelan', 'orgaz'].filter(g => S.alive[g] !== false).concat(S.alive.sanjurjo ? ['sanjurjo'] : []);
+
+// Every living general except you, for the influence race after Salamanca.
+export const rivalsOf = S => Object.keys(S.inf).filter(g => g !== 'franco' && S.alive[g] !== false);
+export const topRival = S => rivalsOf(S).reduce((a, b) => (S.inf[b] > S.inf[a] ? b : a));
 
 export function rivalOf(S) {
   return voters(S).reduce((a, b) => (S.inf[b] > S.inf[a] ? b : a));

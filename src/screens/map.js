@@ -15,7 +15,14 @@ const NAT_SOUTH = [[96, 244], [118, 234], [140, 226], [160, 232], [168, 250], [1
 const NAT_CORRIDOR = [[84, 128], [130, 130], [124, 170], [150, 205], [160, 232], [118, 236], [96, 236], [86, 200], [84, 160]];
 const NAT_SEPT = [[20, 20], [110, 20], [112, 60], [200, 62], [250, 60], [258, 46], [278, 48], [288, 80], [284, 100], [262, 115], [230, 118], [212, 118], [200, 122], [188, 136], [178, 150], [168, 165], [150, 188], [150, 205], [186, 214], [184, 236], [170, 256], [150, 262], [150, 280], [120, 280], [100, 262], [20, 262]];
 const NAT_NOV = [[20, 20], [110, 20], [112, 60], [200, 62], [250, 60], [258, 46], [278, 48], [288, 80], [284, 100], [262, 115], [230, 118], [212, 118], [196, 124], [194, 132], [200, 140], [206, 150], [198, 172], [170, 178], [150, 205], [186, 214], [184, 236], [170, 256], [150, 262], [150, 280], [120, 280], [100, 262], [20, 262]];
-const PHASES = [[NAT_NORTH, NAT_SOUTH], [NAT_NORTH, NAT_SOUTH, NAT_CORRIDOR], [NAT_SEPT], [NAT_NOV]];
+// 1937-1939: Málaga falls, then the north, then the Republic is cut in two, then Catalonia falls.
+const NAT_MAR37 = [[20, 20], [110, 20], [112, 60], [200, 62], [250, 60], [258, 46], [278, 48], [288, 80], [284, 100], [262, 115], [230, 118], [212, 118], [196, 124], [194, 132], [200, 140], [206, 150], [198, 172], [170, 178], [150, 205], [186, 214], [184, 236], [204, 244], [212, 272], [120, 280], [100, 262], [20, 262]];
+const NAT_OCT37 = [[20, 20], [258, 20], [258, 46], [278, 48], [288, 80], [284, 100], [262, 115], [230, 118], [212, 118], [196, 124], [194, 132], [200, 140], [206, 150], [198, 172], [170, 178], [150, 205], [186, 214], [184, 236], [204, 244], [212, 272], [120, 280], [100, 262], [20, 262]];
+const REP_CAT = [[294, 50], [342, 60], [350, 72], [340, 92], [322, 104], [314, 114], [306, 110], [302, 96], [300, 80], [292, 64]];
+const REP_CENTER = [[194, 124], [214, 116], [240, 120], [252, 128], [262, 150], [276, 150], [284, 130], [302, 130], [340, 128], [340, 200], [300, 240], [240, 272], [212, 272], [204, 244], [184, 236], [186, 214], [150, 205], [170, 178], [198, 172], [206, 150], [200, 140], [194, 132]];
+// Each phase lists Nationalist territory (nat) or, late in the war, what is left of the Republic (rep).
+const PHASES = [{ nat: [NAT_NORTH, NAT_SOUTH] }, { nat: [NAT_NORTH, NAT_SOUTH, NAT_CORRIDOR] }, { nat: [NAT_SEPT] }, { nat: [NAT_NOV] },
+  { nat: [NAT_MAR37] }, { nat: [NAT_OCT37] }, { rep: [REP_CAT, REP_CENTER] }, { rep: [REP_CENTER] }, { rep: [] }];
 const MOUNTAINS = [[300, 54, 40, 8], [150, 50, 52, 6], [168, 114, 40, 6], [226, 246, 26, 5], [168, 206, 34, 5], [252, 110, 10, 28]];
 
 export const CITIES = [
@@ -23,7 +30,8 @@ export const CITIES = [
   { n: 'Sevilla', p: [152, 238], c: 'l' }, { n: 'Mérida', p: [106, 190], c: 'r' }, { n: 'Badajoz', p: [92, 184], c: 'l' },
   { n: 'Burgos', p: [222, 70], c: '' }, { n: 'Salamanca', p: [136, 116], c: '' }, { n: 'Zaragoza', p: [270, 92], c: '' },
   { n: 'Barcelona', p: [328, 88], c: 'b' }, { n: 'Valencia', p: [292, 168], c: 'l' }, { n: 'Málaga', p: [184, 258], c: 'b' },
-  { n: 'Ceuta', p: [142, 286], c: 'r' }, { n: 'Tetuán', p: [130, 296], c: 'l' }, { n: 'Lisboa', p: [56, 178], c: 'r' }
+  { n: 'Ceuta', p: [142, 286], c: 'r' }, { n: 'Tetuán', p: [130, 296], c: 'l' }, { n: 'Lisboa', p: [56, 178], c: 'r' },
+  { n: 'Bilbao', p: [236, 44], c: 'b' }, { n: 'Teruel', p: [268, 142], c: 'r' }
 ];
 
 function inPoly(x, y, p) {
@@ -41,7 +49,9 @@ function classify(x, y, phase) {
   if (inPoly(x, y, FRANCE)) return 3;
   if (inPoly(x, y, IBERIA)) {
     if (inPoly(x, y, PORTUGAL)) return 3;
-    return PHASES[phase].some(p => inPoly(x, y, p)) ? 2 : 1;
+    const ph = PHASES[phase];
+    if (ph.rep) return ph.rep.some(p => inPoly(x, y, p)) ? 1 : 2;
+    return ph.nat.some(p => inPoly(x, y, p)) ? 2 : 1;
   }
   if (inPoly(x, y, AFRICA)) return (x > 96 && x < 232) ? 2 : 3;
   if (inE(x, y, 380, 150, 10, 6) || inE(x, y, 352, 172, 4, 3)) return 2;
@@ -141,7 +151,16 @@ export function placeLabels(el, fwd, W, H, items) {
   });
 }
 
-export const mapPhase = day => (day < 25 ? 0 : day < 45 ? 1 : day < 77 ? 2 : 3);
+// Late in the war the map follows the historical calendar, shifted by the days you have gained or lost.
+const CUTS = [25, 45, 77, 207, 462, 638, 938, 985];
+export function mapPhase(S) {
+  const d = S.ch >= 6 ? S.day - S.delay : S.day;
+  let i = 0;
+  while (i < CUTS.length && d >= CUTS[i]) i++;
+  return S.ch >= 6 ? Math.max(4, i) : Math.min(3, i);
+}
+const NOTES = ['Front lines as of late July 1936.', 'Front lines as of mid-August 1936.', 'Front lines as of September 1936.', 'Front lines as of November 1936.',
+  'Front lines as of spring 1937.', 'Front lines as of late 1937.', 'Front lines as of summer 1938. The Republic is cut in two.', 'Front lines as of February 1939.', 'April 1939. The war is over.']
 
 export function openMap(S, D) {
   const ov = document.getElementById('ov-map');
@@ -154,17 +173,19 @@ export function openMap(S, D) {
       <p class="mnote"></p>
       <button type="button" class="primary" data-close>CLOSE MAP [M]</button></div>`;
   ov.querySelector('.date').textContent = fmtDate(S.day);
-  const phase = mapPhase(S.day), LOC = D.chapters.locations;
+  const phase = mapPhase(S), LOC = D.chapters.locations;
   const arrows = [], units = [];
   const last = S.trail[S.trail.length - 1];
   if (S.trail.length > 1) arrows.push({ pts: S.trail });
   const next = S.route[S.pos + 1];
   if (S.ch === 1) arrows.push({ pts: [[30, 316], [126, 296]], dash: 1 });
   else if (next && LOC[next] && last) arrows.push({ pts: [last, LOC[next]], dash: 1 });
-  if (S.day >= 4) units.push({ p: [210, 100], n: 'MOLA', c: 'u r' });
-  if (S.day >= 4 && !(last && last[0] === 152)) units.push({ p: [160, 244], n: 'QUEIPO', c: 'u r' });
-  if (phase >= 2) units.push({ p: [216, 140], r: 1, n: phase === 3 ? 'BRIGADES' : 'MILICIAS', c: 'ur r' });
-  units.push({ p: [242, 54], r: 1, n: 'EUZKADI', c: 'ur r' });
+  if (S.day >= 4 && S.alive.mola !== false && phase <= 4) units.push({ p: phase === 4 ? [250, 60] : [210, 100], n: 'MOLA', c: 'u r' });
+  if (S.day >= 4 && phase <= 3 && !(last && last[0] === 152)) units.push({ p: [160, 244], n: 'QUEIPO', c: 'u r' });
+  if (phase >= 2 && phase <= 3) units.push({ p: [216, 140], r: 1, n: phase === 3 ? 'BRIGADES' : 'MILICIAS', c: 'ur r' });
+  if (phase >= 4 && phase <= 7) units.push({ p: [236, 150], r: 1, n: 'POPULAR ARMY', c: 'ur r' });
+  if (phase === 6) units.push({ p: [316, 100], r: 1, n: 'ARMY OF THE EBRO', c: 'ur r' });
+  if (phase <= 4) units.push({ p: [226, 50], r: 1, n: 'EUZKADI', c: 'ur r' });
   if (last) units.push({ p: last, you: 1, n: 'YOU', c: 'u you b' });
   const W = 320, H = 180;
   const { fb, fwd } = renderMap(W, H, TACT, { x: 4, y: 16, w: 222, h: 162 }, { grid: 16, phase, arrows, cities: CITIES, units });
@@ -174,7 +195,7 @@ export function openMap(S, D) {
   placeLabels(wrap, fwd, W, H, units);
   if (S.ch === 1) placeLabels(wrap, fwd, W, H, [{ n: 'FROM THE CANARIES', p: [40, 312], c: 'u r' }]);
   ov.querySelector('.stops').innerHTML = S.route.map((s, i) => `<li class="${i < S.pos ? 'done' : i === S.pos ? 'here' : 'ahead'}">${i < S.pos ? '✓' : i === S.pos ? '▶' : '·'} ${s}</li>`).join('');
-  ov.querySelector('.mnote').textContent = ['Front lines as of late July 1936.', 'Front lines as of mid-August 1936.', 'Front lines as of September 1936.', 'Front lines as of November 1936.'][phase];
+  ov.querySelector('.mnote').textContent = NOTES[phase];
   ov.querySelector('[data-close]').addEventListener('click', closeMap);
 }
 

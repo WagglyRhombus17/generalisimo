@@ -149,7 +149,8 @@ export function siege(S, ctx) {
     const finish = () => {
       overrideMusic(null);
       ov.hidden = true;
-      resolve();
+      const best = SECTORS.reduce((a, b) => (prog[b.id] > prog[a.id] ? b : a));
+      resolve(S.flags.madrid ? { score: 100, text: 'You broke into Madrid.' } : { score: Math.min(99, prog[best.id]), text: `Madrid held. Your furthest advance was at ${best.n}.` });
     };
 
     const attack = () => {

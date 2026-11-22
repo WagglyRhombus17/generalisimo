@@ -30,6 +30,22 @@ const SKIES = {
   dawn: {
     sky: ['#2a2a5a', '#4a3f72', '#7a5a80', '#c0787a', '#eca882', '#f7d0a0'],
     sun: '#fff0d0', glow: '#f7c896', cloud: '#e89a8a', hillFar: '#5a4a6e', hillFarL: '#76608a'
+  },
+  // Overcast and green: the Basque Country, Cantabria and Asturias.
+  north: {
+    sky: ['#3e4858', '#4e5a6c', '#626e80', '#7a8694', '#949ea8', '#aab2b8'],
+    sun: '#dfe4e6', glow: '#c4ccd0', cloud: '#c8d0d6',
+    hillFar: '#465e52', hillFarL: '#56705e', hillMid: '#3e5e34', hillMidL: '#527444',
+    ground: ['#5e8040', '#4e6c34', '#3e5828'], road: '#6e6252', roadD: '#52483c', rut: '#463e32',
+    tree: '#3e5a26', treeD: '#2a401a', treeL: '#5e7a3a', dust: '#8a8a70'
+  },
+  // Snow on the ground: Teruel, the winter of 1937-38.
+  winter: {
+    sky: ['#4e5464', '#626878', '#7a8090', '#9298a6', '#acb0bc', '#c6c8d0'],
+    sun: '#f2f2ee', glow: '#d6d8d8', cloud: '#e2e4ea',
+    hillFar: '#8e96a6', hillFarL: '#c2c8d2', hillMid: '#a8aebc', hillMidL: '#d8dde6',
+    ground: ['#e2e6ec', '#c8ced8', '#a8b0be'], road: '#8a8a94', roadD: '#6a6a76', rut: '#5a5a66',
+    tree: '#3a4a3a', treeD: '#26342a', treeL: '#5a6a5a', dust: '#e6eaf0', roof: '#7a5a50'
   }
 };
 

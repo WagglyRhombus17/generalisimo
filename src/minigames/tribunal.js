@@ -134,7 +134,12 @@ export function tribunal(S, ctx) {
       });
       $f('sub').textContent = 'The files are closed.';
       $f('note').textContent = '';
-      btns.replaceChildren(button('CONTINUE ▶', 'enter', () => { ov.hidden = true; overrideMusic(null); resolve(); }, 'go'));
+      const harmless = verdicts.filter(x => x.c.truth !== 'militia'), freed = harmless.filter(x => x.v === 'release').length;
+      const result = {
+        score: harmless.length ? Math.round(freed / harmless.length * 100) : (sent.length ? 100 : 0),
+        text: harmless.length ? `You freed ${freed} of the ${harmless.length} prisoners who had harmed no one.` : 'Every prisoner in these files had fought with the militias.'
+      };
+      btns.replaceChildren(button('CONTINUE ▶', 'enter', () => { ov.hidden = true; overrideMusic(null); resolve(result); }, 'go'));
       btns.querySelector('button').focus({ preventScroll: true });
     }
 

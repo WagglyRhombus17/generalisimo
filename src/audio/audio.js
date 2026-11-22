@@ -133,5 +133,5 @@ export const themeForScene = (desc, ch = 0) => {
   if (ch === 2) return 'night';
   if (ch === 3) return 'march';
   if (ch === 4) return 'council';
-  return 'madrid';
+  return ['madrid', 'longwar', 'north', 'teruel', 'ebro', 'victory'][Math.min(ch, 10) - 5];
 };

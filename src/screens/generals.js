@@ -28,7 +28,7 @@ export function tagFor(S, g) {
 }
 
 export function generalIds(S, D) {
-  return Object.keys(D.generals).filter(g => g !== 'sanjurjo' || S.alive.sanjurjo).sort((a, b) => S.inf[b] - S.inf[a]);
+  return Object.keys(D.generals).filter(g => g === 'franco' || S.alive[g] !== false).sort((a, b) => S.inf[b] - S.inf[a]);
 }
 
 // root must contain .gb-list and .gb-detail. Returns the selected id.

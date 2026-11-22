@@ -12,6 +12,20 @@ const cache = new Map();
 let raf = 0, lastKey = '';
 
 
+function build(desc) {
+  const key = JSON.stringify(desc);
+  let sc = cache.get(key);
+  if (!sc) { sc = BUILD[desc.t](desc); cache.set(key, sc); }
+  return sc;
+}
+
+// One still frame of a scene, for thumbnails.
+export function drawStill(cv, desc, t = 1) {
+  const sc = build(desc), f = sc.base.copy();
+  if (sc.frame) sc.frame(f, t);
+  f.to(cv);
+}
+
 export function setScene(cv, desc) {
   cancelAnimationFrame(raf); raf = 0;
   if (!desc || !BUILD[desc.t]) return;
@@ -20,8 +34,7 @@ export function setScene(cv, desc) {
     lastKey = key;
     cv.classList.remove('fade'); void cv.offsetWidth; cv.classList.add('fade');
   }
-  let sc = cache.get(key);
-  if (!sc) { sc = BUILD[desc.t](desc); cache.set(key, sc); }
+  const sc = build(desc);
   if (!sc.frame || !motionOn()) {
     const f = sc.base.copy();
     if (sc.frame) sc.frame(f, 0);

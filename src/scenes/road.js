@@ -4,7 +4,8 @@ import { palFor } from '../engine/palettes.js';
 import { truck, soldier, prone, tree, house, palm } from '../engine/sprites.js';
 
 const W = 320, H = 180;
-const SUN = { sunset: [62, 70, 11], day: [64, 36, 10], dawn: [44, 80, 13] };
+const SUN = { sunset: [62, 70, 11], day: [64, 36, 10], dawn: [44, 80, 13], north: [236, 30, 9], winter: [86, 34, 9] };
+const SNOW = '#f4f6fa';
 const plainTop = x => Math.round(100 - 2 * Math.sin(x * 0.05) - 1.5 * Math.sin(x * 0.13 + 1));
 
 function hill(fb, P, cx, hw, top, x0, x1 = W) {
@@ -62,7 +63,7 @@ const TOWNS = {
     }
   },
   madrid: {
-    post(fb, P, R) {
+    post(fb, P, R, o) {
       const g = 99, sk = '#3a2e38', skL = '#5a4652';
       for (let x = 150; x < 320; x++) {
         const h = 8 + Math.floor(Math.abs(Math.sin(x * 0.21) * 7 + Math.sin(x * 0.05) * 5));
@@ -73,10 +74,7 @@ const TOWNS = {
       for (let y = g - 40; y < g - 6; y += 4) fb.set(218, y, '#ffd36a');
       fb.rect(166, g - 20, 26, 20, skL); fb.rect(166, g - 22, 26, 2, sk);
       fb.disc(268, g - 22, 9, sk); fb.rect(259, g - 22, 19, 22, sk); fb.rect(267, g - 34, 3, 4, sk);
-      [[196, 30], [240, 26], [290, 34]].forEach(([x, h]) => {
-        for (let k = 0; k < 12; k++) fb.disc(x + Math.round(Math.sin(k * 0.7) * 2 + k * 0.8), g - h - k * 4, 2 + (k >> 2), k % 2 ? P.smoke[0] : P.smoke[1]);
-        fb.disc(x, g - 10, 3, '#ff7a3a'); fb.set(x, g - 14, '#ffd36a');
-      });
+      if (!o.calm) [[196, 30], [240, 26], [290, 34]].forEach(([x, h]) => smokeCol(fb, P, x, g - h, 12, true));
     }
   },
   toledo: {
@@ -161,8 +159,161 @@ const TOWNS = {
       // stork nests on the pillars
       [163, 202, 254, 293].forEach(x => { fb.rect(x - 1, g - 34, 6, 3, P.trunk); fb.rect(x + 1, g - 37, 2, 3, P.white); fb.set(x + 3, g - 37, P.roof); });
     }
+  },
+  // A bombed town: roofless walls, a broken church tower, rubble; burning if o.fires.
+  ruins: {
+    post(fb, P, R, o) {
+      const g = 99;
+      for (let i = 0; i < 24; i++) {
+        const x = 164 + i * 6 + Math.floor(R() * 3), h = 3 + Math.floor(R() * 9);
+        fb.rect(x, g - h, 5, h, R() < 0.5 ? P.stone[1] : '#8a7a6a');
+        for (let k = 0; k < 5; k++) if (R() < 0.45) fb.rect(x + k, g - h, 1, 1 + Math.floor(R() * 3), P.sky[4]);
+        if (h > 5) fb.rect(x + 1 + Math.floor(R() * 2), g - h + 3, 2, 2, P.outline);
+      }
+      fb.rect(230, g - 30, 9, 30, P.outline); fb.rect(231, g - 29, 7, 29, P.stone[0]); fb.rect(237, g - 29, 1, 29, P.stone[1]);
+      fb.rect(233, g - 23, 3, 5, P.outline); fb.rect(231, g - 32, 3, 3, P.stone[0]); fb.rect(236, g - 31, 2, 2, P.stone[0]);
+      for (let i = 0; i < 70; i++) fb.set(162 + Math.floor(R() * 148), g - Math.floor(R() * 2), R() < 0.5 ? P.stone[1] : P.outline);
+      if (o.fires) [[184, 36], [212, 46], [254, 40], [288, 30]].forEach(([x, h]) => smokeCol(fb, P, x, g - 6, Math.round(h / 4), true));
+    }
+  },
+  // Bilbao: green hills, the estuary, blast furnaces and shipyard cranes.
+  bilbao: {
+    pre(fb, P, R) {
+      const t = hill(fb, P, 268, 70, 82, 190);
+      for (let i = 0; i < 18; i++) { const hx = 200 + Math.floor(R() * 110), ht = t(hx); if (ht < 96) house(fb, hx, ht + 2, 4 + Math.floor(R() * 3), 3, P, R, P.white); }
+    },
+    post(fb, P, R) {
+      const g = 99;
+      for (let x = 150; x < W; x++) { fb.rect(x, g - 2, 1, 3, P.sea[2]); if (hash(x, 1, 8) < 0.15) fb.set(x, g - 1, P.foam); }
+      for (let i = 0; i < 16; i++) house(fb, 152 + i * 6, g - 9 - Math.floor(R() * 4), 5, 5, P, R);
+      fb.rect(204, g - 20, 16, 18, '#4a3e40'); fb.rect(206, g - 24, 12, 4, '#5a4a4a');
+      [[200, 34], [214, 40], [226, 30], [270, 36]].forEach(([x, h]) => {
+        fb.rect(x, g - h, 4, h - 2, P.outline); fb.rect(x + 1, g - h, 2, h - 2, '#6a5a58');
+        smokeCol(fb, P, x + 2, g - h - 2, 9, false);
+      });
+      [244, 296].forEach(x => {
+        fb.rect(x, g - 32, 2, 30, '#2e2e38'); fb.line(x - 12, g - 32, x + 20, g - 32, '#2e2e38');
+        fb.line(x + 1, g - 40, x - 12, g - 32, '#2e2e38'); fb.line(x + 1, g - 40, x + 20, g - 32, '#2e2e38');
+        fb.rect(x + 16, g - 31, 1, 10, '#2e2e38'); fb.rect(x + 14, g - 21, 5, 2, '#2e2e38');
+      });
+      fb.rect(250, g - 8, 34, 5, P.shipD); fb.rect(258, g - 12, 12, 4, P.ship); fb.rect(262, g - 16, 3, 4, P.funnel);
+    }
+  },
+  // A fishing port with the sea behind and a lighthouse on the point.
+  port: {
+    pre(fb, P, R) {
+      seaBand(fb, P, 150, W);
+      const t = hill(fb, P, 186, 44, 84, 140, 236);
+      for (let i = 0; i < 22; i++) { const hx = 150 + Math.floor(R() * 80), ht = t(hx); if (ht < 98) house(fb, hx, ht + 1 + Math.floor(R() * 3), 4 + Math.floor(R() * 3), 3, P, R, P.white); }
+      fb.rect(300, 76, 5, 22, P.outline); fb.rect(301, 77, 3, 21, P.white); fb.rect(301, 84, 3, 2, P.roof); fb.rect(300, 72, 5, 4, P.light);
+    },
+    post(fb, P, R) {
+      [[246, 98], [270, 97], [286, 99]].forEach(([x, y]) => { fb.rect(x, y - 2, 10, 2, P.shipD); fb.rect(x + 4, y - 9, 1, 7, P.outline); fb.line(x + 5, y - 8, x + 9, y - 3, P.white); });
+    }
+  },
+  // The Mediterranean seen from the coast road.
+  sea: {
+    pre(fb, P, R) {
+      seaBand(fb, P, 110, W);
+      for (let x = 110; x < W; x++) fb.set(x, plainTop(x) - 1, P.dust);
+    },
+    post(fb, P) { palm(fb, 128, 104, P.trunk, P.treeD); palm(fb, 300, 104, P.trunk, P.treeD); }
+  },
+  // Teruel: a town on a hill with tall brick towers, under snow.
+  teruel: {
+    pre(fb, P, R) {
+      const t = hill(fb, P, 238, 66, 78, 160);
+      for (let i = 0; i < 32; i++) {
+        const hx = 184 + Math.floor(R() * 112), ht = t(hx), w = 4 + Math.floor(R() * 5);
+        if (ht > 94) continue;
+        const y = ht + 2 + Math.floor(R() * 6);
+        house(fb, hx, y, w, 3 + Math.floor(R() * 3), P, R);
+        fb.rect(hx, y, w, 1, SNOW);
+      }
+      [[212, 30], [240, 36], [262, 28]].forEach(([x, h]) => {
+        const gy = t(x + 3) + 4;
+        fb.rect(x - 1, gy - h - 1, 8, h + 1, P.outline); fb.rect(x, gy - h, 6, h, '#b8805a'); fb.rect(x + 5, gy - h, 1, h, '#8a5a3a');
+        for (let k = 0; k < 4; k++) { fb.rect(x, gy - h + 5 + k * 6, 6, 1, k % 2 ? '#5a8a7a' : '#e0d6b0'); }
+        fb.rect(x + 2, gy - h + 2, 2, 3, P.outline);
+        fb.rect(x - 1, gy - h - 2, 8, 1, SNOW); fb.rect(x + 1, gy - h - 4, 4, 2, '#b8805a'); fb.rect(x + 1, gy - h - 5, 4, 1, SNOW);
+      });
+    }
+  },
+  // Barcelona: the Eixample, the spires of the Sagrada Família, and Montjuïc with its castle.
+  barcelona: {
+    pre(fb, P, R) {
+      const t = hill(fb, P, 292, 34, 80, 254);
+      fb.rect(284, t(292) - 5, 16, 5, P.stone[1]); fb.rect(284, t(292) - 6, 16, 1, P.stone[0]);
+    },
+    post(fb, P, R, o) {
+      const g = 99;
+      for (let x = 140; x < 262; x += 7) { const h = 6 + Math.floor(R() * 7); fb.rect(x, g - h, 6, h, R() < 0.5 ? P.stone[0] : P.stone[1]); for (let y = g - h + 2; y < g - 1; y += 3) fb.set(x + 2, y, P.outline); }
+      [[192, 34], [198, 40], [204, 40], [210, 34]].forEach(([x, h]) => {
+        for (let k = 0; k < h; k++) { const w = k < h - 10 ? 4 : Math.max(1, 4 - Math.floor((k - h + 10) / 3)); fb.rect(x + Math.floor((4 - w) / 2), g - 8 - k, w, 1, k % 5 === 0 ? P.stone[1] : P.stone[0]); }
+        fb.set(x + 1, g - 8 - h, P.gold);
+      });
+      fb.rect(188, g - 14, 28, 14, P.stone[1]);
+      if (o.fires) [[160, 30], [228, 36], [250, 26]].forEach(([x, h]) => smokeCol(fb, P, x, g - 8, Math.round(h / 4), true));
+    }
+  },
+  // Zaragoza: the Basilica del Pilar with its tiled domes, on the Ebro.
+  pilar: {
+    post(fb, P, R) {
+      const g = 99;
+      for (let x = 150; x < W; x++) fb.rect(x, g - 1, 1, 2, P.sea[2]);
+      for (let i = 0; i < 12; i++) house(fb, 152 + i * 6, g - 9 - Math.floor(R() * 4), 5, 5, P, R);
+      fb.rect(214, g - 18, 60, 16, P.stone[0]); fb.rect(214, g - 18, 60, 1, P.stone[1]);
+      for (let i = 0; i < 9; i++) fb.rect(218 + i * 6, g - 12, 2, 5, P.outline);
+      [226, 244, 262].forEach((x, i) => { fb.disc(x, g - 20, 5, i === 1 ? '#c8a040' : '#4a7a5a'); fb.rect(x - 5, g - 20, 11, 2, P.stone[1]); fb.rect(x, g - 28, 1, 3, P.gold); });
+      [208, 276].forEach(x => {
+        fb.rect(x, g - 38, 6, 36, P.stone[0]); fb.rect(x + 5, g - 38, 1, 36, P.stone[1]);
+        for (let k = 0; k < 8; k++) fb.rect(x + Math.floor(k / 3), g - 38 - k, 6 - 2 * Math.floor(k / 3), 1, P.stone[1]);
+        fb.set(x + 2, g - 30, P.outline); fb.set(x + 2, g - 22, P.outline);
+      });
+    }
+  },
+  // The Ebro: a wide river below bare rocky hills, with boats on the water.
+  river: {
+    pre(fb, P, R) {
+      const t = hill(fb, P, 220, 110, 80, 100);
+      for (let x = 100; x < W; x++) { const h = t(x); if (h < 100 && hash(x, h, 2) < 0.3) fb.rect(x, h, 1, 2, P.stone[1]); }
+    },
+    post(fb, P) {
+      for (let x = 0; x < W; x++) for (let y = 100; y < 106; y++) fb.set(x, y, dith(x, y, (y - 100) / 6) ? P.sea[1] : P.sea[0]);
+      for (let x = 0; x < W; x += 3) if (hash(x, 3, 4) < 0.4) fb.set(x, 101, P.foam);
+      [[60, 103], [176, 104], [252, 102]].forEach(([x, y]) => { fb.rect(x, y, 9, 2, P.trunk); fb.set(x + 3, y - 1, P.outline); fb.set(x + 6, y - 1, P.outline); });
+    }
   }
 };
+
+// A column of smoke rising from a point; with fire at its base if burning.
+function smokeCol(fb, P, x, y, n, burning) {
+  for (let k = 0; k < n; k++) fb.disc(x + Math.round(Math.sin(k * 0.7) * 2 + k * 0.8), y - k * 4, 2 + (k >> 2), k % 2 ? P.smoke[0] : P.smoke[1]);
+  if (burning) { fb.disc(x, y + 2, 3, '#ff7a3a'); fb.set(x, y - 1, '#ffd36a'); }
+}
+
+// The sea in place of the far hills, from x0 to x1.
+function seaBand(fb, P, x0, x1) {
+  for (let x = x0; x < x1; x++) for (let y = 84; y < 101; y++) {
+    fb.set(x, y, dith(x, y, (y - 84) / 17) ? P.sea[1] : P.sea[0]);
+    if (y % 4 === 1 && hash(x >> 1, y, 6) < 0.18) fb.set(x, y, P.foam);
+  }
+}
+
+// Falling snow or rain, drawn over each frame.
+function weather(fb, t, kind) {
+  if (kind === 'snow') {
+    for (let i = 0; i < 90; i++) {
+      const sp = 8 + (i % 3) * 5, x = Math.floor((hash(i, 1, 9) * W + t * 4 + Math.sin(t * 1.3 + i) * 3) % W), y = Math.floor((hash(i, 2, 9) * H + t * sp) % H);
+      fb.set(x, y, SNOW); if (i % 3 === 2) fb.set(x + 1, y, SNOW);
+    }
+  } else if (kind === 'rain') {
+    for (let i = 0; i < 70; i++) {
+      const x = Math.floor((hash(i, 1, 7) * W - t * 30) % W + W) % W, y = Math.floor((hash(i, 2, 7) * H + t * 90) % H);
+      for (let k = 0; k < 4; k++) fb.set(x - k, y + k * 2, '#b8c4d0');
+    }
+  }
+}
 
 export function road(o = {}) {
   const sky = o.sky || 'sunset', P = palFor(sky), fb = new FB(W, H), R = rng(o.seed || 7);
@@ -175,7 +326,7 @@ export function road(o = {}) {
     for (let y = t; y < 100; y++) fb.set(x, y, y === t ? P.hillFarL : P.hillFar);
   }
   const town = TOWNS[o.town] || {};
-  if (town.pre) town.pre(fb, P, R);
+  if (town.pre) town.pre(fb, P, R, o);
   for (let x = 0; x < W; x++) {
     const t = plainTop(x);
     for (let y = t; y < H; y++) {
@@ -185,7 +336,7 @@ export function road(o = {}) {
       fb.set(x, y, c);
     }
   }
-  if (town.post) town.post(fb, P, R);
+  if (town.post) town.post(fb, P, R, o);
   [8, 46, 104, 140].forEach(x => tree(fb, x, 104, P));
   for (let x = 0; x < W; x++) for (let y = 108; y < 118; y++) {
     let c = P.road;
@@ -204,7 +355,7 @@ export function road(o = {}) {
     const x = Math.floor(R() * W), y = 122 + Math.floor(R() * 50);
     fb.rect(x, y, 3, 1, P.treeD); fb.set(x + 1, y - 1, P.tree);
   }
-  return { base: fb, P, frame: (f, t) => convoy(f, P, t) };
+  return { base: fb, P, frame: (f, t) => { convoy(f, P, t); weather(f, t, o.weather); } };
 }
 
 // The moving column, drawn each frame on top of the static background.
@@ -255,6 +406,7 @@ export function battle(o = {}) {
       });
       gun(f, 18, 118, Math.floor(t * 2) % 3 === 0);
       gun(f, 52, 120, Math.floor(t * 2 + 1) % 3 === 0);
+      weather(f, t, o.weather);
     }
   };
 }

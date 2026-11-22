@@ -729,6 +729,1055 @@
           "r": "The Falange splits between his followers and yours."
         }
       ]
+    },
+    "massArmy": {
+      "title": "Salamanca · 1 December 1936",
+      "text": "Your columns are worn out after Madrid. To finish the war you need a real army: conscripts from the provinces you hold, more Moroccan recruits, and the troops Mussolini is offering.",
+      "ledger": {
+        "k": "A mass army",
+        "hist": "Through 1937 the Nationalists conscripted hundreds of thousands of Spaniards and recruited tens of thousands of Moroccans. About 50,000 Italian troops were serving in Spain by early 1937."
+      },
+      "choices": [
+        {
+          "t": "Call up the conscript classes",
+          "h": "Army +25,000 · funds · morale",
+          "you": "You called up the conscript classes.",
+          "fx": {
+            "tS": 25000,
+            "funds": -10,
+            "morale": -3
+          },
+          "r": "Recruiting offices open in every town you hold. Young men from Galicia, Castile and Navarre are drafted and sent to training camps."
+        },
+        {
+          "t": "Recruit more men in Morocco",
+          "h": "Army +16,000 · experienced troops",
+          "you": "You recruited in Morocco.",
+          "fx": {
+            "tS": 16000,
+            "morale": 4,
+            "funds": -6,
+            "terror": 2
+          },
+          "r": "Recruiters fan out through the Rif, where drought and hunger make the army's pay hard to refuse."
+        },
+        {
+          "t": "Accept Mussolini's Corps of Volunteers",
+          "h": "Army +20,000 · Italy · less control",
+          "you": "You accepted Mussolini's Corps.",
+          "fx": {
+            "tS": 20000,
+            "ita": 10,
+            "inf": {
+              "franco": -3
+            },
+            "flag": {
+              "ctv": 1
+            }
+          },
+          "r": "Thousands of Italian \"volunteers\" land at Cádiz under their own generals. Their commanders answer to Rome."
+        }
+      ]
+    },
+    "malaga": {
+      "title": "Málaga · 8 February 1937",
+      "text": "Queipo's columns and the Italian Corps have taken Málaga in a few days. Tens of thousands of people are fleeing east along the coast road to Almería. Your warships and aircraft can see the road from the sea.",
+      "ledger": {
+        "k": "Málaga",
+        "hist": "Málaga fell on 8 February 1937. Refugees fleeing to Almería were shelled from the sea and bombed from the air, and thousands died on the road. Thousands more were executed in Málaga in the months that followed."
+      },
+      "choices": [
+        {
+          "t": "Order the road shelled and bombed",
+          "h": "Terror · legitimacy falls",
+          "you": "You had the coast road attacked.",
+          "fx": {
+            "terror": 10,
+            "legit": -6,
+            "ita": 2
+          },
+          "r": "For days the cruisers and aircraft attack the road. A Canadian doctor, Norman Bethune, drives the wounded to Almería and tells the world what he saw."
+        },
+        {
+          "t": "Leave the refugees alone",
+          "h": "Legitimacy · the Republic regroups",
+          "you": "You left the refugees alone.",
+          "fx": {
+            "legit": 4,
+            "delay": 2,
+            "loy": {
+              "queipo": -4
+            }
+          },
+          "r": "Your ships hold their fire. The refugees reach Almería exhausted, and some of the militiamen among them will fight again."
+        },
+        {
+          "t": "Let Queipo run Málaga as he sees fit",
+          "h": "Queipo pleased · terror",
+          "you": "You gave Queipo a free hand in Málaga.",
+          "fx": {
+            "loy": {
+              "queipo": 10
+            },
+            "inf": {
+              "queipo": 4
+            },
+            "terror": 8,
+            "legit": -3
+          },
+          "r": "Queipo's courts-martial work through the prisons of Málaga for months."
+        }
+      ]
+    },
+    "turnNorth": {
+      "title": "Salamanca · 23 March 1937",
+      "text": "Madrid has beaten off every attempt to take or surround it. In the north, the Basque Country, Santander and Asturias are cut off from the rest of the Republic, with the iron mines, steelworks and arms factories you need. Your German advisers urge you to turn north.",
+      "ledger": {
+        "k": "Turning north",
+        "hist": "After Guadalajara, Franco gave up trying to take Madrid and turned against the isolated Republican north. The capital held out until March 1939."
+      },
+      "choices": [
+        {
+          "t": "Turn north. Madrid can wait",
+          "h": "The historical choice",
+          "you": "You turned north.",
+          "fx": {
+            "inf": {
+              "mola": 4
+            },
+            "loy": {
+              "mola": 6
+            },
+            "ger": 3
+          },
+          "r": "Mola will command the offensive. The Condor Legion moves its aircraft to the airfields around Vitoria."
+        },
+        {
+          "t": "Try for Madrid one more time",
+          "h": "A long shot · costly if it fails",
+          "you": "You attacked Madrid again.",
+          "fx": {
+            "roll": {
+              "p": 0.15,
+              "win": {
+                "r": "Your attack from the north-west finds the defenders exhausted. Madrid's government flees and the city surrenders. The war goes on, but it will be shorter.",
+                "flag": {
+                  "madridFell": 1
+                },
+                "delay": -45,
+                "legit": 10,
+                "inf": {
+                  "franco": 12
+                }
+              },
+              "lose": {
+                "r": "The attack breaks against the same trenches as before. Two weeks and thousands of men are gone, and the north is still waiting.",
+                "tS": -8000,
+                "delay": 15,
+                "morale": -8,
+                "inf": {
+                  "franco": -4
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "durango": {
+      "title": "Vitoria · 31 March 1937",
+      "text": "Mola opens the northern offensive with a warning to the Basques: \"If submission is not immediate, I will raze all Vizcaya to the ground, beginning with the industries of war.\" This morning Italian and German aircraft bombed the market town of Durango. The Condor Legion's chief of staff, Wolfram von Richthofen, wants a free hand to do the same wherever it helps the advance.",
+      "ledger": {
+        "k": "The air war in the north",
+        "hist": "Mola's offensive began on 31 March 1937 with the bombing of Durango, which killed more than 250 people. Franco's headquarters backed the Condor Legion's raids in support of the advance."
+      },
+      "choices": [
+        {
+          "t": "Give the Condor Legion a free hand",
+          "h": "Germany · faster · terror",
+          "you": "You gave the Condor Legion a free hand.",
+          "fx": {
+            "ger": 6,
+            "terror": 6,
+            "legit": -3,
+            "delay": -3,
+            "flag": {
+              "freeHand": 1
+            }
+          },
+          "r": "Richthofen's bombers will hit roads, bridges and towns behind the Basque lines as he sees fit."
+        },
+        {
+          "t": "Bomb only the front line and the factories",
+          "h": "Legitimacy · slower · Germany cools",
+          "you": "You limited the bombing to military targets.",
+          "fx": {
+            "legit": 3,
+            "ger": -4,
+            "loy": {
+              "mola": -5
+            },
+            "delay": 4
+          },
+          "r": "Richthofen complains to Berlin that he is fighting with one hand tied."
+        },
+        {
+          "t": "Leave it to Mola",
+          "h": "Mola trusts you · he decides",
+          "you": "You left the air war to Mola.",
+          "fx": {
+            "loy": {
+              "mola": 8
+            },
+            "inf": {
+              "mola": 3
+            },
+            "flag": {
+              "freeHand": 1
+            }
+          },
+          "r": "Mola's staff and the Legion plan the raids together. You will be told afterwards."
+        }
+      ]
+    },
+    "unification": {
+      "title": "Salamanca · 19 April 1937",
+      "text": "Your brother-in-law, Ramón Serrano Súñer, has a plan. The Falange and the Carlists have tens of thousands of armed volunteers and quarrel constantly. Merge them by decree into one party, with you as its leader, and nobody will be able to organise against you.",
+      "ledger": {
+        "k": "The Unification Decree",
+        "hist": "On 19 April 1937 Franco merged the Falange and the Carlists into one party, FET y de las JONS, with himself as its leader. It remained the only legal party in Spain until 1977."
+      },
+      "choices": [
+        {
+          "t": "Decree the merger and lead the new party",
+          "h": "Influence · the Falange may resist",
+          "you": "You merged the parties and led them yourself.",
+          "fx": {
+            "inf": {
+              "franco": 12
+            },
+            "legit": -2,
+            "flag": {
+              "unified": 1
+            }
+          },
+          "r": "The decree creates the Falange Española Tradicionalista y de las JONS. Its leader is you."
+        },
+        {
+          "t": "Leave the parties as they are",
+          "h": "No new power · no new rivals",
+          "you": "You left the parties alone.",
+          "fx": {
+            "inf": {
+              "franco": -4
+            },
+            "morale": -2
+          },
+          "r": "Falangists and Carlists keep their own militias, newspapers and quarrels."
+        },
+        {
+          "t": "Put the Falange's leader, Manuel Hedilla, in charge",
+          "h": "Germany pleased · your influence falls",
+          "you": "You gave the united party to Hedilla.",
+          "fx": {
+            "inf": {
+              "franco": -8
+            },
+            "ger": 4
+          },
+          "r": "Hedilla, a former ship's mechanic admired in Berlin, takes over the united party, and its militias answer to him."
+        }
+      ]
+    },
+    "hedilla": {
+      "title": "Salamanca · 25 April 1937",
+      "text": "Manuel Hedilla, the Falange's leader, refuses the seat you offered him on the new party's council and tells his followers to take orders only from him. Your police arrest him, and a court-martial sentences him to death.",
+      "ledger": {
+        "k": "Hedilla",
+        "hist": "Hedilla was sentenced to death for resisting the merger. Franco commuted the sentence and Hedilla spent four years in prison."
+      },
+      "choices": [
+        {
+          "t": "Commute the sentence to prison",
+          "h": "The historical choice",
+          "you": "You commuted Hedilla's sentence.",
+          "fx": {
+            "legit": 2,
+            "inf": {
+              "franco": 3
+            }
+          },
+          "r": "Hedilla goes to prison in the Canary Islands. The Falange learns who is in charge."
+        },
+        {
+          "t": "Let the sentence stand",
+          "h": "Terror · the Falange is cowed · Germany shocked",
+          "you": "You let Hedilla be shot.",
+          "fx": {
+            "terror": 6,
+            "inf": {
+              "franco": 6
+            },
+            "ger": -4,
+            "legit": -4
+          },
+          "r": "Hedilla is shot. No Falangist will defy you openly again."
+        },
+        {
+          "t": "Release him with a warning",
+          "h": "The Falange is grateful · you look weak",
+          "you": "You released Hedilla.",
+          "fx": {
+            "inf": {
+              "franco": -5
+            },
+            "morale": 2
+          },
+          "r": "Hedilla walks free and tells everyone that you backed down."
+        }
+      ]
+    },
+    "bilbaoFalls": {
+      "title": "Bilbao · 19 June 1937",
+      "text": "Bilbao falls. The Basque army retreats west toward Santander, leaving behind the blast furnaces, shipyards and arms factories that its leaders refused to blow up. Basque officials ask what will become of their self-government and their language.",
+      "ledger": {
+        "k": "Bilbao",
+        "hist": "Bilbao fell on 19 June 1937 with its industry intact. Franco abolished the economic self-government of Vizcaya and Guipúzcoa as \"traitor provinces\", and Basque iron ore helped pay Germany for its aid."
+      },
+      "choices": [
+        {
+          "t": "Abolish Basque self-government and ban the language",
+          "h": "The historical choice · terror · influence",
+          "you": "You abolished Basque self-government.",
+          "fx": {
+            "terror": 6,
+            "inf": {
+              "franco": 4
+            },
+            "legit": -2
+          },
+          "r": "Your decree calls Vizcaya and Guipúzcoa \"traitor provinces\" and strips them of their old rights. Basque is banned from schools and public life."
+        },
+        {
+          "t": "Leave the provinces their old rights",
+          "h": "Legitimacy · hardliners object",
+          "you": "You left the Basques their old rights.",
+          "fx": {
+            "legit": 5,
+            "inf": {
+              "franco": -3
+            },
+            "morale": -2
+          },
+          "r": "Navarre and Álava kept their rights for siding with you. Now Vizcaya and Guipúzcoa keep theirs too, and your hardliners say you are rewarding treason."
+        },
+        {
+          "t": "Ship the iron ore to Germany to pay for arms",
+          "h": "Germany · ammo · funds",
+          "you": "You sent Basque ore to Germany.",
+          "fx": {
+            "ger": 8,
+            "ammo": 15,
+            "funds": 8,
+            "legit": -2
+          },
+          "r": "Within weeks, ore ships sail from Bilbao for Hamburg and German shells come back the other way."
+        }
+      ]
+    },
+    "bishops": {
+      "title": "Salamanca · 1 July 1937",
+      "text": "Abroad, Guernica and the executions behind your lines have turned many Catholics against you. Cardinal Gomá offers to answer with a letter from the Spanish bishops to the bishops of the world, explaining why the Church stands with your side.",
+      "ledger": {
+        "k": "The bishops' letter",
+        "hist": "On 1 July 1937 the Spanish bishops published a collective letter supporting Franco's side. The Bishop of Vitoria and the Cardinal of Tarragona refused to sign."
+      },
+      "choices": [
+        {
+          "t": "Ask for the letter",
+          "h": "Legitimacy abroad",
+          "you": "You asked the bishops to write.",
+          "fx": {
+            "legit": 8,
+            "flag": {
+              "crusade": 1
+            }
+          },
+          "r": "The letter calls the war a crusade and is read out in churches from Dublin to Buenos Aires. Two bishops refuse to sign it."
+        },
+        {
+          "t": "Keep the Church out of it",
+          "h": "Legitimacy falls a little · the army approves",
+          "you": "You kept the Church out of it.",
+          "fx": {
+            "legit": -2,
+            "morale": 2
+          },
+          "r": "Gomá is disappointed. Your officers say wars are won by soldiers, not bishops."
+        }
+      ]
+    },
+    "santona": {
+      "title": "Santoña · 26 August 1937",
+      "text": "Cut off on the coast at Santoña, some 20,000 Basque soldiers have surrendered to the Italians, not to you. The Italian commanders promised them their lives, and ships to take their officers and politicians abroad. They are already boarding.",
+      "ledger": {
+        "k": "Santoña",
+        "hist": "Franco refused to honour the Italian agreement at Santoña. The Basque soldiers were taken off the ships and imprisoned, and many faced courts-martial."
+      },
+      "choices": [
+        {
+          "t": "Repudiate the pact. Take them off the ships",
+          "h": "The historical choice · terror · Italy offended",
+          "you": "You repudiated the pact.",
+          "fx": {
+            "terror": 8,
+            "ita": -6,
+            "inf": {
+              "franco": 3
+            }
+          },
+          "r": "Your troops march the prisoners off the ships. Many will face courts-martial. The Italian officers who gave their word are humiliated."
+        },
+        {
+          "t": "Honour the Italian promise",
+          "h": "Italy · legitimacy",
+          "you": "You honoured the pact.",
+          "fx": {
+            "ita": 6,
+            "legit": 6,
+            "morale": -3,
+            "loy": {
+              "queipo": -4
+            }
+          },
+          "r": "The ships sail. Rome is grateful, and foreign newspapers report that you kept an ally's word."
+        },
+        {
+          "t": "Let the soldiers go home and try the officers",
+          "h": "A compromise",
+          "you": "You released the soldiers and tried the officers.",
+          "fx": {
+            "legit": 2,
+            "ita": -2,
+            "terror": 3
+          },
+          "r": "Thousands of Basque conscripts walk home. Their officers are taken to prison."
+        }
+      ]
+    },
+    "northFalls": {
+      "title": "Gijón · 21 October 1937",
+      "text": "The war in the north is over. You hold the coal of Asturias, the iron and steel of Bilbao, and tens of thousands of prisoners. Your own factories can now arm your army.",
+      "ledger": {
+        "k": "The north",
+        "hist": "The fall of the north in October 1937 gave Franco its mines and heavy industry. Tens of thousands of prisoners were put to forced labour."
+      },
+      "choices": [
+        {
+          "t": "Put the prisoners to work in labour battalions",
+          "h": "The historical choice · funds · terror",
+          "you": "You put the prisoners to forced labour.",
+          "fx": {
+            "funds": 10,
+            "ammo": 10,
+            "terror": 5
+          },
+          "r": "Prisoners are sent to rebuild roads and bridges and to work in the mines, under armed guard."
+        },
+        {
+          "t": "Draft the young prisoners into your army",
+          "h": "Army +15,000 · their loyalty is doubtful",
+          "you": "You drafted the prisoners.",
+          "fx": {
+            "tS": 15000,
+            "morale": -6,
+            "flag": {
+              "turncoats": 1
+            }
+          },
+          "r": "Asturian miners are handed uniforms and rifles. Your officers watch them closely."
+        },
+        {
+          "t": "Release those accused of no crime",
+          "h": "Legitimacy",
+          "you": "You released prisoners accused of no crime.",
+          "fx": {
+            "legit": 6,
+            "funds": 3,
+            "loy": {
+              "queipo": -3
+            }
+          },
+          "r": "Thousands go home to their villages, where the local Falange keeps a list of their names."
+        }
+      ]
+    },
+    "cold": {
+      "title": "Teruel · 8 January 1938",
+      "text": "Teruel's last defenders have surrendered to the Republic. The temperature has fallen to twenty degrees below zero. Lorries freeze on the roads, and you are losing more men to frostbite than to bullets.",
+      "ledger": {
+        "k": "The winter",
+        "hist": "Teruel was fought in one of the coldest winters in memory, at around −20 °C. Thousands of soldiers on both sides suffered frostbite."
+      },
+      "choices": [
+        {
+          "t": "Requisition winter clothing and fuel at any cost",
+          "h": "Funds −15 · fewer losses",
+          "you": "You bought winter clothing.",
+          "fx": {
+            "funds": -15,
+            "morale": 3
+          },
+          "r": "Lorries of greatcoats and blankets crawl up from Zaragoza. Your men curse the cold, but most of them keep their toes."
+        },
+        {
+          "t": "Press on regardless",
+          "h": "Army −6,000 to frostbite",
+          "you": "You pressed on through the cold.",
+          "fx": {
+            "tS": -6000,
+            "morale": -4,
+            "delay": -2
+          },
+          "r": "The columns move on, leaving a trail of men too frozen to walk."
+        },
+        {
+          "t": "Wait for the weather to break",
+          "h": "10 days lost · the Republic digs in",
+          "you": "You waited for the weather.",
+          "fx": {
+            "delay": 10,
+            "morale": -2,
+            "flag": {
+              "teruelHard": 1
+            }
+          },
+          "r": "The blizzards pass after ten days. The Republic has used them to fortify the ruins."
+        }
+      ]
+    },
+    "firstGovernment": {
+      "title": "Burgos · 30 January 1938",
+      "text": "You form your first real government, to replace the committee of officials that has run your zone since 1936. The generals, the Falange, the monarchists and the Church all want their men in it.",
+      "ledger": {
+        "k": "The first government",
+        "hist": "Franco formed his first government on 30 January 1938, balancing generals, Falangists, monarchists and Catholics. He chaired the cabinet himself until 1973."
+      },
+      "choices": [
+        {
+          "t": "Balance them all, and keep the army for yourself",
+          "h": "The historical choice · influence",
+          "you": "You balanced every faction.",
+          "fx": {
+            "inf": {
+              "franco": 6
+            },
+            "legit": 2
+          },
+          "r": "Generals, Falangists, monarchists and Catholics share the ministries, and none of them can rule without you. Serrano Súñer takes the Interior."
+        },
+        {
+          "t": "Give the Falange the key ministries",
+          "h": "Germany pleased · monarchists offended",
+          "you": "You favoured the Falange.",
+          "fx": {
+            "ger": 4,
+            "inf": {
+              "franco": 3
+            },
+            "loy": {
+              "kindelan": -10
+            },
+            "legit": -3
+          },
+          "r": "Blue shirts fill the ministries. Kindelán and the monarchists stop coming to dinner."
+        },
+        {
+          "t": "Fill it with generals",
+          "h": "The army pleased · legitimacy falls",
+          "you": "You filled the government with generals.",
+          "fx": {
+            "morale": 4,
+            "legit": -5,
+            "inf": {
+              "franco": 2
+            },
+            "loy": {
+              "cabanellas": 6,
+              "queipo": 6
+            }
+          },
+          "r": "Your cabinet meetings look like a staff conference."
+        }
+      ]
+    },
+    "barcelonaBombing": {
+      "title": "Barcelona · 16 March 1938",
+      "scene": {
+        "t": "road",
+        "town": "barcelona",
+        "sky": "sunset",
+        "fires": 1
+      },
+      "text": "On Mussolini's own orders, Italian bombers from Mallorca are attacking Barcelona every few hours, day and night, to break its people's will. Nobody consulted you. The bombs are falling on the city centre and the foreign press is reporting hundreds dead.",
+      "ledger": {
+        "k": "Barcelona bombed",
+        "hist": "Italian bombers attacked Barcelona from 16 to 18 March 1938, killing nearly a thousand people. Franco, who had not been consulted, asked for the raids to stop."
+      },
+      "choices": [
+        {
+          "t": "Ask Mussolini to stop",
+          "h": "The historical choice · legitimacy · Italy cools",
+          "you": "You asked Mussolini to stop.",
+          "fx": {
+            "ita": -3,
+            "legit": 3
+          },
+          "r": "After three days the raids stop. Nearly a thousand people have been killed."
+        },
+        {
+          "t": "Say nothing",
+          "h": "Terror · legitimacy falls",
+          "you": "You said nothing.",
+          "fx": {
+            "terror": 6,
+            "legit": -4,
+            "ita": 2
+          },
+          "r": "The raids go on until Rome decides they have made their point."
+        },
+        {
+          "t": "Praise the raids",
+          "h": "Italy · terror · legitimacy falls further",
+          "you": "You praised the raids.",
+          "fx": {
+            "ita": 6,
+            "terror": 8,
+            "legit": -8
+          },
+          "r": "Your praise is printed in Rome and quoted with disgust in London and Washington."
+        }
+      ]
+    },
+    "xyz": {
+      "title": "Castellón · 5 July 1938",
+      "text": "Your drive on Valencia has run into the XYZ Line: belts of trenches and bunkers dug into the mountains north of the city. Your divisions are losing thousands of men a week for a few kilometres of rock.",
+      "ledger": {
+        "k": "The XYZ Line",
+        "hist": "In July 1938 the Nationalist advance on Valencia was stopped at the XYZ Line, with heavy losses."
+      },
+      "choices": [
+        {
+          "t": "Keep attacking",
+          "h": "The historical choice · Army −8,000",
+          "you": "You kept attacking.",
+          "fx": {
+            "tS": -8000,
+            "inf": {
+              "franco": 1
+            }
+          },
+          "r": "The attacks go on through the July heat. The line bends but does not break."
+        },
+        {
+          "t": "Halt and rest the army",
+          "h": "Morale · Valencia is safe for now",
+          "you": "You rested the army.",
+          "fx": {
+            "morale": 6,
+            "delay": 3
+          },
+          "r": "Your divisions dig in and wait for fresh troops and shells."
+        },
+        {
+          "t": "Bomb Valencia's port to cut its supplies",
+          "h": "Terror · legitimacy falls",
+          "you": "You bombed the port of Valencia.",
+          "fx": {
+            "ita": 3,
+            "terror": 6,
+            "legit": -6,
+            "delay": -2
+          },
+          "r": "Italian bombers hit the harbour. British merchant ships are among those sunk, and London protests."
+        }
+      ]
+    },
+    "brigadesLeave": {
+      "title": "Burgos · 28 October 1938",
+      "text": "The Republic has sent the International Brigades home, hoping the League of Nations will make Germany and Italy withdraw too. Today the volunteers paraded through Barcelona for the last time, and Dolores Ibárruri told them: \"You can go proudly. You are history.\" Britain asks you to send some of your Italians home in return.",
+      "ledger": {
+        "k": "The International Brigades",
+        "hist": "About 35,000 volunteers from more than 50 countries served in the International Brigades. They paraded through Barcelona for the last time on 28 October 1938. Franco sent about 10,000 Italians home that month."
+      },
+      "choices": [
+        {
+          "t": "Send 10,000 Italians home",
+          "h": "The historical choice · legitimacy · Italy cools",
+          "you": "You sent 10,000 Italians home.",
+          "fx": {
+            "ita": -4,
+            "legit": 5,
+            "tS": -10000
+          },
+          "r": "Ten thousand Italian veterans sail home from Cádiz. London puts its new agreement with Rome into force."
+        },
+        {
+          "t": "Keep every man",
+          "h": "Italy pleased · Britain displeased",
+          "you": "You kept every Italian.",
+          "fx": {
+            "ita": 4,
+            "legit": -4
+          },
+          "r": "Britain's ambassador notes your answer without comment."
+        }
+      ]
+    },
+    "ebroEnds": {
+      "title": "The Ebro · 16 November 1938",
+      "text": "The last Republican troops cross back over the Ebro and blow up the bridges behind them. Of the army that crossed in July, little is left. Catalonia lies open.",
+      "ledger": {
+        "k": "The end of the Ebro",
+        "hist": "The Battle of the Ebro ended on 16 November 1938. Franco attacked Catalonia five weeks later, after Germany sent new weapons in exchange for mining rights."
+      },
+      "choices": [
+        {
+          "t": "Rest and resupply first",
+          "h": "The historical choice · morale",
+          "you": "You rested and resupplied.",
+          "fx": {
+            "morale": 5,
+            "ammo": 5
+          },
+          "r": "Your exhausted divisions are pulled out of the line for the first time since July."
+        },
+        {
+          "t": "Attack Catalonia at once",
+          "h": "Faster · ammo −20 · morale falls",
+          "you": "You attacked at once.",
+          "fx": {
+            "ammo": -20,
+            "morale": -5,
+            "delay": -6
+          },
+          "r": "Tired men are marched straight back toward the front."
+        }
+      ]
+    },
+    "christmas": {
+      "title": "Lleida · 23 December 1938",
+      "text": "Pope Pius XI has asked both sides to stop fighting over Christmas. Your army is ready on the Segre river with 300,000 men, new German guns and hundreds of aircraft. The Republic's army in Catalonia has barely recovered from the Ebro.",
+      "ledger": {
+        "k": "Christmas 1938",
+        "hist": "Franco rejected the Pope's call for a Christmas truce and attacked Catalonia on 23 December 1938."
+      },
+      "choices": [
+        {
+          "t": "Attack today",
+          "h": "The historical choice",
+          "you": "You attacked on 23 December.",
+          "fx": {
+            "morale": 2
+          },
+          "r": "Your guns open fire at dawn."
+        },
+        {
+          "t": "Agree to a Christmas truce",
+          "h": "Legitimacy · 7 days lost",
+          "you": "You agreed to a Christmas truce.",
+          "fx": {
+            "legit": 4,
+            "delay": 7
+          },
+          "r": "For a week the guns are quiet along the Segre. Both sides use it to bring up shells."
+        },
+        {
+          "t": "Bomb the Republic's roads and railways first",
+          "h": "Faster · terror",
+          "req": {
+            "min": {
+              "ger": 50
+            }
+          },
+          "you": "You bombed the roads and railways first.",
+          "fx": {
+            "terror": 4,
+            "delay": -3,
+            "legit": -2
+          },
+          "r": "The Condor Legion pounds the junctions behind the Republican line for two days before you attack."
+        }
+      ]
+    },
+    "barcelonaFalls": {
+      "title": "Barcelona · 26 January 1939",
+      "text": "Barcelona falls almost without a fight. The Republic's government has fled north toward the French border. Your troops march down the Diagonal while some crowds cheer and other people stay behind closed shutters.",
+      "ledger": {
+        "k": "Barcelona",
+        "hist": "Barcelona fell on 26 January 1939. The new authorities banned the public use of Catalan and began a wave of arrests and executions."
+      },
+      "choices": [
+        {
+          "t": "Hold a victory mass in the cathedral",
+          "h": "Legitimacy · morale",
+          "you": "You held a victory mass.",
+          "fx": {
+            "legit": 4,
+            "morale": 3
+          },
+          "r": "The cathedral is packed with officers and priests."
+        },
+        {
+          "t": "Ban Catalan from public life and purge the city",
+          "h": "The historical choice · terror · influence",
+          "you": "You banned Catalan and purged the city.",
+          "fx": {
+            "terror": 8,
+            "inf": {
+              "franco": 4
+            },
+            "legit": -3
+          },
+          "r": "Catalan is banned in schools, newspapers and public offices. The new authorities begin collecting denunciations."
+        },
+        {
+          "t": "Send in food, not just soldiers",
+          "h": "Funds −10 · legitimacy",
+          "you": "You sent food into Barcelona.",
+          "fx": {
+            "funds": -10,
+            "legit": 6
+          },
+          "r": "Lorries of bread follow your troops, and soup kitchens open on the Ramblas."
+        }
+      ]
+    },
+    "retirada": {
+      "title": "Figueres · 5 February 1939",
+      "text": "Half a million people are walking toward the French border through the snow: soldiers, officials and families carrying what they can. The Republic's president, Manuel Azaña, crosses on foot. France is letting the civilians in and penning the soldiers behind barbed wire on the beaches.",
+      "ledger": {
+        "k": "The Retirada",
+        "hist": "About 450,000 people fled into France in January and February 1939. Many were held for months in camps on the beaches. Tens of thousands never returned, and thousands later died in Nazi camps."
+      },
+      "choices": [
+        {
+          "t": "Let them go. Spain is better off without them",
+          "h": "The historical choice",
+          "you": "You let the refugees go.",
+          "fx": {
+            "inf": {
+              "franco": 2
+            },
+            "terror": 3
+          },
+          "r": "Some will come back in the months ahead and face your courts. Many will never see Spain again."
+        },
+        {
+          "t": "Promise that those with no blood on their hands may return",
+          "h": "Legitimacy · hardliners object",
+          "you": "You promised a safe return to those accused of no crime.",
+          "fx": {
+            "legit": 6,
+            "terror": -4,
+            "loy": {
+              "queipo": -6
+            }
+          },
+          "r": "Thousands turn back at the border. Your own courts will decide whether your promise means anything."
+        },
+        {
+          "t": "Bomb the roads to the border",
+          "h": "Faster · terror · legitimacy falls",
+          "you": "You bombed the roads to the border.",
+          "fx": {
+            "terror": 10,
+            "legit": -8,
+            "delay": -2
+          },
+          "r": "Your aircraft attack the columns on the roads near Figueres. Photographs of the dead reach every newspaper in France."
+        }
+      ]
+    },
+    "responsibilities": {
+      "title": "Burgos · 9 February 1939",
+      "text": "Your jurists have drafted a Law of Political Responsibilities. It will punish anyone who supported the Republic since October 1934, even where no crime under the old law was committed: fines, confiscations, prison, banishment from their home towns.",
+      "ledger": {
+        "k": "Political responsibilities",
+        "hist": "The Law of Political Responsibilities of 9 February 1939 made support for the Republic since October 1934 a punishable offence. Hundreds of thousands of people were investigated under it."
+      },
+      "choices": [
+        {
+          "t": "Sign it",
+          "h": "The historical choice · terror · funds",
+          "you": "You signed the law.",
+          "fx": {
+            "terror": 10,
+            "inf": {
+              "franco": 4
+            },
+            "funds": 6
+          },
+          "r": "The law takes effect at once. Special courts will hear hundreds of thousands of cases."
+        },
+        {
+          "t": "Sign it, but only for those accused of crimes",
+          "h": "Legitimacy · hardliners object",
+          "you": "You limited the law to crimes.",
+          "fx": {
+            "terror": 3,
+            "legit": 6,
+            "loy": {
+              "queipo": -5
+            },
+            "inf": {
+              "franco": -2
+            }
+          },
+          "r": "The courts will still be busy, but a membership card is no longer enough to convict."
+        },
+        {
+          "t": "Announce an amnesty instead",
+          "h": "Legitimacy · the army and the Falange are furious",
+          "you": "You announced an amnesty.",
+          "fx": {
+            "legit": 10,
+            "terror": -6,
+            "inf": {
+              "franco": -8
+            },
+            "loy": {
+              "queipo": -12,
+              "cabanellas": 4
+            },
+            "morale": -4
+          },
+          "r": "Your generals and the Falange are stunned. Queipo says on the radio that you have gone soft."
+        }
+      ]
+    },
+    "recognition39": {
+      "title": "Burgos · 27 February 1939",
+      "text": "Britain and France recognise your government as the government of Spain. The Republic's president, Manuel Azaña, resigns in France. Only the Republic's last zone in the centre and south-east still holds out.",
+      "ledger": {
+        "k": "Recognition",
+        "hist": "Britain and France recognised Franco's government on 27 February 1939, without any binding guarantee against reprisals."
+      },
+      "choices": [
+        {
+          "t": "Promise London there will be no reprisals",
+          "h": "Legitimacy · a promise you may not keep",
+          "you": "You promised no reprisals.",
+          "fx": {
+            "legit": 6
+          },
+          "r": "The British ambassador sends your promise to London. Your courts carry on."
+        },
+        {
+          "t": "Promise nothing",
+          "h": "Influence",
+          "you": "You promised nothing.",
+          "fx": {
+            "inf": {
+              "franco": 2
+            }
+          },
+          "r": "Your answer is that Spain's justice is Spain's business."
+        }
+      ]
+    },
+    "madridEnters": {
+      "title": "Madrid · 28 March 1939",
+      "text": "Your troops enter Madrid. The city that held out for two and a half years surrenders without a shot. In the ports of the south-east, thousands of people wait on the quays for ships that mostly never come.",
+      "ledger": {
+        "k": "Madrid",
+        "hist": "Nationalist troops entered Madrid on 28 March 1939. At Alicante, about 15,000 Republicans waited for ships; most were captured by Italian troops on 31 March."
+      },
+      "choices": [
+        {
+          "t": "Let the Italians take the port of Alicante",
+          "h": "The historical choice · terror",
+          "you": "You had the ports sealed.",
+          "fx": {
+            "terror": 6,
+            "ita": 2
+          },
+          "r": "Italian troops reach Alicante on 31 March. The people on the quays are marched off to camps."
+        },
+        {
+          "t": "Let foreign ships take the refugees",
+          "h": "Legitimacy · hardliners object",
+          "you": "You let foreign ships evacuate the refugees.",
+          "fx": {
+            "legit": 6,
+            "loy": {
+              "queipo": -5
+            }
+          },
+          "r": "British and French ships take thousands off the harbour wall at Alicante."
+        }
+      ]
+    },
+    "valenciaEnd": {
+      "title": "Madrid · 28 March 1939",
+      "text": "Madrid has been yours for two years. Now Valencia and the last towns of the south-east surrender one after another. In the ports, thousands of people wait on the quays for ships that mostly never come.",
+      "ledger": {
+        "k": "The last ports",
+        "hist": "At Alicante, about 15,000 Republicans waited for ships at the end of March 1939; most were captured by Italian troops on 31 March."
+      },
+      "choices": [
+        {
+          "t": "Seal the ports",
+          "h": "Terror",
+          "you": "You had the ports sealed.",
+          "fx": {
+            "terror": 6,
+            "ita": 2
+          },
+          "r": "Italian troops reach Alicante on 31 March. The people on the quays are marched off to camps."
+        },
+        {
+          "t": "Let foreign ships take the refugees",
+          "h": "Legitimacy · hardliners object",
+          "you": "You let foreign ships evacuate the refugees.",
+          "fx": {
+            "legit": 6,
+            "loy": {
+              "queipo": -5
+            }
+          },
+          "r": "British and French ships take thousands off the harbour wall at Alicante."
+        }
+      ]
+    },
+    "lastReport": {
+      "title": "Burgos · 1 April 1939",
+      "scene": {
+        "t": "road",
+        "town": "burgos",
+        "sky": "dawn"
+      },
+      "text": "In bed with influenza, you correct the last war report in your own hand: \"Today, with the Red Army captive and disarmed, the Nationalist troops have reached their final military objectives. The war is over.\"",
+      "choices": [
+        {
+          "t": "Call it a crusade, and the victory yours",
+          "h": "Influence",
+          "fx": {
+            "inf": {
+              "franco": 6
+            }
+          },
+          "r": "Your victory will be celebrated every year with a parade. The defeated will not be allowed to mourn their dead."
+        },
+        {
+          "t": "Call it the end of a war between Spaniards",
+          "h": "Legitimacy",
+          "fx": {
+            "legit": 4
+          },
+          "r": "Your words are printed in every newspaper. What happens next will matter more."
+        }
+      ]
     }
   },
   "deck": [
@@ -2143,6 +3192,657 @@
             "terror": 5
           },
           "r": "Fear runs ahead of your columns."
+        }
+      ]
+    },
+    {
+      "id": "koestler",
+      "pool": "longwar",
+      "title": "A journalist in Málaga",
+      "text": "Your police have arrested Arthur Koestler, a Hungarian writer working for a London newspaper, at a house outside Málaga. He is accused of spying for the Republic, and a court-martial is ready to sentence him to death.",
+      "choices": [
+        {
+          "t": "Let the court-martial proceed",
+          "h": "Terror · the foreign press turns on you",
+          "fx": {
+            "terror": 3,
+            "legit": -6
+          },
+          "r": "The British press campaigns for him daily. Every story mentions the death cell in Sevilla."
+        },
+        {
+          "t": "Exchange him for one of your own prisoners",
+          "h": "Legitimacy",
+          "fx": {
+            "legit": 3
+          },
+          "r": "After months in prison, Koestler is swapped for the wife of one of your pilots, held by the Republic. He will write a book about his cell."
+        },
+        {
+          "t": "Expel him quietly",
+          "h": "No fuss",
+          "fx": {
+            "legit": 1
+          },
+          "r": "Koestler is put on a boat at Gibraltar with a warning never to return."
+        }
+      ]
+    },
+    {
+      "id": "faupel",
+      "pool": "longwar",
+      "title": "The German ambassador",
+      "text": "Germany's ambassador, General Wilhelm Faupel, lectures you on how to run your war and your politics. He spends his evenings with the Falange's leaders and tells Berlin that you are slow and unimaginative.",
+      "choices": [
+        {
+          "t": "Ask Berlin to recall him",
+          "h": "Your influence · Germany cools",
+          "fx": {
+            "inf": {
+              "franco": 4
+            },
+            "ger": -4
+          },
+          "r": "By the summer Faupel is gone, replaced by a diplomat who knows his place."
+        },
+        {
+          "t": "Humour him",
+          "h": "Germany warms · the Falange grows bolder",
+          "fx": {
+            "ger": 4,
+            "inf": {
+              "franco": -2
+            }
+          },
+          "r": "Faupel reports to Berlin that you are finally listening."
+        }
+      ]
+    },
+    {
+      "id": "roatta",
+      "pool": "longwar",
+      "title": "The Italian general",
+      "text": "General Mario Roatta, commander of the Italian Corps, wants his divisions to fight together under his own orders, not scattered among your columns. Mussolini wants a victory he can call Italian.",
+      "choices": [
+        {
+          "t": "Give him his own front",
+          "h": "Italy pleased · less control",
+          "fx": {
+            "ita": 6,
+            "inf": {
+              "franco": -2
+            }
+          },
+          "r": "Roatta gets a sector north-east of Madrid, toward Guadalajara."
+        },
+        {
+          "t": "Keep the Italians under Spanish command",
+          "h": "Your influence · Italy cools",
+          "fx": {
+            "ita": -4,
+            "inf": {
+              "franco": 3
+            }
+          },
+          "r": "Roatta complains to Rome. Rome complains to you."
+        }
+      ]
+    },
+    {
+      "id": "trenchWinter",
+      "pool": "longwar",
+      "title": "Winter in the trenches",
+      "text": "Around Madrid both armies have dug in for the winter in the Casa de Campo and University City. In places the trenches are close enough to shout across, and your officers report men trading cigarettes with the enemy.",
+      "choices": [
+        {
+          "t": "Punish fraternising",
+          "h": "Discipline · morale falls",
+          "fx": {
+            "morale": -3,
+            "terror": 2
+          },
+          "r": "Two sergeants are court-martialled, and the shouting stops."
+        },
+        {
+          "t": "Let it be",
+          "h": "Morale",
+          "fx": {
+            "morale": 3
+          },
+          "r": "Cigarette papers from your side are swapped for tobacco from theirs."
+        },
+        {
+          "t": "Use loudspeakers for propaganda",
+          "h": "A few deserters",
+          "fx": {
+            "tS": 300,
+            "legit": 1
+          },
+          "r": "Promises of white bread and safe conduct bring a trickle of deserters across the lines."
+        }
+      ]
+    },
+    {
+      "id": "basqueChildren",
+      "pool": "north",
+      "title": "The children's ship",
+      "text": "The Basque government is evacuating children from Bilbao. The liner Habana is about to sail for England with nearly four thousand of them, escorted by the Royal Navy. Your blockade ships are watching.",
+      "choices": [
+        {
+          "t": "Let the ship pass",
+          "h": "Legitimacy",
+          "fx": {
+            "legit": 3
+          },
+          "r": "The Habana reaches Southampton. Most of the children will be sent home within a few years; some never return."
+        },
+        {
+          "t": "Protest that they will be taught to hate Spain",
+          "h": "Influence at home",
+          "fx": {
+            "inf": {
+              "franco": 2
+            },
+            "legit": -1
+          },
+          "r": "Your press calls it a kidnapping. The children sail anyway."
+        }
+      ]
+    },
+    {
+      "id": "blockade",
+      "pool": "north",
+      "title": "Blockade runners",
+      "text": "British merchant ships are running your blockade of Bilbao with food. Your cruiser Almirante Cervera could stop them, but British warships are escorting them to the edge of Spanish waters.",
+      "choices": [
+        {
+          "t": "Fire across their bows",
+          "h": "Bilbao goes hungry · Britain angry",
+          "fx": {
+            "legit": -6,
+            "delay": -2
+          },
+          "r": "The British captains turn back once, then come again with their navy in sight."
+        },
+        {
+          "t": "Mine the approaches instead",
+          "h": "Germany helps · risky",
+          "fx": {
+            "ger": 2,
+            "legit": -2
+          },
+          "r": "Mines are laid off the estuary. One merchant ship is damaged and the rest wait offshore."
+        },
+        {
+          "t": "Let them through",
+          "h": "Bilbao holds longer",
+          "fx": {
+            "delay": 3,
+            "legit": 2
+          },
+          "r": "Bilbao eats for another month."
+        }
+      ]
+    },
+    {
+      "id": "navarre",
+      "pool": "north",
+      "title": "The Navarrese brigades",
+      "text": "The Carlist volunteers of Navarre are your best mountain troops, and their red berets are everywhere in the hills of Biscay. Their leaders want a promise: after the war, Navarre keeps its old self-government.",
+      "choices": [
+        {
+          "t": "Promise it",
+          "h": "Morale · the Carlists stay loyal",
+          "fx": {
+            "morale": 5,
+            "inf": {
+              "franco": -1
+            }
+          },
+          "r": "Navarre will keep its ancient rights. The requetés go back up the hills singing."
+        },
+        {
+          "t": "Make no promises",
+          "h": "Influence · morale falls",
+          "fx": {
+            "inf": {
+              "franco": 2
+            },
+            "morale": -3
+          },
+          "r": "The Carlist leaders leave your office unhappy, but they fight on."
+        }
+      ]
+    },
+    {
+      "id": "newFighters",
+      "pool": "north",
+      "title": "New fighters",
+      "text": "The Condor Legion is receiving Germany's newest fighter, the Messerschmitt Bf 109, to test it against Soviet aircraft. Its commanders want the best airfields and first call on fuel.",
+      "choices": [
+        {
+          "t": "Give them what they need",
+          "h": "Germany · air superiority · funds",
+          "fx": {
+            "ger": 5,
+            "funds": -5,
+            "flag": {
+              "moreAir": 1
+            }
+          },
+          "r": "The new fighters sweep the Soviet Polikarpovs from the northern skies."
+        },
+        {
+          "t": "Keep the fuel for your own lorries",
+          "h": "Morale · Germany cools",
+          "fx": {
+            "ger": -3,
+            "morale": 2
+          },
+          "r": "The Germans grumble and test their aircraft anyway."
+        }
+      ]
+    },
+    {
+      "id": "irish",
+      "pool": "north",
+      "title": "The Irish Brigade",
+      "text": "Eoin O'Duffy's Irish Brigade, seven hundred volunteers who came to fight for Catholic Spain, has seen little action and less glory. Its men are quarrelling and want to go home.",
+      "choices": [
+        {
+          "t": "Send them home with honours",
+          "h": "Legitimacy",
+          "fx": {
+            "legit": 2
+          },
+          "r": "They sail from Lisbon in June. O'Duffy writes a book about their crusade."
+        },
+        {
+          "t": "Put them back in the line",
+          "h": "Morale falls",
+          "fx": {
+            "morale": -2,
+            "tS": 500
+          },
+          "r": "The Irish go back to the Jarama trenches, sullen and few."
+        }
+      ]
+    },
+    {
+      "id": "fuero",
+      "pool": "aragon",
+      "title": "The Labour Charter",
+      "text": "Your ministers present a Labour Charter, the Fuero del Trabajo. The Falange wants it to read like a revolution, the Church like a sermon, and the employers like a guarantee that the unions are gone for good.",
+      "choices": [
+        {
+          "t": "Write it the Falange's way",
+          "h": "Germany and Italy pleased · funds",
+          "fx": {
+            "ger": 2,
+            "ita": 2,
+            "funds": -3
+          },
+          "r": "The Charter promises work, bread and justice under a single state-run union."
+        },
+        {
+          "t": "Write it the Church's way",
+          "h": "Legitimacy",
+          "fx": {
+            "legit": 3
+          },
+          "r": "The Charter quotes the papal encyclicals and promises a family wage."
+        },
+        {
+          "t": "Write it for the employers",
+          "h": "Funds · morale falls",
+          "fx": {
+            "funds": 6,
+            "morale": -2
+          },
+          "r": "Strikes become a crime against the nation. Factory owners send you warm telegrams."
+        }
+      ]
+    },
+    {
+      "id": "thirteen",
+      "pool": "aragon",
+      "title": "Negrín's Thirteen Points",
+      "text": "The Republic's prime minister, Juan Negrín, has published thirteen points for peace: Spanish independence, the withdrawal of foreign troops, a vote on the form of government, and an amnesty for both sides.",
+      "choices": [
+        {
+          "t": "Reject them out of hand",
+          "h": "Influence · the war goes on",
+          "fx": {
+            "inf": {
+              "franco": 3
+            }
+          },
+          "r": "Your answer is that there can be no peace with the Reds, only surrender."
+        },
+        {
+          "t": "Let the Vatican sound them out quietly",
+          "h": "Legitimacy · your hardliners object",
+          "fx": {
+            "legit": 4,
+            "loy": {
+              "queipo": -5
+            }
+          },
+          "r": "Messages pass back and forth through Rome for a few weeks, and nothing comes of it."
+        }
+      ]
+    },
+    {
+      "id": "yagueSpeech",
+      "pool": "aragon",
+      "title": "Yagüe's speech",
+      "text": "At a Falange dinner in Burgos, General Yagüe, your old column commander, praised the courage of the Republic's soldiers, demanded the release of political prisoners, and mocked the Germans and Italians. The embassies want to know whether he speaks for you.",
+      "choices": [
+        {
+          "t": "Relieve him of his command for a while",
+          "h": "Influence · the army notes it",
+          "fx": {
+            "inf": {
+              "franco": 3
+            },
+            "morale": -2
+          },
+          "r": "Yagüe spends a few weeks without a command, then returns to the front chastened."
+        },
+        {
+          "t": "Ignore it",
+          "h": "Germany and Italy offended",
+          "fx": {
+            "ger": -3,
+            "ita": -3,
+            "legit": 2
+          },
+          "r": "Yagüe's words are repeated in every officers' mess."
+        }
+      ]
+    },
+    {
+      "id": "alfambra",
+      "pool": "aragon",
+      "title": "The cavalry at the Alfambra",
+      "text": "On the frozen plain of the Alfambra, north of Teruel, General Monasterio has a cavalry division of several thousand horsemen ready to charge the Republic's flank.",
+      "choices": [
+        {
+          "t": "Let them charge",
+          "h": "Morale · faster · losses",
+          "fx": {
+            "morale": 6,
+            "tS": -500,
+            "delay": -2
+          },
+          "r": "The cavalry sweeps across the snow and the Republican flank gives way. Nobody in Europe will see a charge like it again."
+        },
+        {
+          "t": "Keep them back for the pursuit",
+          "h": "Fewer losses",
+          "fx": {
+            "morale": 1
+          },
+          "r": "The horses wait behind the lines, steaming in the cold."
+        }
+      ]
+    },
+    {
+      "id": "ebroHeat",
+      "pool": "ebro",
+      "title": "The Sierra de Pàndols",
+      "text": "The battle has moved into the bare limestone hills above the Ebro. In the August heat, without shade or water, your infantry attack the same ridges again and again. The Republic's men are dug in among rocks too hard for picks.",
+      "choices": [
+        {
+          "t": "Bring water up by mule every night",
+          "h": "Funds −5 · morale",
+          "fx": {
+            "funds": -5,
+            "morale": 5
+          },
+          "r": "Long mule trains climb the tracks each night under fire."
+        },
+        {
+          "t": "More shells, fewer infantry attacks",
+          "h": "Ammo −15 · fewer losses",
+          "fx": {
+            "ammo": -15,
+            "tS": 1500
+          },
+          "r": "Your guns fire more shells in a day than they did in a week at Madrid."
+        },
+        {
+          "t": "Keep attacking",
+          "h": "Army −4,000",
+          "fx": {
+            "tS": -4000,
+            "inf": {
+              "franco": 1
+            }
+          },
+          "r": "The ridges change hands, and change back."
+        }
+      ]
+    },
+    {
+      "id": "condorRest",
+      "pool": "ebro",
+      "title": "The Condor Legion is worn out",
+      "text": "The Condor Legion's commander reports that his aircraft are worn out. Berlin is thinking of bringing the Legion home before war comes in Europe, unless you pay what you owe.",
+      "choices": [
+        {
+          "t": "Pay what you can",
+          "h": "Funds −10 · Germany stays",
+          "fx": {
+            "funds": -10,
+            "ger": 4
+          },
+          "r": "Berlin sends replacement aircraft and new pilots."
+        },
+        {
+          "t": "Promise future payment in ore",
+          "h": "Germany · legitimacy",
+          "fx": {
+            "ger": 2,
+            "legit": -1
+          },
+          "r": "Berlin accepts, and keeps a careful list."
+        }
+      ]
+    },
+    {
+      "id": "exchange",
+      "pool": "ebro",
+      "title": "An exchange of prisoners",
+      "text": "The International Committee of the Red Cross proposes an exchange of prisoners between the two sides: officers for officers, civilians for civilians.",
+      "choices": [
+        {
+          "t": "Agree",
+          "h": "Legitimacy · morale",
+          "fx": {
+            "legit": 3,
+            "morale": 2
+          },
+          "r": "A few hundred prisoners cross the lines at the French border."
+        },
+        {
+          "t": "Refuse",
+          "h": "Influence with the hardliners",
+          "fx": {
+            "inf": {
+              "franco": 1
+            },
+            "legit": -2
+          },
+          "r": "Your answer is that there is nothing to discuss with a government that does not exist."
+        }
+      ]
+    },
+    {
+      "id": "turncoatsDesert",
+      "pool": "ebro",
+      "req": {
+        "flag": "turncoats"
+      },
+      "title": "Deserters",
+      "text": "Some of the Asturian prisoners you drafted into your army have slipped across the Ebro at night to rejoin the Republic, taking their rifles with them.",
+      "choices": [
+        {
+          "t": "Tighten discipline",
+          "h": "Terror · morale falls",
+          "fx": {
+            "terror": 3,
+            "morale": -2
+          },
+          "r": "Officers watch the former prisoners day and night."
+        },
+        {
+          "t": "Move them to quiet sectors",
+          "h": "Army −3,000 at the front",
+          "fx": {
+            "tS": -3000
+          },
+          "r": "The suspect battalions are sent to guard the Pyrenees."
+        }
+      ]
+    },
+    {
+      "id": "breadBombs",
+      "pool": "victory",
+      "title": "Bread over Madrid",
+      "text": "Madrid is starving. Its people live on lentils, which they call Dr Negrín's resistance pills. Your propaganda chief suggests dropping bread on the city from your aircraft, with leaflets promising plenty after the war.",
+      "choices": [
+        {
+          "t": "Drop the bread",
+          "h": "Legitimacy · deserters",
+          "fx": {
+            "legit": 3,
+            "tS": 500
+          },
+          "r": "Loaves wrapped in paper fall over Madrid. Some people eat them; others say they are poisoned."
+        },
+        {
+          "t": "Tighten the blockade instead",
+          "h": "Faster · terror",
+          "fx": {
+            "terror": 4,
+            "delay": -2
+          },
+          "r": "Fewer ships reach the Republic's last ports."
+        }
+      ],
+      "req": {
+        "noflag": "madridFell"
+      }
+    },
+    {
+      "id": "antiComintern",
+      "pool": "victory",
+      "title": "The Anti-Comintern Pact",
+      "text": "Germany, Italy and Japan invite you to join their Anti-Comintern Pact against international communism, and to keep it secret until the war is over.",
+      "choices": [
+        {
+          "t": "Sign",
+          "h": "Germany and Italy · Britain wary",
+          "fx": {
+            "ger": 5,
+            "ita": 5,
+            "legit": -3
+          },
+          "r": "Your signature is added in secret. It will be announced in April."
+        },
+        {
+          "t": "Wait until the war is won",
+          "h": "Legitimacy · Germany cools",
+          "fx": {
+            "legit": 2,
+            "ger": -2
+          },
+          "r": "Berlin is disappointed but patient."
+        }
+      ]
+    },
+    {
+      "id": "fifthMadrid",
+      "pool": "victory",
+      "title": "The fifth column",
+      "text": "Your agents in Madrid report that many officers in the Republic's army are ready to change sides when the moment comes, and some are already talking to you through go-betweens.",
+      "choices": [
+        {
+          "t": "Promise them pardons",
+          "h": "Faster · hardliners object",
+          "fx": {
+            "delay": -3,
+            "loy": {
+              "queipo": -3
+            }
+          },
+          "r": "Word goes back through the lines that those who help end the war will be spared."
+        },
+        {
+          "t": "Promise nothing",
+          "h": "Influence",
+          "fx": {
+            "inf": {
+              "franco": 1
+            }
+          },
+          "r": "They will have to trust your generosity, which you have not promised."
+        }
+      ],
+      "req": {
+        "noflag": "madridFell"
+      }
+    },
+    {
+      "id": "camps",
+      "pool": "victory",
+      "title": "The camps",
+      "text": "With hundreds of thousands of prisoners in your hands, your inspectorate of concentration camps reports that its camps are overflowing: bullrings, monasteries and football grounds ringed with barbed wire.",
+      "choices": [
+        {
+          "t": "Classify the prisoners and release the harmless",
+          "h": "Legitimacy · funds",
+          "fx": {
+            "legit": 3,
+            "funds": -3
+          },
+          "r": "Committees sort the prisoners into the \"recoverable\" and the rest. Tens of thousands go home, under watch."
+        },
+        {
+          "t": "Build more camps",
+          "h": "Terror · funds",
+          "fx": {
+            "terror": 6,
+            "funds": -6
+          },
+          "r": "New camps open in old factories and convents."
+        }
+      ]
+    },
+    {
+      "id": "italianVictory",
+      "pool": "victory",
+      "title": "The Italians want a parade",
+      "text": "Mussolini wants his troops to march at the head of your victory parade, and the newsreels to show it.",
+      "choices": [
+        {
+          "t": "Give them the place of honour",
+          "h": "Italy pleased · your officers resent it",
+          "fx": {
+            "ita": 5,
+            "morale": -3
+          },
+          "r": "Rome is delighted. Your officers are not."
+        },
+        {
+          "t": "Spaniards first",
+          "h": "Morale · Italy cools",
+          "fx": {
+            "ita": -3,
+            "morale": 3
+          },
+          "r": "The Italians will march, but behind the Legion and the Regulares."
         }
       ]
     }

@@ -34,8 +34,8 @@ export function longDate(day) {
   const d = new Date(1936, 6, 16 + Math.round(day));
   return `${d.getDate()} ${MONTHS[d.getMonth()]} ${d.getFullYear()}`;
 }
-// Event titles carry their historical date; if you are running late, show your actual date instead.
-export const datedTitle = (title, day) => title.replace(/\d{1,2} (January|February|March|April|May|June|July|August|September|October|November|December) 1936/, longDate(day));
+// Event titles carry their historical date; if you are running early or late, show your actual date instead.
+export const datedTitle = (title, day) => title.replace(/\d{1,2} (January|February|March|April|May|June|July|August|September|October|November|December) 193\d/, longDate(day));
 
 export function save(S) { try { localStorage.setItem(SAVE_KEY, JSON.stringify(S)); } catch (e) { /* storage unavailable */ } }
 export function load() { try { const s = localStorage.getItem(SAVE_KEY); return s ? JSON.parse(s) : null; } catch (e) { return null; } }
@@ -43,7 +43,7 @@ export function clearSave() { try { localStorage.removeItem(SAVE_KEY); } catch (
 
 export const LABEL = {
   tS: 'Army in Spain', tA: 'Army in Africa', ammo: 'Ammo', funds: 'Funds', morale: 'Morale',
-  legit: 'Legitimacy', ger: 'Germany', ita: 'Italy', terror: 'Terror', delay: 'Days lost'
+  legit: 'Legitimacy', ger: 'Germany', ita: 'Italy', terror: 'Terror', delay: 'Delay (days)'
 };
 const BAD_WHEN_UP = { terror: 1, delay: 1 };
 const ORDER = ['tS', 'tA', 'ammo', 'funds', 'morale', 'legit', 'ger', 'ita', 'terror', 'delay'];

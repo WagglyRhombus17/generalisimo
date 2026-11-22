@@ -29,6 +29,36 @@
       "title": "Madrid",
       "dates": "1 OCTOBER – 23 NOVEMBER 1936",
       "intro": "You are Generalísimo and head of state. Madrid is the prize that could end the war in weeks. But the Soviet Union has begun to arm the Republic, and volunteers from across the world are on their way to defend the city."
+    },
+    "6": {
+      "n": "VI",
+      "title": "The Long War",
+      "dates": "DECEMBER 1936 – MARCH 1937",
+      "intro": "Madrid has held. You call off the frontal assault and try to surround the city instead, while your columns of volunteers and colonial troops grow into a conscript army of hundreds of thousands. Germany and Italy are sending more than ever. So is the Soviet Union."
+    },
+    "7": {
+      "n": "VII",
+      "title": "The North",
+      "dates": "31 MARCH – 21 OCTOBER 1937",
+      "intro": "The Basque Country, Santander and Asturias form a narrow strip along the Bay of Biscay, cut off from the rest of the Republic. It holds the coal, iron and steelworks of Spain. General Mola will lead the offensive, with the German Condor Legion and Italian bombers above him."
+    },
+    "8": {
+      "n": "VIII",
+      "title": "Teruel and the Sea",
+      "dates": "15 DECEMBER 1937 – 15 APRIL 1938",
+      "intro": "With the north won, you plan a final attack on Madrid. The Republic strikes first. In a blizzard, its new Popular Army surrounds the small mountain city of Teruel. If you can take it back, the road across Aragon to the Mediterranean lies open."
+    },
+    "9": {
+      "n": "IX",
+      "title": "The Ebro",
+      "dates": "JULY – NOVEMBER 1938",
+      "intro": "Your drive on Valencia has stalled in the mountains. On the night of 24 July the Republic's last great army crosses the Ebro behind your lines, in boats and on pontoon bridges, to save Valencia and show the world it can still fight. It will be the longest and bloodiest battle of the war."
+    },
+    "10": {
+      "n": "X",
+      "title": "Victory",
+      "dates": "23 DECEMBER 1938 – 1 APRIL 1939",
+      "intro": "Your army attacks Catalonia with new German weapons and overwhelming numbers. The Republic has almost nothing left to stop it. Its leaders hope only to hold out until the European war that everyone expects. You mean to end the war before then, on your own terms."
     }
   },
   "scenes": {
@@ -102,6 +132,100 @@
       "t": "road",
       "town": "madrid",
       "sky": "sunset"
+    },
+    "Málaga": {
+      "t": "road",
+      "town": "port",
+      "sky": "day"
+    },
+    "Jarama": {
+      "t": "road",
+      "town": "village",
+      "sky": "dawn"
+    },
+    "Guadalajara": {
+      "t": "road",
+      "town": "village",
+      "sky": "north",
+      "weather": "rain"
+    },
+    "Vitoria": {
+      "t": "road",
+      "town": "walled",
+      "sky": "north"
+    },
+    "Biscay": {
+      "t": "road",
+      "town": "village",
+      "sky": "north"
+    },
+    "Bilbao": {
+      "t": "road",
+      "town": "bilbao",
+      "sky": "north"
+    },
+    "Santander": {
+      "t": "road",
+      "town": "port",
+      "sky": "north"
+    },
+    "Gijón": {
+      "t": "road",
+      "town": "port",
+      "sky": "dawn"
+    },
+    "Zaragoza": {
+      "t": "road",
+      "town": "pilar",
+      "sky": "winter",
+      "weather": "snow"
+    },
+    "Teruel": {
+      "t": "road",
+      "town": "teruel",
+      "sky": "winter",
+      "weather": "snow"
+    },
+    "Belchite": {
+      "t": "road",
+      "town": "ruins",
+      "sky": "day"
+    },
+    "Vinaròs": {
+      "t": "road",
+      "town": "sea",
+      "sky": "day"
+    },
+    "Castellón": {
+      "t": "road",
+      "town": "sea",
+      "sky": "sunset"
+    },
+    "Ebro": {
+      "t": "road",
+      "town": "river",
+      "sky": "dawn"
+    },
+    "Gandesa": {
+      "t": "road",
+      "town": "village",
+      "sky": "sunset"
+    },
+    "Lleida": {
+      "t": "road",
+      "town": "walled",
+      "sky": "winter"
+    },
+    "Barcelona": {
+      "t": "road",
+      "town": "barcelona",
+      "sky": "day"
+    },
+    "Figueres": {
+      "t": "road",
+      "town": "walled",
+      "sky": "dawn",
+      "weather": "snow"
     }
   },
   "locations": {
@@ -152,6 +276,78 @@
     "Madrid": [
       196,
       130
+    ],
+    "Málaga": [
+      184,
+      256
+    ],
+    "Jarama": [
+      206,
+      134
+    ],
+    "Guadalajara": [
+      214,
+      122
+    ],
+    "Vitoria": [
+      244,
+      56
+    ],
+    "Biscay": [
+      240,
+      46
+    ],
+    "Bilbao": [
+      236,
+      44
+    ],
+    "Santander": [
+      214,
+      42
+    ],
+    "Gijón": [
+      162,
+      42
+    ],
+    "Zaragoza": [
+      270,
+      92
+    ],
+    "Teruel": [
+      268,
+      142
+    ],
+    "Belchite": [
+      278,
+      100
+    ],
+    "Vinaròs": [
+      306,
+      124
+    ],
+    "Castellón": [
+      298,
+      146
+    ],
+    "Ebro": [
+      308,
+      112
+    ],
+    "Gandesa": [
+      300,
+      110
+    ],
+    "Lleida": [
+      298,
+      86
+    ],
+    "Barcelona": [
+      328,
+      88
+    ],
+    "Figueres": [
+      340,
+      66
     ]
   },
   "battles": {
@@ -182,6 +378,57 @@
       "text": "The last town before Madrid's outer defences. The Republic has dug trenches across the road and brought up artillery.",
       "win": "Navalcarnero falls. From its church tower your officers can see the roofs of Madrid.",
       "hist": "Navalcarnero fell on 21 October 1936. Days later Soviet tanks counterattacked at Seseña."
+    },
+    "jarama": {
+      "name": "the Jarama",
+      "won": "The Jarama is crossed",
+      "res": 14,
+      "text": "South-east of Madrid, your army attacks across the Jarama river to cut the road to Valencia, the city's lifeline. Soviet tanks and the International Brigades are waiting on the heights.",
+      "win": "Your troops cross the river and take the heights at Pingarrón, but the Valencia road stays open. Both sides dig in.",
+      "hist": "At the Jarama, 6–27 February 1937, each side lost thousands of men. The Nationalists gained ground but never cut the Valencia road."
+    },
+    "santander": {
+      "name": "Santander",
+      "res": 10,
+      "text": "Santander is defended by Basque and Asturian battalions worn down by retreat. The Italian Corps attacks beside you, eager to make up for Guadalajara.",
+      "win": "The Cantabrian front collapses. Your troops and the Italians march into Santander.",
+      "hist": "Santander fell on 26 August 1937. Mussolini celebrated it as an Italian victory."
+    },
+    "asturias": {
+      "name": "Asturias",
+      "won": "The north is yours",
+      "res": 12,
+      "text": "The Asturian miners who rose in 1934 fight on in the mountains, with nowhere left to retreat. They hold every pass.",
+      "win": "Gijón falls. The Republic's northern front is gone.",
+      "hist": "Gijón fell on 21 October 1937, ending the war in the north. Thousands of Asturian soldiers took to the mountains and fought on as guerrillas for years."
+    },
+    "teruel": {
+      "name": "Teruel",
+      "won": "Teruel is retaken",
+      "res": 15,
+      "harder": {
+        "flag": "teruelHard",
+        "res": 4
+      },
+      "text": "The Republic's best troops hold Teruel and the snowbound heights of La Muela around it.",
+      "win": "Your columns break through along the Alfambra and close around Teruel. The Republican army slips out of the trap at the last moment, leaving the city in ruins.",
+      "hist": "Nationalist troops retook Teruel on 22 February 1938. Killed, wounded, sick and captured together, the battle cost the two sides well over 100,000 men."
+    },
+    "aragon": {
+      "name": "Belchite",
+      "won": "The front collapses",
+      "res": 9,
+      "text": "Your offensive across Aragon begins with 100,000 men and hundreds of aircraft. The Republic's army is exhausted after Teruel. Belchite, ruined in fighting the summer before, is held by a rearguard.",
+      "win": "The Republican front in Aragon falls apart. Your columns advance a hundred kilometres in a week.",
+      "hist": "The Aragon offensive began on 7 March 1938. Belchite fell on 10 March and the Republican front collapsed."
+    },
+    "catalonia": {
+      "name": "the Segre",
+      "won": "Catalonia opens up",
+      "res": 11,
+      "text": "The Republic's Army of the East holds the line of the Segre river with what is left after the Ebro. It is short of rifles, guns and men.",
+      "win": "The front breaks. Tarragona falls on 15 January and the road to Barcelona is open.",
+      "hist": "The Catalonia offensive broke the Republican front within two weeks. Tarragona fell on 15 January 1939."
     }
   },
   "steps": [
@@ -541,8 +788,455 @@
       "if": "jaSaved"
     },
     {
+      "k": "card",
+      "ch": 6
+    },
+    {
+      "k": "route",
+      "stops": [
+        "Salamanca",
+        "Málaga",
+        "Jarama",
+        "Guadalajara"
+      ],
+      "fresh": true
+    },
+    {
+      "k": "ev",
+      "id": "massArmy",
+      "day": 138
+    },
+    {
+      "k": "rand",
+      "pool": "longwar"
+    },
+    {
+      "k": "move",
+      "to": 1,
+      "day": 207,
+      "text": "Queipo's columns and the Italian Corps advance along the coast."
+    },
+    {
+      "k": "ev",
+      "id": "malaga"
+    },
+    {
+      "k": "rand",
+      "pool": "longwar"
+    },
+    {
+      "k": "move",
+      "to": 2,
+      "day": 210,
+      "text": "Your army masses south-east of Madrid, on the banks of the Jarama."
+    },
+    {
+      "k": "battle",
+      "id": "jarama"
+    },
+    {
+      "k": "rand",
+      "pool": "longwar"
+    },
+    {
+      "k": "move",
+      "to": 3,
+      "day": 235,
+      "text": "The Italian Corps gathers north-east of Madrid."
+    },
+    {
+      "k": "ev",
+      "id": "guadalajara",
+      "special": true
+    },
+    {
+      "k": "ev",
+      "id": "turnNorth",
+      "day": 250
+    },
+    {
+      "k": "check"
+    },
+    {
+      "k": "card",
+      "ch": 7
+    },
+    {
+      "k": "route",
+      "stops": [
+        "Vitoria",
+        "Biscay",
+        "Bilbao",
+        "Santander",
+        "Gijón"
+      ],
+      "fresh": true
+    },
+    {
+      "k": "ev",
+      "id": "durango",
+      "day": 258
+    },
+    {
+      "k": "ev",
+      "id": "unification",
+      "day": 277
+    },
+    {
+      "k": "ev",
+      "id": "hedilla",
+      "day": 283,
+      "if": "unified"
+    },
+    {
+      "k": "move",
+      "to": 1,
+      "day": 284,
+      "text": "Mola's columns push west toward Bilbao through the green hills of Biscay."
+    },
+    {
+      "k": "ev",
+      "id": "guernica",
+      "special": true
+    },
+    {
+      "k": "rand",
+      "pool": "north"
+    },
+    {
+      "k": "ev",
+      "id": "mola",
+      "special": true,
+      "day": 322
+    },
+    {
+      "k": "move",
+      "to": 2,
+      "day": 331,
+      "text": "Your army closes on Bilbao and the ring of fortifications around it."
+    },
+    {
+      "k": "ironring"
+    },
+    {
+      "k": "ev",
+      "id": "bilbaoFalls",
+      "day": 338
+    },
+    {
+      "k": "ev",
+      "id": "bishops",
+      "day": 350
+    },
+    {
+      "k": "ev",
+      "id": "brunete",
+      "special": true,
+      "day": 355,
+      "unless": "madridFell"
+    },
+    {
+      "k": "rand",
+      "pool": "north"
+    },
+    {
+      "k": "move",
+      "to": 3,
+      "day": 400,
+      "text": "Your army and the Italians cross the Cantabrian mountains toward Santander."
+    },
+    {
+      "k": "battle",
+      "id": "santander"
+    },
+    {
+      "k": "ev",
+      "id": "santona",
+      "day": 406
+    },
+    {
+      "k": "rand",
+      "pool": "north"
+    },
+    {
+      "k": "move",
+      "to": 4,
+      "day": 455,
+      "text": "The last Republican army in the north falls back into the mountains of Asturias."
+    },
+    {
+      "k": "battle",
+      "id": "asturias"
+    },
+    {
+      "k": "ev",
+      "id": "northFalls",
+      "day": 462
+    },
+    {
+      "k": "check"
+    },
+    {
+      "k": "card",
+      "ch": 8
+    },
+    {
+      "k": "route",
+      "stops": [
+        "Zaragoza",
+        "Teruel",
+        "Belchite",
+        "Vinaròs"
+      ],
+      "fresh": true
+    },
+    {
+      "k": "ev",
+      "id": "teruel",
+      "special": true,
+      "day": 517
+    },
+    {
+      "k": "move",
+      "to": 1,
+      "day": 541,
+      "unless": "skipTeruel",
+      "text": "Your relief columns struggle toward Teruel through the snowdrifts."
+    },
+    {
+      "k": "ev",
+      "id": "cold",
+      "unless": "skipTeruel"
+    },
+    {
+      "k": "battle",
+      "id": "teruel",
+      "unless": "skipTeruel"
+    },
+    {
+      "k": "rand",
+      "pool": "aragon"
+    },
+    {
+      "k": "ev",
+      "id": "firstGovernment",
+      "day": 563
+    },
+    {
+      "k": "move",
+      "to": 2,
+      "day": 599,
+      "text": "Your army masses for an offensive across Aragon."
+    },
+    {
+      "k": "battle",
+      "id": "aragon"
+    },
+    {
+      "k": "ev",
+      "id": "barcelonaBombing",
+      "day": 608
+    },
+    {
+      "k": "rand",
+      "pool": "aragon"
+    },
+    {
+      "k": "move",
+      "to": 3,
+      "day": 638,
+      "text": "Your Navarrese divisions race down the valleys toward the Mediterranean."
+    },
+    {
+      "k": "ev",
+      "id": "sea",
+      "special": true
+    },
+    {
+      "k": "rand",
+      "pool": "aragon"
+    },
+    {
+      "k": "check"
+    },
+    {
+      "k": "card",
+      "ch": 9
+    },
+    {
+      "k": "route",
+      "stops": [
+        "Castellón",
+        "Ebro",
+        "Gandesa"
+      ],
+      "fresh": true
+    },
+    {
+      "k": "ev",
+      "id": "xyz",
+      "day": 719
+    },
+    {
+      "k": "rand",
+      "pool": "ebro"
+    },
+    {
+      "k": "move",
+      "to": 1,
+      "day": 739,
+      "text": "Before dawn on 25 July, sentries along the Ebro hear oars on the water."
+    },
+    {
+      "k": "ebro"
+    },
+    {
+      "k": "move",
+      "to": 2,
+      "day": 760,
+      "text": "The battle settles into the bare hills above the river."
+    },
+    {
+      "k": "ev",
+      "id": "ebroChoice",
+      "special": true
+    },
+    {
+      "k": "rand",
+      "pool": "ebro"
+    },
+    {
+      "k": "ev",
+      "id": "munich",
+      "special": true,
+      "day": 803
+    },
+    {
+      "k": "ev",
+      "id": "brigadesLeave",
+      "day": 834
+    },
+    {
+      "k": "ev",
+      "id": "ebroEnds",
+      "day": 853
+    },
+    {
+      "k": "ev",
+      "id": "mines",
+      "special": true,
+      "day": 855
+    },
+    {
+      "k": "rand",
+      "pool": "ebro"
+    },
+    {
+      "k": "check"
+    },
+    {
+      "k": "card",
+      "ch": 10
+    },
+    {
+      "k": "route",
+      "stops": [
+        "Lleida",
+        "Barcelona",
+        "Figueres",
+        "Madrid"
+      ],
+      "fresh": true,
+      "scenes": {
+        "Madrid": {
+          "t": "road",
+          "town": "madrid",
+          "sky": "day",
+          "calm": 1
+        }
+      }
+    },
+    {
+      "k": "ev",
+      "id": "christmas",
+      "day": 890
+    },
+    {
+      "k": "battle",
+      "id": "catalonia"
+    },
+    {
+      "k": "rand",
+      "pool": "victory"
+    },
+    {
+      "k": "move",
+      "to": 1,
+      "day": 924,
+      "text": "Your columns reach the outskirts of Barcelona. There is almost no resistance."
+    },
+    {
+      "k": "ev",
+      "id": "barcelonaFalls"
+    },
+    {
+      "k": "move",
+      "to": 2,
+      "day": 935,
+      "text": "Your columns press on toward the French border."
+    },
+    {
+      "k": "ev",
+      "id": "retirada"
+    },
+    {
+      "k": "ev",
+      "id": "responsibilities",
+      "day": 938
+    },
+    {
+      "k": "ev",
+      "id": "recognition39",
+      "day": 956
+    },
+    {
+      "k": "rand",
+      "pool": "victory"
+    },
+    {
+      "k": "ev",
+      "id": "casado",
+      "special": true,
+      "day": 962
+    },
+    {
+      "k": "rand",
+      "pool": "victory"
+    },
+    {
+      "k": "move",
+      "to": 3,
+      "day": 985,
+      "text": "Your columns advance on the Republic's last cities."
+    },
+    {
+      "k": "ev",
+      "id": "madridEnters",
+      "unless": "madridFell"
+    },
+    {
+      "k": "ev",
+      "id": "valenciaEnd",
+      "if": "madridFell"
+    },
+    {
+      "k": "ev",
+      "id": "lastReport",
+      "day": 989
+    },
+    {
       "k": "end",
-      "id": "stalemate"
+      "id": "victory"
     }
   ],
   "endings": {
@@ -569,6 +1263,43 @@
     "stalemate": {
       "title": "THE LONG WAR",
       "text": "Madrid holds. On 23 November you call off the frontal assault. A war that might have ended in weeks will last two and a half more years: Jarama, Guadalajara, Guernica, the Ebro. You will win it in April 1939, and rule Spain until your death in 1975."
+    },
+    "victory": {
+      "title": "THE WAR IS OVER",
+      "text": "On 1 April 1939 you announce the end of the war. You will rule Spain for the next 36 years, until your death in November 1975. Victory does not bring peace. Your courts, prisons and camps will go on punishing the defeated for years.",
+      "after": [
+        "Around half a million people died in the war, in battle, in bombing raids and in the repression behind the lines.",
+        "Historians estimate that rebel and Francoist repression killed well over 100,000 people during the war and after it, and that around 50,000 were killed in the Republican zone.",
+        "At least 20,000 people were executed after the war ended. Hundreds of thousands passed through prisons, camps and labour battalions.",
+        "About 450,000 people fled to France in early 1939. Many never came home; thousands later died in Nazi camps.",
+        "Spain stayed out of the Second World War, though it sent a volunteer division to fight for Germany in Russia.",
+        "Franco died on 20 November 1975. Within three years Spain was a democracy, with a constitution approved by referendum in 1978."
+      ]
+    },
+    "peace": {
+      "title": "A NEGOTIATED PEACE",
+      "text": "You accept Casado's terms. The war ends in March 1939 with a promise of no reprisals against those who committed no crimes, and ships for those who want to leave. You will still rule Spain as a dictator. How many lives your promise saves depends on whether you keep it.",
+      "after": [
+        "In history, Franco refused every offer to negotiate and accepted only unconditional surrender.",
+        "Thousands of Republicans waiting at Alicante for ships that never came were captured at the end of March 1939.",
+        "At least 20,000 people were executed after the war ended. Hundreds of thousands passed through prisons, camps and labour battalions.",
+        "Franco ruled Spain until his death in November 1975."
+      ]
+    },
+    "widerwar": {
+      "title": "THE WIDER WAR",
+      "text": "Your war has dragged on too long. On 1 September 1939 Germany invades Poland, and two days later Britain and France are at war with your ally. The Republic's prime minister, Juan Negrín, always hoped to hold out until this moment. The French border opens to arms, and nobody can say how your war will end now.",
+      "after": [
+        "In history, Franco won on 1 April 1939, five months before the Second World War began.",
+        "Negrín's strategy was to resist until a European war forced Britain and France to help the Republic. The Munich Agreement of September 1938 ended that hope."
+      ]
+    },
+    "ousted": {
+      "title": "THE GENERALS TURN",
+      "text": "{rival} and the other generals have lost faith in you. At a meeting in Burgos they strip you of your command and name a new Generalísimo. You are sent to Morocco as High Commissioner, as far from the war as the Canary Islands were in 1936.",
+      "after": [
+        "In history, no general ever seriously challenged Franco after 1936. He kept them divided, promoted them, moved them and outlived them."
+      ]
     }
   }
 }

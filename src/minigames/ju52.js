@@ -267,7 +267,7 @@ export function airlift(S, ctx) {
         S.ledger.push({ k: 'The airlift', you: `Your Junkers carried ${total.toLocaleString('en-US')} men in ${rounds} flight${rounds > 1 ? 's' : ''}.`, hist: 'German Ju 52s flew about 14,000 men across the Strait between late July and October 1936, the first large military airlift in history.' });
         ov.hidden = true;
         overrideMusic(null);
-        resolve();
+        resolve({ score: total, text: `Your Junkers carried ${total.toLocaleString('en-US')} men across the Strait in ${rounds} flight${rounds > 1 ? 's' : ''}.` });
       }]]);
     }
 

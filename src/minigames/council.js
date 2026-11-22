@@ -124,7 +124,7 @@ export function vote(S, ctx) {
       S.ledger.push({ k: 'The vote at Salamanca', you: `${yes} of ${vs.length} generals voted for you.`, hist: 'On 21 and 28 September 1936 the generals named Franco Generalísimo. Cabanellas argued against it.' });
       const go = document.createElement('button');
       go.type = 'button'; go.className = 'primary'; go.dataset.key = 'enter'; go.textContent = won && !S.flags.madrid ? 'TAKE COMMAND ▶' : 'SEE WHAT HAPPENS ▶';
-      go.addEventListener('click', () => { ov.hidden = true; overrideMusic(null); resolve(); }, { once: true });
+      go.addEventListener('click', () => { ov.hidden = true; overrideMusic(null); resolve({ score: yes, text: `${yes} of ${vs.length} generals voted for you. ${won ? 'You are Generalísimo.' : `They chose ${rivalName}.`}` }); }, { once: true });
       acts.append(go); go.focus({ preventScroll: true });
     };
     const step = () => {

@@ -41,6 +41,7 @@ export function finishTyping() {
 function open(d) {
   d.hidden = false;
   d.replaceChildren();
+  d.classList.remove('dense');
   d.classList.remove('anim'); void d.offsetWidth; d.classList.add('anim');
   d.onclick = e => { if (!e.target.closest('button')) finishTyping(); };
 }
@@ -50,6 +51,9 @@ export function ask({ title, text, choices }) {
   return new Promise(resolve => {
     const d = box();
     open(d);
+    // Long events with several choices get a slightly smaller type so everything fits the panel.
+    const size = (text || '').length + choices.reduce((n, c) => n + c.t.length + (c.dis || c.h || '').length, 0);
+    if (size > 330) d.classList.add('dense');
     const list = el('div', 'choices');
     choices.forEach((c, i) => {
       const b = el('button', 'choice');

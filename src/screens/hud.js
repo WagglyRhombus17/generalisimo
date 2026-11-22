@@ -1,5 +1,6 @@
 // The route bar along the top and the beveled panel along the bottom (stats on the left, events on the right).
 import { fmtDate } from '../game/state.js';
+import { topRival } from '../game/politics.js';
 
 const $ = s => document.querySelector(s);
 const RED = '#ff7a5c';
@@ -20,11 +21,11 @@ export function renderHUD(S, D) {
   $('#r-date').textContent = fmtDate(S.day);
   $('#r-stops').innerHTML = S.route.map((s, i) => `<li class="${i < S.pos ? 'done' : i === S.pos ? 'here' : ''}">${s}</li>`).join('');
 
-  const rivals = Object.keys(S.inf).filter(g => g !== 'franco' && (g !== 'sanjurjo' || S.alive.sanjurjo)).sort((a, b) => S.inf[b] - S.inf[a]);
-  const top = rivals[0];
+  const top = topRival(S);
+  const scale = S.ch >= 6 ? 1500 : 150; // the army grows from columns into a mass army
 
   $('#h-col1').innerHTML = '<h4>ARMY</h4>' +
-    row('IN SPAIN', S.tS / 150, men(S.tS)) +
+    row('IN SPAIN', S.tS / scale, men(S.tS)) +
     row('IN AFRICA', S.tA / 240, men(S.tA)) +
     row('AMMO', S.ammo, word(S.ammo), S.ammo < 20 ? { c: RED, warn: 1 } : {}) +
     row('FUNDS', S.funds, word(S.funds), S.funds < 15 ? { c: RED, warn: 1 } : {}) +

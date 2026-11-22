@@ -3,6 +3,8 @@ import { newState, load, clearSave, randomSeed } from './game/state.js';
 import { run } from './game/runner.js';
 import { setScene } from './scenes/index.js';
 import { showTitle, hideTitle } from './screens/cards.js';
+import { GAMES, showGames, showArcadeResult, recordBest, setupGame } from './screens/arcade.js';
+import { snapshot, chips } from './game/state.js';
 import { openMap, closeMap } from './screens/map.js';
 import { openGenerals, closeGenerals } from './screens/generals.js';
 import { renderHUD } from './screens/hud.js';
@@ -13,9 +15,9 @@ import { settings, setSetting, onSettings, motionOn } from './settings.js';
 const $ = s => document.querySelector(s);
 const D = {};
 const canvas = $('#scene');
-const OVERLAYS = ['#ov-map', '#ov-gen', '#ov-air', '#ov-trib', '#ov-siege', '#ov-council', '#ov-vote', '#ov-card', '#ov-end'];
+const OVERLAYS = ['#ov-map', '#ov-gen', '#ov-air', '#ov-trib', '#ov-siege', '#ov-iron', '#ov-ebro', '#ov-council', '#ov-vote', '#ov-card', '#ov-end'];
 // Topmost first: keyboard shortcuts go to the first visible layer.
-const LAYERS = ['#ov-map', '#ov-gen', '#ov-title', '#ov-end', '#ov-card', '#ov-vote', '#ov-council', '#ov-siege', '#ov-trib', '#ov-air', '#dlg'];
+const LAYERS = ['#ov-map', '#ov-gen', '#ov-title', '#ov-end', '#ov-card', '#ov-vote', '#ov-council', '#ov-siege', '#ov-iron', '#ov-ebro', '#ov-trib', '#ov-air', '#dlg'];
 let S = null, token = 0, lastScene = null;
 
 function showScene(desc) {
@@ -55,8 +57,35 @@ function title() {
     hasSave: !!saved,
     onContinue: () => start(saved),
     onNew: () => { clearSave(); start(newState(randomSeed(), D)); },
-    onSeed: n => { clearSave(); start(newState(n, D)); }
+    onSeed: n => { clearSave(); start(newState(n, D)); },
+    onGames: games
   });
+}
+
+// Mini-games mode: the menu, then one mini-game on its own with a fresh setup.
+function games() {
+  if (S) title();
+  showGames({ onPlay: startArcade, onBack: title });
+}
+
+function startArcade(id) {
+  const my = ++token;
+  const G = GAMES.find(g => g.id === id);
+  S = setupGame(G, newState(randomSeed(), D));
+  hideAll();
+  overrideMusic(null);
+  showScene(G.scene);
+  renderHUD(S, D);
+  const before = snapshot(S);
+  const ctx = { D, showScene, alive: () => my === token, arcade: true };
+  G.play(S, ctx).then(result => {
+    if (my !== token) return;
+    renderHUD(S, D);
+    showArcadeResult({
+      game: G, result: result || { score: 0 }, chips: chips(before, snapshot(S), S, D), record: recordBest(id, (result && result.score) || 0),
+      onAgain: () => startArcade(id), onMenu: games, onTitle: title
+    });
+  }).catch(showError);
 }
 
 // Motion and sound settings take effect immediately.

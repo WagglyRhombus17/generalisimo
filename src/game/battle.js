@@ -16,22 +16,28 @@ const word = v => (v >= 70 ? 'high' : v >= 40 ? 'fair' : v >= 20 ? 'low' : 'crit
 
 export async function battle(S, B, ctx) {
   let tries = 0;
-  const march = S.scene;
+  const march = S.scene, late = S.ch >= 6;
   if (march && march.t === 'road') ctx.showScene({ ...march, t: 'battle' });
   try {
   for (;;) {
-    if (S.tS < 1500) {
-      if (S.tS + S.tA < 1500) { S.end = 'army'; return; }
-      // Too few men to attack: wait for reinforcements from Africa, at the cost of time.
+    if (S.tS < 1500 * (late ? 5 : 1)) {
+      if (!late && S.tS + S.tA < 1500) { S.end = 'army'; return; }
+      // Too few men to attack: wait for reinforcements, at the cost of time.
       const before = snapshot(S);
-      applyFx(S, { ship: 2500, delay: 5, inf: { mola: 4 }, morale: -4 });
+      if (late) applyFx(S, { tS: 10000, delay: 8, morale: -4, inf: { franco: -2 } });
+      else applyFx(S, { ship: 2500, delay: 5, inf: { mola: 4 }, morale: -4 });
       renderHUD(S, ctx.D);
-      await tell({ title: `Before ${B.name}`, text: 'Your column is too weak to attack. You halt and wait for more men to come across from Africa while the other generals ask what is taking so long.', chips: chips(before, snapshot(S), S, ctx.D) });
+      await tell({
+        title: `Before ${B.name}`,
+        text: late ? 'Your army is too weak to attack. You halt while fresh conscripts are trained and sent forward, and the other generals ask what is taking so long.'
+          : 'Your column is too weak to attack. You halt and wait for more men to come across from Africa while the other generals ask what is taking so long.',
+        chips: chips(before, snapshot(S), S, ctx.D)
+      });
       if (!ctx.alive()) return;
       continue;
     }
     const power = S.tS / 1000 * (0.6 + S.morale / 250) * (S.ammo < 20 ? 0.65 : 1);
-    const res = B.res * (S.terror > 40 ? 1.15 : 1);
+    const res = (B.res + (B.harder && S.flags[B.harder.flag] ? B.harder.res : 0)) * (S.terror > 40 ? 1.15 : 1);
     const opts = TACTICS.map(T => {
       let dis = '';
       if (T.ammo && S.ammo < T.ammo) dis = `Needs ${T.ammo} ammo`;
@@ -39,7 +45,7 @@ export async function battle(S, B, ctx) {
       const p = clamp(power * T.m / (power * T.m + res), 0.08, 0.95);
       return { t: T.t, h: `${Math.round(p * 100)}% · ${T.h}`, dis, p, T };
     });
-    const text = `${B.text} Your column: ${Math.round(S.tS).toLocaleString('en-US')} men, ammunition ${word(S.ammo)}, morale ${word(S.morale)}.` +
+    const text = `${B.text} ${late ? 'Your army' : 'Your column'}: ${Math.round(S.tS).toLocaleString('en-US')} men, ammunition ${word(S.ammo)}, morale ${word(S.morale)}.` +
       (S.terror > 40 ? ' Word of reprisals has spread, and the defenders expect no mercy.' : '') +
       (tries ? ` This is attempt ${tries + 1}.` : '');
     const i = await ask({ title: `Battle of ${B.name}`, text, choices: opts });
@@ -57,7 +63,7 @@ export async function battle(S, B, ctx) {
       renderHUD(S, ctx.D);
       if (march) ctx.showScene(march);
       await tell({
-        title: `${B.name} has fallen`,
+        title: B.won || `${B.name} has fallen`,
         text: forced ? 'Exhausted and short of everything, your men finally carry the position. The cost is high.' : B.win,
         chips: chips(before, snapshot(S), S, ctx.D)
       });

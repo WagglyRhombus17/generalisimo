@@ -1,5 +1,5 @@
 // Full-screen cards: title screen, chapter openings and the ending with its history ledger.
-import { fmtDate } from '../game/state.js';
+import { fmtDate, longDate } from '../game/state.js';
 import { settings, setSetting } from '../settings.js';
 import { sfx, overrideMusic } from '../audio/audio.js';
 
@@ -20,16 +20,17 @@ function button(label, key, onClick, cls = '') {
   return b;
 }
 
-export function showTitle({ hasSave, onNew, onContinue, onSeed }) {
+export function showTitle({ hasSave, onNew, onContinue, onSeed, onGames }) {
   const ov = $('#ov-title');
   ov.hidden = false;
   ov.replaceChildren();
   const p = el('div', 'title-panel bev');
-  p.append(el('div', 'k', 'SPAIN · 1936'), el('h1', null, 'GENERALÍSIMO'),
-    el('p', 'sub', 'July 1936. The army has risen against the Republic. You are General Francisco Franco, posted far away in the Canary Islands. Reach your army, find allies abroad, march on Madrid, and make the other generals choose you.'));
+  p.append(el('div', 'k', 'SPAIN · 1936–1939'), el('h1', null, 'GENERALÍSIMO'),
+    el('p', 'sub', 'July 1936. The army has risen against the Republic. You are General Francisco Franco, posted far away in the Canary Islands. Reach your army, find allies abroad, make the other generals choose you, and fight the war to its end.'));
   const menu = el('div', 'menu');
   if (hasSave) menu.append(button('CONTINUE ▶', 'enter', onContinue, 'go'));
   menu.append(button('NEW GAME', hasSave ? 'n' : 'enter', onNew, hasSave ? '' : 'go'));
+  menu.append(button('MINI-GAMES [G]', 'g', onGames));
   const seedRow = el('div', 'seed-row');
   const label = el('label', null, 'SEED');
   label.htmlFor = 'seed-in';
@@ -48,7 +49,7 @@ export function showTitle({ hasSave, onNew, onContinue, onSeed }) {
   bmo.title = 'Auto follows your device\'s reduce-motion setting';
   opts.append(bm, bs, bmo);
   p.append(opts);
-  p.append(el('p', 'how', 'Keys: 1–4 choose · Enter continues · M opens the map · G opens the generals. Every run is different; the seed lets you replay one.'));
+  p.append(el('p', 'how', 'Ten chapters, from July 1936 to April 1939. Keys: 1–4 choose · Enter continues · M opens the map · G opens the generals. Every run is different; the seed lets you replay one.'));
   p.append(el('p', 'note', 'This game depicts the politics and violence of the Spanish Civil War, including repression, without graphic detail. Each run ends by comparing your choices with what really happened.'));
   ov.append(p);
   const first = p.querySelector('button');
@@ -78,12 +79,16 @@ export function showEnding(S, ctx) {
   const rival = S.rival ? D.generals[S.rival].full : 'another general';
   const ov = $('#ov-end');
   ov.hidden = false;
-  overrideMusic(['generalisimo', 'madrid', 'stalemate'].includes(S.end) ? 'finale' : 'tribunal');
-  if (S.end === 'dead' || S.end === 'army') sfx('bad');
+  overrideMusic(['generalisimo', 'madrid', 'stalemate', 'victory', 'peace'].includes(S.end) ? 'finale' : 'tribunal');
+  if (['dead', 'army', 'ousted', 'widerwar'].includes(S.end)) sfx('bad');
   ov.replaceChildren();
   const p = el('div', 'end-panel bev');
   p.append(el('div', 'k', `${fmtDate(S.day)} · SEED ${S.seed}`), el('h2', null, E.title), el('p', 'lead', E.text.replace('{rival}', rival)));
   if (S.votes) p.append(el('p', 'votes', S.votes));
+  if (S.end === 'victory' || S.end === 'peace') {
+    const d = Math.round(S.delay);
+    p.append(el('p', 'votes', `Your war ended on ${longDate(S.day)}: ${d === 0 ? 'the same day as in history' : `${Math.abs(d)} day${Math.abs(d) === 1 ? '' : 's'} ${d < 0 ? 'earlier' : 'later'} than in history`}.`));
+  }
   const stats = el('div', 'end-stats');
   [['Army in Spain', Math.round(S.tS).toLocaleString('en-US')], ['Your influence', Math.round(S.inf.franco)], ['Germany', `${Math.floor(S.ger / 25)}/4`],
    ['Italy', `${Math.floor(S.ita / 25)}/4`], ['Legitimacy', Math.round(S.legit)], ['Terror', Math.round(S.terror)]].forEach(([k, v]) => {
@@ -99,7 +104,12 @@ export function showEnding(S, ctx) {
   });
   if (!S.ledger.length) tbl.append(el('p', null, 'Your run ended before history had much to compare.'));
   p.append(tbl);
-  p.append(el('p', 'draft', 'This draft ends in November 1936. Later drafts continue the war into 1937.'));
+  if (E.after) {
+    p.append(el('h3', null, 'AFTER THE WAR'));
+    const ul = el('ul', 'after');
+    E.after.forEach(t => ul.append(el('li', null, t)));
+    p.append(ul);
+  }
   const btns = el('div', 'menu');
   btns.append(button('NEW RUN ▶', 'enter', ctx.onNew, 'go'), button('REPLAY THIS SEED', 'r', () => ctx.onSeed(S.seed)), button('TITLE SCREEN', 't', ctx.onMenu));
   p.append(btns);
