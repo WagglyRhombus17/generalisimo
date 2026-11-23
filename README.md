@@ -26,6 +26,10 @@ Then open http://localhost:8000.
 
 To package the game for itch.io or another host, run `python3 tools/build.py`. It writes `dist/` and `generalisimo-web.zip`.
 
+## Play offline (one file)
+
+`python3 tools/build_single.py` bundles the whole game (code, story data, styles and the pixel fonts) into `dist/generalisimo-offline.html`, about 450 KB. That file runs by double-clicking it, with no server and no internet connection. Building it needs Node.js (the script fetches esbuild with `npx`) and an internet connection to download the fonts. Saves and best scores are kept in the browser, per file location.
+
 ## Layout
 
 ```

@@ -130,7 +130,9 @@ function showError(err) {
 async function boot() {
   try {
     const files = ['events', 'generals', 'chapters', 'tribunal', 'music'];
-    const data = await Promise.all(files.map(n => fetch(`data/${n}.json`).then(r => {
+    // The single-file offline build (tools/build_single.py) carries the data inside the page.
+    const packed = window.GENERALISIMO_DATA;
+    const data = packed ? files.map(n => packed[n]) : await Promise.all(files.map(n => fetch(`data/${n}.json`).then(r => {
       if (!r.ok) throw new Error(`could not load data/${n}.json`);
       return r.json();
     })));
